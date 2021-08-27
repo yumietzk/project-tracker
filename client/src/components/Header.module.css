@@ -1,0 +1,36 @@
+.header {
+  flex: 0 1 4rem;
+  padding-right: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.logout {
+  border: none;
+  background-color: #fff;
+  margin-right: 1rem;
+  font-size: 1.2rem;
+  font-weight: 100;
+  background-color: green;
+  padding: 0.7rem 1rem;
+  border-radius: 10rem;
+  cursor: pointer;
+}
+
+.link {
+  border: none;
+  background-color: #f06102;
+  height: 2.5rem;
+  width: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.plusicon {
+  height: 2rem;
+  width: 2rem;
+  fill: #fff;
+}

@@ -56,7 +56,32 @@ app.get('/api/tasks', (req, res) => {
 });
 
 // UPDATE
+// app.put('/api/tasks', (req, res) => {
+//   const { id } = req.body; // updateするキャラクターのidをリクエストから取得
+//   Task.findByIdAndUpdate(id, { $inc: { age: 1 } }, (err) => {
+//     if (err) res.status(500).send();
+//     else {
+//       // updateに成功した場合、すべてのデータをあらためてfindしてクライアントに送る
+//       Task.find({}, (findErr, taskArray) => {
+//         if (findErr) res.status(500).send();
+//         else res.status(200).send(taskArray);
+//       });
+//     }
+//   });
+// });
 
 // DELETE
+app.delete('/api/tasks', (req, res) => {
+  const { id } = req.body;
+  Task.findByIdAndRemove(id, (err) => {
+    if (err) res.status(500).send();
+    else {
+      Task.find({}, (findErr, taskArray) => {
+        if (findErr) res.status(500).send();
+        else res.status(200).send(taskArray);
+      });
+    }
+  });
+});
 
 app.listen(3001, () => console.log('Listening on port 3001'));

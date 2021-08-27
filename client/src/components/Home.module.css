@@ -1,0 +1,19 @@
+.home {
+  width: 95vw;
+  display: flex;
+}
+
+.main {
+  flex: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  background-color: green;
+  border-radius: 1rem;
+  margin: 1rem;
+  margin-right: 0;
+}
