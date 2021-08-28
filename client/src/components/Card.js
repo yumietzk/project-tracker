@@ -1,5 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import * as BsIcons from 'react-icons/bs';
+import * as CgIcons from 'react-icons/cg';
+import * as IoIcons from 'react-icons/io5';
 import { deleteTask } from '../actions';
 import styles from './Card.module.css';
 
@@ -14,12 +17,22 @@ const Card = ({ deleteTask, id, title, description, duedate }) => {
 
   return (
     <div className={styles.card}>
-      <h3 className={styles.title}>{title}</h3>
-      <div className={styles.description}>
-        {truncate(description, 100) || 'description'}
-      </div>
-      <div className={styles.date}>{duedate || 'due date'}</div>
-      <button onClick={() => onClick(id)}>delete</button>
+      <h3 className={styles.title}>
+        {title}
+        <button className={styles.btn}>
+          <BsIcons.BsThreeDots className={styles.btnicon} />
+        </button>
+      </h3>
+      <p className={styles.description}>
+        {truncate(description, 150) || 'description'}
+      </p>
+      <p className={styles.date}>
+        <CgIcons.CgCalendarDue className={styles.dateicon} />
+        {duedate || 'due date'}
+      </p>
+      <button className={styles.delete} onClick={() => onClick(id)}>
+        <IoIcons.IoTrashOutline />
+      </button>
     </div>
   );
 };

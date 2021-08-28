@@ -1,8 +1,9 @@
 .card {
   background-color: #fff;
-  border-radius: 3px;
+  border-radius: 5px;
   padding: 1.2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  width: 100%;
 
   display: flex;
   flex-direction: column;
@@ -10,15 +11,46 @@
 
 .title {
   font-size: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .description {
   font-size: 1.2rem;
-  margin-bottom: 0.7rem;
-  overflow-x: hidden;
+  margin-bottom: 1rem;
+  width: 87%;
+  /* word-break: normal; */
+  overflow-wrap: break-word;
+  /* overflow-x: hidden; */
 }
 
 .date {
   font-size: 1.2rem;
+  color: #e52a5a;
+  display: flex;
+  align-items: center;
+}
+
+.dateicon {
+  margin-right: 0.5rem;
+}
+
+.delete {
+  align-self: flex-end;
+  border: none;
+  background-color: transparent;
+  font-size: 1.4rem;
+  cursor: pointer;
 }

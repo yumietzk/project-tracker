@@ -2,17 +2,21 @@
   display: flex;
   flex-direction: column;
   padding: 0.8rem;
-  border: 1px solid palevioletred;
+  /* width: 100%;
+  border: 1px solid palevioletred; */
+  overflow: hidden;
 }
 
 .title {
   flex: 0 1 3rem;
   font-size: 1.6rem;
+  color: #26864b;
 }
 
 .cards {
   flex: 1;
   padding: 0.3rem;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
