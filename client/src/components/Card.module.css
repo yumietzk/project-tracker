@@ -1,5 +1,24 @@
 .card {
   background-color: #fff;
   border-radius: 3px;
+  padding: 1.2rem;
   margin-bottom: 1rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.description {
+  font-size: 1.2rem;
+  margin-bottom: 0.7rem;
+  overflow-x: hidden;
+}
+
+.date {
+  font-size: 1.2rem;
 }

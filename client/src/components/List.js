@@ -9,10 +9,6 @@ const List = ({ label, tasks, isFetching, isError }) => {
   //   fetchTasks();
   // }, []);
 
-  const truncate = (str, n) => {
-    return str?.length > n ? `${str.substr(0, n - 1)}...` : str;
-  };
-
   const renderCard = () => {
     if (isFetching || !tasks) {
       return <div>Now loading...</div>;
@@ -26,14 +22,14 @@ const List = ({ label, tasks, isFetching, isError }) => {
       return <p>No data.</p>;
     }
 
-    return tasks.map((task, i) => {
+    return tasks.map((task) => {
       return (
         <Card
           id={task._id}
           title={task.title}
-          date={task.date}
-          status={task.status}
-          key={i}
+          description={task.description}
+          duedate={task.duedate}
+          key={task._id}
         />
       );
     });
@@ -41,7 +37,7 @@ const List = ({ label, tasks, isFetching, isError }) => {
 
   return (
     <div className={styles.list}>
-      <h3 className={styles.title}>{label} 3</h3>
+      <h2 className={styles.title}>{label} 3</h2>
       <div className={styles.cards}>{renderCard()}</div>
     </div>
   );

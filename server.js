@@ -28,10 +28,9 @@ app.post('/api/tasks', (req, res) => {
     return res.status(500).send('request body empty');
   }
 
-  const { id, title, date, status, duedate, description } = req.body;
+  const { title, date, status, duedate, description } = req.body;
 
   new Task({
-    id,
     title,
     date,
     status,
@@ -49,9 +48,8 @@ app.post('/api/tasks', (req, res) => {
 // READ
 app.get('/api/tasks', (req, res) => {
   Task.find({}, (err, taskArray) => {
-    // 取得したドキュメントをクライアント側と同じくcharacterArrayと命名
     if (err) res.status(500).send();
-    else res.status(200).send(taskArray); // characterArrayをレスポンスとして送り返す
+    else res.status(200).send(taskArray); // send taskArray to client
   });
 });
 

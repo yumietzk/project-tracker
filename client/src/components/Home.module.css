@@ -4,8 +4,9 @@
 }
 
 .main {
-  flex: 1;
+  flex: 0 1 80%;
   min-height: 100vh;
+
   display: flex;
   flex-direction: column;
 }
@@ -14,6 +15,6 @@
   flex: 1;
   background-color: green;
   border-radius: 1rem;
-  margin: 1rem;
+  margin: 0.5rem;
   margin-right: 0;
 }

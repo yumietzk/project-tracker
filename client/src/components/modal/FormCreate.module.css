@@ -13,9 +13,11 @@
   flex-direction: column;
 }
 
-.label {
-  flex: 0 1 4rem;
+.newproject {
+  flex: 0 1 3rem;
   color: #f06102;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 
   display: flex;
   justify-content: center;
@@ -24,7 +26,94 @@
 
 .content {
   flex: 1;
+  padding: 1rem;
+  position: relative;
+}
+
+.overview {
+  margin-bottom: 3rem;
+}
+
+.title,
+.date,
+.status,
+.duedate {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.label {
+  flex: 0 1 12rem;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  flex: 1;
+  border: none;
+  /* background-color: burlywood; */
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input:hover {
+  cursor: pointer;
+  background-color: #f4f2f2;
+}
+
+.title .input {
+  font-size: 2rem;
+  padding: 0.8rem 1.1rem;
+}
+
+.date .input,
+.status .input,
+.duedate .input {
+  font-size: 1.2rem;
+  padding: 0.5rem 0.7rem;
+}
+
+.icon {
+  margin-right: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.description {
+  margin-bottom: 1.8rem;
+}
+
+.description > h2,
+.todo > h2 {
+  font-size: 1.7rem;
+  margin-bottom: 0.5rem;
+}
+
+.textarea {
+  width: 100%;
+  height: 8rem;
+  border-color: #b8b8b8;
+}
+
+.textarea:focus {
+  outline: none;
+}
+
+.todo {
+  margin-bottom: 1.8rem;
 }
 
 .btn {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  border: none;
+  padding: 1rem 1.5rem;
+  background-color: #26864b;
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
 }
