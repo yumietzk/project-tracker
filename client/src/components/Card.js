@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as BsIcons from 'react-icons/bs';
 import * as CgIcons from 'react-icons/cg';
@@ -6,7 +7,15 @@ import * as IoIcons from 'react-icons/io5';
 import { deleteTask } from '../actions';
 import styles from './Card.module.css';
 
-const Card = ({ deleteTask, id, title, description, duedate }) => {
+const Card = ({
+  deleteTask,
+  id,
+  title,
+  date,
+  status,
+  description,
+  duedate,
+}) => {
   const onClick = (id) => {
     deleteTask(id);
   };
@@ -18,17 +27,17 @@ const Card = ({ deleteTask, id, title, description, duedate }) => {
   return (
     <div className={styles.card}>
       <h3 className={styles.title}>
-        {title}
-        <button className={styles.btn}>
+        {title || '(No title)'}
+        <Link to={`/formedit/${id}`} className={styles.btn}>
           <BsIcons.BsThreeDots className={styles.btnicon} />
-        </button>
+        </Link>
       </h3>
       <p className={styles.description}>
-        {truncate(description, 150) || 'description'}
+        {truncate(description, 150) || '(no description)'}
       </p>
       <p className={styles.date}>
         <CgIcons.CgCalendarDue className={styles.dateicon} />
-        {duedate || 'due date'}
+        {duedate || '(no due date)'}
       </p>
       <button className={styles.delete} onClick={() => onClick(id)}>
         <IoIcons.IoTrashOutline />

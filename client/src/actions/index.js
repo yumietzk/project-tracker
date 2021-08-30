@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const createTask =
   (title, date, status, duedate, description) => async (dispatch) => {
+    console.log(title, date);
     try {
       // dispatch({ type: 'REQUEST_DATA' });
 
@@ -42,6 +43,23 @@ export const fetchTasks = () => async (dispatch) => {
   }
 };
 
+export const fetchTask = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: 'REQUEST_DATA' });
+
+    const response = await axios.get(`/api/tasks/${id}`);
+
+    console.log(response.data); // [{id: , title: }]
+    dispatch({ type: 'RECEIVE_TASK', payload: response.data });
+  } catch (err) {
+    console.log(err);
+    dispatch({
+      type: 'RECEIVE_DATA_FAILED',
+      payload: err.response,
+    });
+  }
+};
+
 // export const updateTask = (id) => async (dispatch) => {
 //   try {
 //     dispatch({ type: 'REQUEST_DATA' });
@@ -64,13 +82,15 @@ export const deleteTask = (id) => async (dispatch) => {
   try {
     dispatch({ type: 'REQUEST_DATA' });
 
-    const response = await axios({
-      method: 'delete',
-      url: '/api/tasks',
-      data: {
-        id,
-      },
-    });
+    // const response = await axios({
+    //   method: 'delete',
+    //   url: '/api/tasks',
+    //   data: {
+    //     id,
+    //   },
+    // });
+
+    const response = await axios.delete(`/api/tasks/${id}`);
 
     // サーバから改めてアプデしたデータを送られている
     console.log(response.data); // {id: , title: }

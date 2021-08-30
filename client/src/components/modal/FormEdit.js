@@ -1,35 +1,30 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { connect } from 'react-redux';
 import * as IoIcons from 'react-icons/io5';
 import * as GrIcons from 'react-icons/gr';
 import * as CgIcons from 'react-icons/cg';
-import { createTask } from '../../actions/index';
 import styles from './FormCreate.module.css';
 
-const FormCreate = ({ createTask }) => {
+const FormEdit = ({ task }) => {
   const history = useHistory();
-  const [title, setTitle] = useState('');
-  const [date, setDate] = useState('');
-  const [status, setStatus] = useState('No Status');
-  const [duedate, setDuedate] = useState('');
-  const [description, setDescription] = useState('');
+  const [title, setTitle] = useState(task?.title);
+  const [date, setDate] = useState(task?.date);
+  const [status, setStatus] = useState(task?.status);
+  const [duedate, setDuedate] = useState(task?.duedate);
+  const [description, setDescription] = useState(task?.description);
 
-  // console.log(date);
-  // console.log(typeof date);
-  // const testid = date.split('/').join('');
-  // console.log(testid);
+  // console.log(title, date, status, duedate, description);
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    createTask(title, date, status, duedate, description);
+    // createTask(title, date, status, duedate, description);
     history.push(`/`);
   };
 
   return (
     <div className={styles.form}>
-      <h1 className={styles.newproject}>New Project</h1>
+      <h1 className={styles.newproject}>Edit Project</h1>
       <form className={styles.content} onSubmit={(e) => onSubmit(e)}>
         <div className={styles.overview}>
           <div className={styles.title}>
@@ -99,12 +94,10 @@ const FormCreate = ({ createTask }) => {
           <h2>To Do</h2>
         </div>
 
-        <button className={styles.btn}>Create</button>
+        <button className={styles.btn}>Update</button>
       </form>
     </div>
   );
 };
 
-export default connect(null, {
-  createTask,
-})(FormCreate);
+export default FormEdit;

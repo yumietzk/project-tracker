@@ -6,6 +6,7 @@ import Projects from './Projects';
 import ToDo from './ToDo';
 import TimeManage from './TimeManage';
 import Modal from './modal/Modal';
+import ModalEdit from './modal/ModalEdit';
 import SignUp from './SignUp';
 import Login from './Login';
 import { AuthProvider } from '../context/AuthContext';
@@ -21,6 +22,7 @@ const App = () => {
             <PrivateRoute path="/todo" component={ToDo} />
             <PrivateRoute path="/timemanage" component={TimeManage} />
             <PrivateRoute path="/formcreate" component={Modal} />
+            <PrivateRoute path="/formedit/:id" component={ModalEdit} />
             <PublicRoute path="/signup" component={SignUp} />
             <PublicRoute path="/login" component={Login} />
           </Switch>
