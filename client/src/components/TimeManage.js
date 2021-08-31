@@ -10,28 +10,6 @@ const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
     fetchTasks();
   }, []);
 
-  const noStatus = [];
-  const inProgress = [];
-  const completed = [];
-
-  // if (isFetching || !tasks) {
-  //   return <div>Now loading...</div>;
-  // }
-
-  // if (isError?.status) {
-  //   return <p>{isError.error}</p>;
-  // }
-
-  // if (data.length === 0) {
-  //   return <p>No data.</p>;
-  // }
-
-  tasks?.map((task) => {
-    if (task.status === 'No Status') noStatus.push(task);
-    if (task.status === 'In Progress') inProgress.push(task);
-    if (task.status === 'Completed') completed.push(task);
-  });
-
   const calcDueDate = (date) => {
     const targetdate = new Date(date);
     const now = new Date();
@@ -41,6 +19,11 @@ const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
       (date2 - date1) / (1000 * 60 * 60 * 24);
 
     const daysLeft = calcDaysLeft(+today, +targetdate);
+    return daysLeft;
+  };
+
+  const renderDueDate = (date) => {
+    const daysLeft = calcDueDate(date);
 
     if (daysLeft < 0) return `${Math.abs(daysLeft)} days ago`;
     if (daysLeft === 0) return 'Today';
@@ -49,6 +32,12 @@ const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
     else {
       return date;
     }
+  };
+
+  const handleFire = (date) => {
+    const daysLeft = calcDueDate(date);
+
+    if (daysLeft <= 2) return true;
   };
 
   // if (tasks) calcDueDate(tasks[0].duedate);
@@ -81,8 +70,12 @@ const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
           }`}
         >
           <h3 className={styles.title}>{task.title}</h3>
-          <p className={styles.date}>{calcDueDate(task.duedate)}</p>
-          <p className={styles.fire}>
+          <p className={styles.date}>{renderDueDate(task.duedate)}</p>
+          <p
+            className={`${styles.fire} ${
+              handleFire(task.duedate) ? styles.render : null
+            }`}
+          >
             <AiIcons.AiTwotoneFire />
           </p>
         </div>

@@ -80,8 +80,12 @@
 
 .fire {
   flex: 1;
-  color: red;
+  color: transparent;
   font-size: 1.4rem;
+}
+
+.render {
+  color: red;
 }
 
 .projectNoStatus,
