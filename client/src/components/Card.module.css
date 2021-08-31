@@ -21,10 +21,15 @@
 .btn {
   border: none;
   background-color: transparent;
+  text-decoration: none;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.btnicon {
+  color: #101d2c;
 }
 
 .description {
@@ -34,6 +39,12 @@
   /* word-break: normal; */
   overflow-wrap: break-word;
   /* overflow-x: hidden; */
+}
+
+.datedelete {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .date {

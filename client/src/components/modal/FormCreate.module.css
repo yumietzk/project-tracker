@@ -50,6 +50,15 @@
   align-items: center;
 }
 
+/* .dateselect {
+  border: none;
+  color: #d3d3d3;
+}
+
+.dateselect:focus {
+  outline: none;
+} */
+
 .input {
   flex: 1;
   border: none;

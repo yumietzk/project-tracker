@@ -8,19 +8,55 @@ import { updateTask, deleteTask } from '../../actions';
 import styles from './FormEdit.module.css';
 
 const FormEdit = ({ updateTask, deleteTask, id, task }) => {
+  const splitdate = task?.date.split(', '); // []
+  const monthdate = splitdate[0].split(' ');
+
+  const splitduedate = task?.duedate.split(', ');
+  const duemonthdate = splitduedate[0].split(' ');
+
   const history = useHistory();
   const [title, setTitle] = useState(task?.title);
-  const [date, setDate] = useState(task?.date);
+  const [month, setMonth] = useState(monthdate[0]);
+  const [date, setDate] = useState(monthdate[1]);
+  const [year, setYear] = useState(splitdate[1]);
   const [status, setStatus] = useState(task?.status);
-  const [duedate, setDuedate] = useState(task?.duedate);
+  const [dueMonth, setDueMonth] = useState(duemonthdate[0]);
+  const [dueDate, setDueDate] = useState(duemonthdate[1]);
+  const [dueYear, setDueYear] = useState(splitduedate[1]);
   const [description, setDescription] = useState(task?.description);
 
   // console.log(title, date, status, duedate, description);
 
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+  const dates = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+    22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
+  ];
+  const years = [2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030];
+
   const onFormUpdate = (e) => {
     e.preventDefault();
 
-    updateTask(id, title, date, status, duedate, description);
+    const newmonthdate = [month, date].join(' ');
+    const newcreatedate = [newmonthdate, year].join(', ');
+
+    const newduemonthdate = [dueMonth, dueDate].join(' ');
+    const newduedate = [newduemonthdate, dueYear].join(', ');
+
+    updateTask(id, title, newcreatedate, status, newduedate, description);
     history.push(`/`);
   };
 
@@ -52,13 +88,43 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
               <IoIcons.IoTimeOutline className={styles.icon} />
               Date created
             </label>
-            <input
+            {/* <input
               className={styles.input}
               type="text"
               value={date}
               placeholder="yyyy/mm/dd"
               onChange={(e) => setDate(e.target.value)}
-            />
+            /> */}
+            <select
+              className={styles.input}
+              value={month}
+              onChange={(e) => setMonth(e.target.value)}
+            >
+              <option>-</option>
+              {months.map((month, i) => {
+                return <option key={i}>{month}</option>;
+              })}
+            </select>
+            <select
+              className={styles.input}
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+            >
+              <option>-</option>
+              {dates.map((date, i) => {
+                return <option key={i}>{date}</option>;
+              })}
+            </select>
+            <select
+              className={styles.input}
+              value={year}
+              onChange={(e) => setYear(e.target.value)}
+            >
+              <option>-</option>
+              {years.map((year, i) => {
+                return <option key={i}>{year}</option>;
+              })}
+            </select>
           </div>
           <div className={styles.status}>
             <label className={styles.label}>
@@ -80,13 +146,44 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
               <CgIcons.CgCalendarDue className={styles.icon} />
               Due Date
             </label>
-            <input
+            {/* <input
               className={styles.input}
               type="text"
               value={duedate}
               placeholder="yyyy/mm/dd"
               onChange={(e) => setDuedate(e.target.value)}
-            />
+            /> */}
+
+            <select
+              className={styles.input}
+              value={dueMonth}
+              onChange={(e) => setDueMonth(e.target.value)}
+            >
+              <option>-</option>
+              {months.map((month, i) => {
+                return <option key={i}>{month}</option>;
+              })}
+            </select>
+            <select
+              className={styles.input}
+              value={dueDate}
+              onChange={(e) => setDueDate(e.target.value)}
+            >
+              <option>-</option>
+              {dates.map((date, i) => {
+                return <option key={i}>{date}</option>;
+              })}
+            </select>
+            <select
+              className={styles.input}
+              value={dueYear}
+              onChange={(e) => setDueYear(e.target.value)}
+            >
+              <option>-</option>
+              {years.map((year, i) => {
+                return <option key={i}>{year}</option>;
+              })}
+            </select>
           </div>
         </div>
 

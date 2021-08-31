@@ -10,15 +10,14 @@ import styles from './FormCreate.module.css';
 const FormCreate = ({ createTask }) => {
   const history = useHistory();
   const [title, setTitle] = useState('');
-  const [date, setDate] = useState('');
+  const [month, setMonth] = useState('-');
+  const [date, setDate] = useState('-');
+  const [year, setYear] = useState('-');
   const [status, setStatus] = useState('-');
-  const [duedate, setDuedate] = useState('');
+  const [dueMonth, setDueMonth] = useState('-');
+  const [dueDate, setDueDate] = useState('-');
+  const [dueYear, setDueYear] = useState('-');
   const [description, setDescription] = useState('');
-
-  // console.log(date);
-  // console.log(typeof date);
-  // const testid = date.split('/').join('');
-  // console.log(testid);
 
   const months = [
     'January',
@@ -43,7 +42,13 @@ const FormCreate = ({ createTask }) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    createTask(title, date, status, duedate, description);
+    const monthdate = [month, date].join(' ');
+    const createdate = [monthdate, year].join(', ');
+
+    const duemonthdate = [dueMonth, dueDate].join(' ');
+    const duedate = [duemonthdate, dueYear].join(', ');
+
+    createTask(title, createdate, status, duedate, description);
     history.push(`/`);
   };
 
@@ -75,26 +80,37 @@ const FormCreate = ({ createTask }) => {
               placeholder="yyyy/mm/dd"
               onChange={(e) => setDate(e.target.value)}
             /> */}
-            <div>
-              <select>
-                <option>-</option>
-                {months.map((month, i) => {
-                  return <option key={i}>{month}</option>;
-                })}
-              </select>
-              <select>
-                <option>-</option>
-                {dates.map((date, i) => {
-                  return <option key={i}>{date}</option>;
-                })}
-              </select>
-              <select>
-                <option>-</option>
-                {years.map((year, i) => {
-                  return <option key={i}>{year}</option>;
-                })}
-              </select>
-            </div>
+
+            <select
+              className={styles.input}
+              value={month}
+              onChange={(e) => setMonth(e.target.value)}
+            >
+              <option>-</option>
+              {months.map((month, i) => {
+                return <option key={i}>{month}</option>;
+              })}
+            </select>
+            <select
+              className={styles.input}
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+            >
+              <option>-</option>
+              {dates.map((date, i) => {
+                return <option key={i}>{date}</option>;
+              })}
+            </select>
+            <select
+              className={styles.input}
+              value={year}
+              onChange={(e) => setYear(e.target.value)}
+            >
+              <option>-</option>
+              {years.map((year, i) => {
+                return <option key={i}>{year}</option>;
+              })}
+            </select>
           </div>
           <div className={styles.status}>
             <label className={styles.label}>
@@ -117,13 +133,43 @@ const FormCreate = ({ createTask }) => {
               <CgIcons.CgCalendarDue className={styles.icon} />
               Due Date
             </label>
-            <input
+            {/* <input
               className={styles.input}
               type="text"
               value={duedate}
               placeholder="yyyy/mm/dd"
               onChange={(e) => setDuedate(e.target.value)}
-            />
+            /> */}
+            <select
+              className={styles.input}
+              value={dueMonth}
+              onChange={(e) => setDueMonth(e.target.value)}
+            >
+              <option>-</option>
+              {months.map((month, i) => {
+                return <option key={i}>{month}</option>;
+              })}
+            </select>
+            <select
+              className={styles.input}
+              value={dueDate}
+              onChange={(e) => setDueDate(e.target.value)}
+            >
+              <option>-</option>
+              {dates.map((date, i) => {
+                return <option key={i}>{date}</option>;
+              })}
+            </select>
+            <select
+              className={styles.input}
+              value={dueYear}
+              onChange={(e) => setDueYear(e.target.value)}
+            >
+              <option>-</option>
+              {years.map((year, i) => {
+                return <option key={i}>{year}</option>;
+              })}
+            </select>
           </div>
         </div>
 

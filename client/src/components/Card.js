@@ -35,13 +35,15 @@ const Card = ({
       <p className={styles.description}>
         {truncate(description, 150) || '(no description)'}
       </p>
-      <p className={styles.date}>
-        <CgIcons.CgCalendarDue className={styles.dateicon} />
-        {duedate || '(no due date)'}
-      </p>
-      <button className={styles.delete} onClick={() => onClick(id)}>
-        <IoIcons.IoTrashOutline />
-      </button>
+      <div className={styles.datedelete}>
+        <p className={styles.date}>
+          <CgIcons.CgCalendarDue className={styles.dateicon} />
+          {duedate || '(no due date)'}
+        </p>
+        <button className={styles.delete} onClick={() => onClick(id)}>
+          <IoIcons.IoTrashOutline />
+        </button>
+      </div>
     </div>
   );
 };

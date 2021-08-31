@@ -4,6 +4,8 @@ export const createTask =
   (title, date, status, duedate, description) => async (dispatch) => {
     try {
       // dispatch({ type: 'REQUEST_DATA' });
+      console.log(typeof date);
+      console.log(date, duedate);
 
       const response = await axios.post('/api/tasks', {
         title,

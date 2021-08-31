@@ -32,6 +32,27 @@ const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
     if (task.status === 'Completed') completed.push(task);
   });
 
+  const calcDueDate = (date) => {
+    const targetdate = new Date(date);
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+    const calcDaysLeft = (date1, date2) =>
+      (date2 - date1) / (1000 * 60 * 60 * 24);
+
+    const daysLeft = calcDaysLeft(+today, +targetdate);
+
+    if (daysLeft < 0) return `${Math.abs(daysLeft)} days ago`;
+    if (daysLeft === 0) return 'Today';
+    if (daysLeft === 1) return 'Tomorrow';
+    if (daysLeft <= 7) return `${daysLeft} days left`;
+    else {
+      return date;
+    }
+  };
+
+  // if (tasks) calcDueDate(tasks[0].duedate);
+
   const renderProjects = () => {
     if (isFetching || !tasks) {
       return <div>Now loading...</div>;
@@ -50,7 +71,7 @@ const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
 
       return (
         <div
-          key={task.id}
+          key={task._id}
           className={`${styles.project} ${
             task.status === 'No Status'
               ? styles.projectNoStatus
@@ -60,7 +81,7 @@ const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
           }`}
         >
           <h3 className={styles.title}>{task.title}</h3>
-          <p className={styles.date}>{task.duedate}</p>
+          <p className={styles.date}>{calcDueDate(task.duedate)}</p>
           <p className={styles.fire}>
             <AiIcons.AiTwotoneFire />
           </p>
@@ -83,28 +104,6 @@ const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
         </div>
 
         {renderProjects()}
-
-        {/* <div className={`${styles.project} ${styles.projectNoStatus}`}>
-          <h3>Title</h3>
-          <p>Due Date</p>
-          <p>
-            <AiIcons.AiTwotoneFire />
-          </p>
-        </div>
-        <div className={`${styles.project} ${styles.projectInProgress}`}>
-          <h3>Title</h3>
-          <p>Due Date</p>
-          <p>
-            <AiIcons.AiTwotoneFire />
-          </p>
-        </div>
-        <div className={`${styles.project} ${styles.projectNoStatus}`}>
-          <h3>Title</h3>
-          <p>Due Date</p>
-          <p>
-            <AiIcons.AiTwotoneFire />
-          </p>
-        </div> */}
       </div>
     </Home>
   );
