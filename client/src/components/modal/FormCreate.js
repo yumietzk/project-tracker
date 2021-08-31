@@ -11,7 +11,7 @@ const FormCreate = ({ createTask }) => {
   const history = useHistory();
   const [title, setTitle] = useState('');
   const [date, setDate] = useState('');
-  const [status, setStatus] = useState('No Status');
+  const [status, setStatus] = useState('-');
   const [duedate, setDuedate] = useState('');
   const [description, setDescription] = useState('');
 
@@ -19,6 +19,26 @@ const FormCreate = ({ createTask }) => {
   // console.log(typeof date);
   // const testid = date.split('/').join('');
   // console.log(testid);
+
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+  const dates = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+    22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
+  ];
+  const years = [2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030];
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -48,13 +68,33 @@ const FormCreate = ({ createTask }) => {
               <IoIcons.IoTimeOutline className={styles.icon} />
               Date created
             </label>
-            <input
+            {/* <input
               className={styles.input}
               type="text"
               value={date}
               placeholder="yyyy/mm/dd"
               onChange={(e) => setDate(e.target.value)}
-            />
+            /> */}
+            <div>
+              <select>
+                <option>-</option>
+                {months.map((month, i) => {
+                  return <option key={i}>{month}</option>;
+                })}
+              </select>
+              <select>
+                <option>-</option>
+                {dates.map((date, i) => {
+                  return <option key={i}>{date}</option>;
+                })}
+              </select>
+              <select>
+                <option>-</option>
+                {years.map((year, i) => {
+                  return <option key={i}>{year}</option>;
+                })}
+              </select>
+            </div>
           </div>
           <div className={styles.status}>
             <label className={styles.label}>
@@ -66,6 +106,7 @@ const FormCreate = ({ createTask }) => {
               value={status}
               onChange={(e) => setStatus(e.target.value)}
             >
+              <option value="">-</option>
               <option value="No Status">No Status</option>
               <option value="In Progress">In Progress</option>
               <option value="Completed">Completed</option>
