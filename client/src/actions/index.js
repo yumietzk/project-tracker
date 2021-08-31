@@ -33,6 +33,7 @@ export const fetchTasks = () => async (dispatch) => {
 
     console.log(response.data); // [{id: , title: }, {}...]
     // console.log(response.data[0]._id);
+    // console.log(typeof response.data);
     dispatch({ type: 'RECEIVE_TASKS', payload: response.data });
   } catch (err) {
     console.log(err);

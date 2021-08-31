@@ -4,13 +4,15 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 require('dotenv/config');
 
+app.use(bodyParser.json());
+
 const tasksRoute = require('./routes/tasks');
 app.use('/api/tasks', tasksRoute);
 
 // const Task = require('./models/task');
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
 
 const options = {
   useUnifiedTopology: true,
