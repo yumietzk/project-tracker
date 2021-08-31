@@ -1,5 +1,5 @@
 .header {
-  flex: 0 1 4rem;
+  flex: 0 1 5.5rem;
   width: 100%;
   padding-right: 1rem;
   display: flex;
@@ -10,16 +10,34 @@
 .logout {
   border: none;
   background-color: #fff;
-  margin-right: 1rem;
+  margin-right: 0.7rem;
   font-size: 1.2rem;
   font-weight: 100;
-  background-color: green;
-  padding: 0.7rem 1rem;
-  border-radius: 10rem;
+  background-color: transparent;
   cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.link {
+.logout > p {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  color: transparent;
+  transition: all 0.3s;
+}
+
+.logout:hover > p {
+  color: #101d2c;
+}
+
+.logouticon {
+  font-size: 1.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.create {
   border: none;
   background-color: #f06102;
   height: 2.5rem;
@@ -30,7 +48,7 @@
   cursor: pointer;
 }
 
-.plusicon {
+.createicon {
   height: 2rem;
   width: 2rem;
   fill: #fff;

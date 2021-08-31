@@ -9,7 +9,7 @@ const ModalEdit = ({ match, fetchTask, task, isFetching, isError }) => {
   const { id } = match.params;
 
   useEffect(() => {
-    console.log(id);
+    // console.log(id);
     fetchTask(id);
   }, []);
 
@@ -26,7 +26,7 @@ const ModalEdit = ({ match, fetchTask, task, isFetching, isError }) => {
       return <p>No data.</p>;
     }
 
-    return <FormEdit task={task} />;
+    return <FormEdit id={id} task={task} />;
   };
 
   return (

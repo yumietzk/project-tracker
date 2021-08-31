@@ -29,7 +29,7 @@
 
 .description {
   font-size: 1.2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.1rem;
   width: 87%;
   /* word-break: normal; */
   overflow-wrap: break-word;
@@ -38,7 +38,6 @@
 
 .date {
   font-size: 1.2rem;
-  color: #e52a5a;
   display: flex;
   align-items: center;
 }
@@ -52,5 +51,6 @@
   border: none;
   background-color: transparent;
   font-size: 1.4rem;
+  color: #e52a5a;
   cursor: pointer;
 }

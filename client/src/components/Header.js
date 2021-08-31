@@ -1,17 +1,12 @@
 import React from 'react';
 import { auth } from '../firebase';
 import { Link, useHistory } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { fetchTasks } from '../actions';
 import * as BsIcons from 'react-icons/bs';
+import * as GrIcons from 'react-icons/gr';
 import styles from './Header.module.css';
 
-const Header = ({ fetchTasks }) => {
+const Header = () => {
   const history = useHistory();
-
-  const onFetchData = () => {
-    fetchTasks();
-  };
 
   const onLogout = () => {
     auth.signOut();
@@ -20,12 +15,12 @@ const Header = ({ fetchTasks }) => {
 
   return (
     <div className={styles.header}>
-      <button onClick={onFetchData}>fetch data</button>
       <button className={styles.logout} onClick={onLogout}>
-        Logout
+        <p>LOGOUT</p>
+        <GrIcons.GrLogout className={styles.logouticon} />
       </button>
-      <Link to="/formcreate" className={styles.link}>
-        <BsIcons.BsPlus className={styles.plusicon} />
+      <Link to="/formcreate" className={styles.create}>
+        <BsIcons.BsPlus className={styles.createicon} />
       </Link>
       {/* <button className={styles.button}>
       </button> */}
@@ -33,6 +28,4 @@ const Header = ({ fetchTasks }) => {
   );
 };
 
-export default connect(null, {
-  fetchTasks,
-})(Header);
+export default Header;

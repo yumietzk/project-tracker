@@ -1,0 +1,133 @@
+.form {
+  position: fixed;
+  top: 10vh;
+  left: 20%;
+  width: 60%;
+  height: 80vh;
+  background-color: #fff;
+  border-radius: 1rem;
+  z-index: 100;
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.newproject {
+  flex: 0 1 3rem;
+  color: #1d49db;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  flex: 1;
+  padding: 1rem;
+  position: relative;
+}
+
+.overview {
+  margin-bottom: 3rem;
+}
+
+.title,
+.date,
+.status,
+.duedate {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.label {
+  flex: 0 1 12rem;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  flex: 1;
+  border: none;
+  /* background-color: burlywood; */
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input:hover {
+  cursor: pointer;
+  background-color: #f4f2f2;
+}
+
+.title .input {
+  font-size: 2rem;
+  padding: 0.8rem 1.1rem;
+}
+
+.date .input,
+.status .input,
+.duedate .input {
+  font-size: 1.2rem;
+  padding: 0.5rem 0.7rem;
+}
+
+.icon {
+  margin-right: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.description {
+  margin-bottom: 1.8rem;
+}
+
+.description > h2,
+.todo > h2 {
+  font-size: 1.7rem;
+  margin-bottom: 0.5rem;
+}
+
+.textarea {
+  width: 100%;
+  height: 8rem;
+  border-color: #b8b8b8;
+}
+
+.textarea:focus {
+  outline: none;
+}
+
+.todo {
+  margin-bottom: 1.8rem;
+}
+
+.btnform {
+  position: absolute;
+  bottom: 2rem;
+  right: 1.7rem;
+  display: flex;
+  align-items: flex-end;
+}
+
+.update {
+  margin-right: 1.5rem;
+  border: none;
+  padding: 1rem 1.5rem;
+  background-color: #f06102;
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.deleteicon {
+  border: none;
+  background-color: transparent;
+  color: #e52a5a;
+  font-size: 2.5rem;
+  cursor: pointer;
+}

@@ -2,7 +2,6 @@ import axios from 'axios';
 
 export const createTask =
   (title, date, status, duedate, description) => async (dispatch) => {
-    console.log(title, date);
     try {
       // dispatch({ type: 'REQUEST_DATA' });
 
@@ -14,8 +13,8 @@ export const createTask =
         description,
       });
 
-      console.log(response);
-      // dispatch({ type: 'MOVIE_NOWPLAYING', payload: response.data.results });
+      console.log(response.data);
+      dispatch({ type: 'CREATE_TASK', payload: response.data });
     } catch (err) {
       console.log(err);
       dispatch({
@@ -32,8 +31,6 @@ export const fetchTasks = () => async (dispatch) => {
     const response = await axios.get('/api/tasks');
 
     console.log(response.data); // [{id: , title: }, {}...]
-    // console.log(response.data[0]._id);
-    // console.log(typeof response.data);
     dispatch({ type: 'RECEIVE_TASKS', payload: response.data });
   } catch (err) {
     console.log(err);
@@ -61,39 +58,35 @@ export const fetchTask = (id) => async (dispatch) => {
   }
 };
 
-// export const updateTask = (id) => async (dispatch) => {
-//   try {
-//     dispatch({ type: 'REQUEST_DATA' });
+export const updateTask =
+  (id, title, date, status, duedate, description) => async (dispatch) => {
+    try {
+      // dispatch({ type: 'REQUEST_DATA' });
 
-//     const response = await axios.put('/api/tasks', { id });
+      const response = await axios.patch(`/api/tasks/${id}`, {
+        title,
+        date,
+        status,
+        duedate,
+        description,
+      });
 
-//     // サーバから改めてアプデしたデータを送られている
-//     console.log(response.data); // {id: , title: }
-//     dispatch({ type: 'RECEIVE_TASKS', payload: response.data });
-//   } catch (err) {
-//     console.log(err);
-//     dispatch({
-//       type: 'RECEIVE_DATA_FAILED',
-//       payload: err.response,
-//     });
-//   }
-// };
+      console.log(response.data); // {id: , title: }
+      dispatch({ type: 'UPDATE_TASK', payload: response.data });
+    } catch (err) {
+      console.log(err);
+      dispatch({
+        type: 'RECEIVE_DATA_FAILED',
+        payload: err.response,
+      });
+    }
+  };
 
 export const deleteTask = (id) => async (dispatch) => {
   try {
     dispatch({ type: 'REQUEST_DATA' });
 
-    // const response = await axios({
-    //   method: 'delete',
-    //   url: '/api/tasks',
-    //   data: {
-    //     id,
-    //   },
-    // });
-
     const response = await axios.delete(`/api/tasks/${id}`);
-
-    // サーバから改めてアプデしたデータを送られている
     console.log(response.data); // {id: , title: }
     dispatch({ type: 'DELETE_TASK', payload: response.data });
   } catch (err) {

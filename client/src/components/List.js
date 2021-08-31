@@ -39,7 +39,9 @@ const List = ({ label, data, isFetching, isError }) => {
 
   return (
     <div className={styles.list}>
-      <h2 className={styles.title}>{label} 3</h2>
+      <h2 className={styles.title}>
+        {label} ({data.length})
+      </h2>
       <div className={styles.cards}>{renderCard()}</div>
     </div>
   );

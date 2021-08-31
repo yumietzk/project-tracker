@@ -3,9 +3,11 @@ import { useHistory } from 'react-router-dom';
 import * as IoIcons from 'react-icons/io5';
 import * as GrIcons from 'react-icons/gr';
 import * as CgIcons from 'react-icons/cg';
-import styles from './FormCreate.module.css';
+import { connect } from 'react-redux';
+import { updateTask, deleteTask } from '../../actions';
+import styles from './FormEdit.module.css';
 
-const FormEdit = ({ task }) => {
+const FormEdit = ({ updateTask, deleteTask, id, task }) => {
   const history = useHistory();
   const [title, setTitle] = useState(task?.title);
   const [date, setDate] = useState(task?.date);
@@ -15,17 +17,24 @@ const FormEdit = ({ task }) => {
 
   // console.log(title, date, status, duedate, description);
 
-  const onSubmit = (e) => {
+  const onFormUpdate = (e) => {
     e.preventDefault();
 
-    // createTask(title, date, status, duedate, description);
+    updateTask(id, title, date, status, duedate, description);
     history.push(`/`);
+  };
+
+  const onFormDelete = (e) => {
+    e.preventDefault();
+
+    deleteTask(id);
+    history.push('/');
   };
 
   return (
     <div className={styles.form}>
       <h1 className={styles.newproject}>Edit Project</h1>
-      <form className={styles.content} onSubmit={(e) => onSubmit(e)}>
+      <form className={styles.content}>
         <div className={styles.overview}>
           <div className={styles.title}>
             {/* <label className={styles.label}>Title</label> */}
@@ -94,10 +103,23 @@ const FormEdit = ({ task }) => {
           <h2>To Do</h2>
         </div>
 
-        <button className={styles.btn}>Update</button>
+        <div className={styles.btnform}>
+          <button className={styles.update} onClick={(e) => onFormUpdate(e)}>
+            Update
+          </button>
+          <button
+            className={styles.deleteicon}
+            onClick={(e) => onFormDelete(e)}
+          >
+            <IoIcons.IoTrashOutline />
+          </button>
+        </div>
       </form>
     </div>
   );
 };
 
-export default FormEdit;
+export default connect(null, {
+  updateTask,
+  deleteTask,
+})(FormEdit);
