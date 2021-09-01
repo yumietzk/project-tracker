@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import * as AiIcons from 'react-icons/ai';
 import { fetchTasks } from '../actions';
@@ -6,6 +6,8 @@ import Home from './Home';
 import styles from './TimeManage.module.css';
 
 const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
+  const [sort, setSort] = useState(false);
+
   useEffect(() => {
     fetchTasks();
   }, []);
@@ -25,7 +27,8 @@ const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
   const renderDueDate = (date) => {
     const daysLeft = calcDueDate(date);
 
-    if (daysLeft < 0) return `${Math.abs(daysLeft)} days ago`;
+    if (daysLeft < -1) return `${Math.abs(daysLeft)} days ago`;
+    if (daysLeft === -1) return 'Yesterday';
     if (daysLeft === 0) return 'Today';
     if (daysLeft === 1) return 'Tomorrow';
     if (daysLeft <= 7) return `${daysLeft} days left`;
@@ -39,7 +42,6 @@ const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
 
     if (daysLeft <= 2) return true;
   };
-
   // if (tasks) calcDueDate(tasks[0].duedate);
 
   const renderProjects = () => {
@@ -55,7 +57,19 @@ const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
       return <p>No data.</p>;
     }
 
-    return tasks.map((task) => {
+    const sortedTask = [...tasks];
+    if (sort) {
+      sortedTask.sort((task1, task2) => {
+        const calcdate1 = new Date(task1.duedate);
+        const calcdate2 = new Date(task2.duedate);
+        return calcdate1 - calcdate2;
+      });
+    }
+
+    // console.log(tasks);
+    const targettasks = sort ? sortedTask : tasks;
+
+    return targettasks.map((task) => {
       if (task.status === 'Completed') return;
 
       return (
@@ -87,8 +101,13 @@ const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
     <Home>
       <div className={styles.timemanage}>
         <div className={styles.reference}>
-          <div className={styles.nostatus}>No Status</div>
-          <div className={styles.inprogress}>In Progress</div>
+          <div className={styles.type}>
+            <div className={styles.nostatus}>No Status</div>
+            <div className={styles.inprogress}>In Progress</div>
+          </div>
+          <button className={styles.btnsort} onClick={() => setSort(!sort)}>
+            {sort ? 'Clear Sort' : 'Sort by Due Date'}
+          </button>
         </div>
         <div className={styles.example}>
           <p className={styles.title}>Title</p>

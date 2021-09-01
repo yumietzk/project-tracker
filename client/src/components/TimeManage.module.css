@@ -7,6 +7,20 @@
 
 .reference {
   margin-bottom: 2rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.btnsort {
+  border: none;
+  background-color: #ffb003;
+  font-size: 1.1rem;
+  color: #fff;
+  padding: 0.5rem 0.7rem;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 .nostatus,
