@@ -87,6 +87,10 @@
   background-color: #f4f2f2;
 }
 
+.input::placeholder {
+  color: #cfcfcf;
+}
+
 .title .input {
   font-size: 2rem;
   padding: 0.8rem 1.1rem;

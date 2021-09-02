@@ -5,6 +5,7 @@ import * as GrIcons from 'react-icons/gr';
 import * as CgIcons from 'react-icons/cg';
 import { connect } from 'react-redux';
 import { updateTask, deleteTask } from '../../actions';
+import TodoFormEdit from './TodoFormEdit';
 import styles from './FormEdit.module.css';
 
 const FormEdit = ({ updateTask, deleteTask, id, task }) => {
@@ -24,8 +25,7 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
   const [dueDate, setDueDate] = useState(duemonthdate[1]);
   const [dueYear, setDueYear] = useState(splitduedate[1]);
   const [description, setDescription] = useState(task?.description);
-
-  // console.log(title, date, status, duedate, description);
+  const [todos, setTodos] = useState(task?.todos);
 
   const months = [
     'January',
@@ -56,7 +56,7 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
     const newduemonthdate = [dueMonth, dueDate].join(' ');
     const newduedate = [newduemonthdate, dueYear].join(', ');
 
-    updateTask(id, title, newcreatedate, status, newduedate, description);
+    updateTask(id, title, newcreatedate, status, newduedate, description, todos);
     history.push(`/`);
   };
 
@@ -67,13 +67,28 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
     history.push('/');
   };
 
+  const addTodo = (input) => {
+    const todo = {
+      id: Math.floor(Math.random() * 10000),
+      value: input,
+    };
+
+    const newTodos = [...todos, todo];
+
+    setTodos(newTodos);
+  };
+
+  const deleteTodo = (id) => {
+    const updatedTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(updatedTodos);
+  };
+
   return (
     <div className={styles.form}>
       <h1 className={styles.newproject}>Edit Project</h1>
       <form className={styles.content}>
         <div className={styles.overview}>
           <div className={styles.title}>
-            {/* <label className={styles.label}>Title</label> */}
             <input
               className={styles.input}
               type="text"
@@ -119,6 +134,7 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
               })}
             </select>
           </div>
+
           <div className={styles.status}>
             <label className={styles.label}>
               <GrIcons.GrStatusPlaceholderSmall className={styles.icon} />
@@ -134,6 +150,7 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
               <option value="Completed">Completed</option>
             </select>
           </div>
+
           <div className={styles.duedate}>
             <label className={styles.label}>
               <CgIcons.CgCalendarDue className={styles.icon} />
@@ -181,29 +198,7 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
           />
         </div>
 
-        <div className={styles.todo}>
-          <h2>To Do</h2>
-          <div className={styles.item}>
-            <input type="checkbox" />
-            <input type="text" />
-          </div>
-          <div className={styles.item}>
-            <input type="checkbox" />
-            <input type="text" />
-          </div>
-          <div className={styles.item}>
-            <input type="checkbox" />
-            <input type="text" />
-          </div>
-          <div className={styles.item}>
-            <input type="checkbox" />
-            <input type="text" />
-          </div>
-          <div className={styles.item}>
-            <input type="checkbox" />
-            <input type="text" />
-          </div>
-        </div>
+        <TodoFormEdit todos={todos} addTodo={addTodo} deleteTodo={deleteTodo} />
 
         <div className={styles.btnform}>
           <button className={styles.update} onClick={(e) => onFormUpdate(e)}>

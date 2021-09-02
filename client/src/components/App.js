@@ -3,7 +3,7 @@ import { BrowserRouter, Switch } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import Projects from './Projects';
-import ToDo from './ToDo';
+import Tasks from './tasks/Tasks';
 import TimeManage from './TimeManage';
 import Modal from './modal/Modal';
 import ModalEdit from './modal/ModalEdit';
@@ -19,7 +19,7 @@ const App = () => {
         <BrowserRouter>
           <Switch>
             <PrivateRoute path="/" exact component={Projects} />
-            <PrivateRoute path="/todo" component={ToDo} />
+            <PrivateRoute path="/tasks" component={Tasks} />
             <PrivateRoute path="/timemanage" component={TimeManage} />
             <PrivateRoute path="/formcreate" component={Modal} />
             <PrivateRoute path="/formedit/:id" component={ModalEdit} />

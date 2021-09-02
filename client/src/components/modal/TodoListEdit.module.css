@@ -6,11 +6,11 @@
 
 .btn {
   flex: 0 1 2rem;
+  margin-right: 0.7rem;
   font-size: 1.4rem;
   border: none;
   background-color: transparent;
   cursor: pointer;
-  margin-right: 1rem;
 
   display: flex;
   justify-content: center;
@@ -23,6 +23,11 @@
 
 .icon:hover {
   color: red;
+}
+
+.checkbox {
+  flex: 0 1 2rem;
+  margin-right: 0.4rem;
 }
 
 .text {

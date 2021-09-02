@@ -14,9 +14,9 @@ const Sidebar = () => {
           <CgIcons.CgWorkAlt className={styles.icon} />
           <span>Projects</span>
         </Link>
-        <Link to="/todo" className={styles.link}>
+        <Link to="/tasks" className={styles.link}>
           <RiIcons.RiTodoLine className={styles.icon} />
-          <span>Today's task</span>
+          <span>Tasks</span>
         </Link>
         <Link to="/timemanage" className={styles.link}>
           <IoIcons.IoTimeOutline className={styles.icon} />

@@ -1,0 +1,44 @@
+.content {
+  margin-bottom: 1.3rem;
+  padding: 0 0.8rem;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  /* background-color: #fff; */
+  padding: 0.5rem 0 0.5rem 0.3rem;
+}
+
+.togglebtn {
+  flex: 0 1 2rem;
+  margin-right: 1rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toggleicon {
+  font-size: 1.4rem;
+}
+
+.status > h2 {
+  flex: 1;
+  font-size: 1.9rem;
+  font-weight: 400;
+}
+
+.projects {
+  display: none;
+  /* background-color: #fff; */
+  padding: 0.8rem;
+  border-radius: 3px;
+}
+
+.visible {
+  display: block;
+}

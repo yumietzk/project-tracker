@@ -70,7 +70,7 @@ const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
     const targettasks = sort ? sortedTask : tasks;
 
     return targettasks.map((task) => {
-      if (task.status === 'Completed') return;
+      if (task.status === 'Completed') return null;
 
       return (
         <div

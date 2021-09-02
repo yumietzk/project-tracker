@@ -1,8 +1,3 @@
-// const state ={
-//   isFetching: false,
-//   tasks: []
-// }
-
 export default (state = { isFetching: false }, action) => {
   switch (action.type) {
     case 'REQUEST_DATA':
@@ -12,10 +7,18 @@ export default (state = { isFetching: false }, action) => {
     case 'RECEIVE_TASKS':
     case 'UPDATE_TASK':
     case 'DELETE_TASK':
-      return { ...state, isFetching: false, tasks: action.payload };
+      return {
+        ...state,
+        isFetching: false,
+        tasks: action.payload.tasks,
+        todoChecked: action.payload.todoChecked,
+      };
 
     case 'RECEIVE_TASK':
       return { ...state, isFetching: false, selectedTask: action.payload };
+
+    // case 'CHECK_TODO':
+    //   const target =
 
     // case 'DELETE_TASK':
     //   // const task = state.data.filter((item) => item.id !== action.payload);

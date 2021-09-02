@@ -55,6 +55,7 @@ router.patch('/:taskId', async (req, res) => {
           status: req.body.status,
           duedate: req.body.duedate,
           description: req.body.description,
+          todos: req.body.todos,
         },
       }
     );

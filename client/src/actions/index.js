@@ -17,7 +17,13 @@ export const createTask =
       });
 
       console.log(response.data);
-      dispatch({ type: 'CREATE_TASK', payload: response.data });
+      dispatch({
+        type: 'CREATE_TASK',
+        payload: {
+          tasks: response.data,
+          todoChecked: false,
+        },
+      });
     } catch (err) {
       console.log(err);
       dispatch({
@@ -62,7 +68,8 @@ export const fetchTask = (id) => async (dispatch) => {
 };
 
 export const updateTask =
-  (id, title, date, status, duedate, description) => async (dispatch) => {
+  (id, title, date, status, duedate, description, todos) =>
+  async (dispatch) => {
     try {
       // dispatch({ type: 'REQUEST_DATA' });
 
@@ -72,6 +79,7 @@ export const updateTask =
         status,
         duedate,
         description,
+        todos,
       });
 
       console.log(response.data); // {id: , title: }
@@ -99,4 +107,18 @@ export const deleteTask = (id) => async (dispatch) => {
       payload: err.response,
     });
   }
+};
+
+export const checkTodo = (id) => {
+  return {
+    type: 'CHECK_TODO',
+    payload: id,
+  };
+};
+
+export const uncheckTodo = (id) => {
+  return {
+    type: 'UNCHECK_TODO',
+    payload: id,
+  };
 };

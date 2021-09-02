@@ -1,0 +1,22 @@
+.project:not(:last-child) {
+  margin-bottom: 0.7rem;
+}
+
+.project {
+  background-color: #1d49db38;
+  border-radius: 1rem;
+  padding: 0.8rem 1rem;
+}
+
+.nostatus {
+  background-color: #1d49db38;
+}
+
+.inprogress {
+  background-color: #26864b3f;
+}
+
+.title {
+  font-size: 1.5rem;
+  margin-bottom: 0.7rem;
+}

@@ -59,10 +59,6 @@ const FormCreate = ({ createTask }) => {
   };
 
   const addTodo = (input) => {
-    // e.preventDefault();
-
-    // if (input.trim().length === 0) return;
-
     const todo = {
       id: Math.floor(Math.random() * 10000),
       value: input,
@@ -71,12 +67,9 @@ const FormCreate = ({ createTask }) => {
     const newTodos = [...todos, todo];
 
     setTodos(newTodos);
-    // setInput('');
   };
 
   const deleteTodo = (id) => {
-    // e.preventDefault();
-
     const updatedTodos = todos.filter((todo) => todo.id !== id);
     setTodos(updatedTodos);
   };
