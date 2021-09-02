@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as IoIcons from 'react-icons/io5';
 import * as GrIcons from 'react-icons/gr';
 import * as CgIcons from 'react-icons/cg';
+import * as BsIcons from 'react-icons/bs';
 import { createTask } from '../../actions/index';
+import TodoForm from './TodoForm';
 import styles from './FormCreate.module.css';
 
 const FormCreate = ({ createTask }) => {
@@ -18,6 +20,10 @@ const FormCreate = ({ createTask }) => {
   const [dueDate, setDueDate] = useState('-');
   const [dueYear, setDueYear] = useState('-');
   const [description, setDescription] = useState('');
+  // const [todoList, setTodoList] = useState([]);
+  const [todos, setTodos] = useState([]);
+
+  // const ref = useRef();
 
   const months = [
     'January',
@@ -48,14 +54,80 @@ const FormCreate = ({ createTask }) => {
     const duemonthdate = [dueMonth, dueDate].join(' ');
     const duedate = [duemonthdate, dueYear].join(', ');
 
-    createTask(title, createdate, status, duedate, description);
+    createTask(title, createdate, status, duedate, description, todos);
     history.push(`/`);
   };
+
+  const addTodo = (input) => {
+    // e.preventDefault();
+
+    // if (input.trim().length === 0) return;
+
+    const todo = {
+      id: Math.floor(Math.random() * 10000),
+      value: input,
+    };
+
+    const newTodos = [...todos, todo];
+
+    setTodos(newTodos);
+    // setInput('');
+  };
+
+  const deleteTodo = (id) => {
+    // e.preventDefault();
+
+    const updatedTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(updatedTodos);
+  };
+
+  // const todoList = [];
+
+  // let index = 0;
+  // const onAddToDo = (e) => {
+  //   e.preventDefault();
+  //   setTodoList([...todoList, 'to do']); // [0, 1, ]
+
+  //   console.log(todoList);
+  //   console.log(typeof todoList);
+  // };
+
+  // const onDeleteToDo = (e) => {
+  //   e.preventDefault();
+
+  //   console.log(ref);
+  //   console.log(e.target);
+
+  //   const newList = todoList.filter((list, i) => {
+  //     return i !== todoList.length - 1;
+  //   });
+
+  //   setTodoList(newList);
+
+  //   console.log(todoList);
+  // };
+
+  // const renderToDo = () => {
+  //   if (!todoList) return;
+
+  //   if (todoList.length === 0) return;
+
+  //   return todoList.map((list, i) => {
+  //     return (
+  //       <div className={styles.item} key={i} ref={ref}>
+  //         <input className={styles.iteminput} type="text" placeholder={list} />
+  //         <button className={styles.itembtn} onClick={(e) => onDeleteToDo(e)}>
+  //           <IoIcons.IoAddOutline className={styles.crossicon} />
+  //         </button>
+  //       </div>
+  //     );
+  //   });
+  // };
 
   return (
     <div className={styles.form}>
       <h1 className={styles.newproject}>New Project</h1>
-      <form className={styles.content} onSubmit={(e) => onSubmit(e)}>
+      <form className={styles.content}>
         <div className={styles.overview}>
           <div className={styles.title}>
             {/* <label className={styles.label}>Title</label> */}
@@ -73,14 +145,6 @@ const FormCreate = ({ createTask }) => {
               <IoIcons.IoTimeOutline className={styles.icon} />
               Date created
             </label>
-            {/* <input
-              className={styles.input}
-              type="text"
-              value={date}
-              placeholder="yyyy/mm/dd"
-              onChange={(e) => setDate(e.target.value)}
-            /> */}
-
             <select
               className={styles.input}
               value={month}
@@ -133,13 +197,6 @@ const FormCreate = ({ createTask }) => {
               <CgIcons.CgCalendarDue className={styles.icon} />
               Due Date
             </label>
-            {/* <input
-              className={styles.input}
-              type="text"
-              value={duedate}
-              placeholder="yyyy/mm/dd"
-              onChange={(e) => setDuedate(e.target.value)}
-            /> */}
             <select
               className={styles.input}
               value={dueMonth}
@@ -182,11 +239,11 @@ const FormCreate = ({ createTask }) => {
           />
         </div>
 
-        <div className={styles.todo}>
-          <h2>To Do</h2>
-        </div>
+        <TodoForm todos={todos} addTodo={addTodo} deleteTodo={deleteTodo} />
 
-        <button className={styles.btn}>Create</button>
+        <button className={styles.btn} onClick={onSubmit}>
+          Create
+        </button>
       </form>
     </div>
   );

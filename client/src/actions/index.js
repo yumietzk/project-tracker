@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const createTask =
-  (title, date, status, duedate, description) => async (dispatch) => {
+  (title, date, status, duedate, description, todos) => async (dispatch) => {
     try {
       // dispatch({ type: 'REQUEST_DATA' });
       console.log(typeof date);
@@ -13,6 +13,7 @@ export const createTask =
         status,
         duedate,
         description,
+        todos,
       });
 
       console.log(response.data);

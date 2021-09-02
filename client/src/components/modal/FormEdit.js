@@ -88,13 +88,6 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
               <IoIcons.IoTimeOutline className={styles.icon} />
               Date created
             </label>
-            {/* <input
-              className={styles.input}
-              type="text"
-              value={date}
-              placeholder="yyyy/mm/dd"
-              onChange={(e) => setDate(e.target.value)}
-            /> */}
             <select
               className={styles.input}
               value={month}
@@ -146,14 +139,6 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
               <CgIcons.CgCalendarDue className={styles.icon} />
               Due Date
             </label>
-            {/* <input
-              className={styles.input}
-              type="text"
-              value={duedate}
-              placeholder="yyyy/mm/dd"
-              onChange={(e) => setDuedate(e.target.value)}
-            /> */}
-
             <select
               className={styles.input}
               value={dueMonth}
@@ -198,6 +183,26 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
 
         <div className={styles.todo}>
           <h2>To Do</h2>
+          <div className={styles.item}>
+            <input type="checkbox" />
+            <input type="text" />
+          </div>
+          <div className={styles.item}>
+            <input type="checkbox" />
+            <input type="text" />
+          </div>
+          <div className={styles.item}>
+            <input type="checkbox" />
+            <input type="text" />
+          </div>
+          <div className={styles.item}>
+            <input type="checkbox" />
+            <input type="text" />
+          </div>
+          <div className={styles.item}>
+            <input type="checkbox" />
+            <input type="text" />
+          </div>
         </div>
 
         <div className={styles.btnform}>

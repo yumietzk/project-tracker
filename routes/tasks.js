@@ -4,13 +4,14 @@ const Task = require('../models/Task');
 
 // CREATE
 router.post('/', async (req, res) => {
-  const { title, date, status, duedate, description } = req.body;
+  const { title, date, status, duedate, description, todos } = req.body;
   const task = new Task({
     title,
     date,
     status,
     duedate,
     description,
+    todos,
   });
 
   try {

@@ -1,0 +1,32 @@
+.todolist {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.btn {
+  flex: 0 1 2rem;
+  font-size: 1.4rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-right: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  transform: rotate(45deg);
+  transition: all 0.2s;
+}
+
+.icon:hover {
+  color: red;
+}
+
+.text {
+  flex: 1;
+  font-size: 1.3rem;
+}
