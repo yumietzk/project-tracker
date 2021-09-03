@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import * as BsIcons from 'react-icons/bs';
 import TodoListEdit from './TodoListEdit';
 import styles from './TodoFormEdit.module.css';
+import { deleteTask } from '../../actions';
 
-const TodoFormEdit = ({ todos, addTodo, deleteTodo }) => {
+const TodoFormEdit = ({ todos, handleCheck, addTodo, deleteTodo }) => {
   const [input, setInput] = useState('');
 
   const handleAdd = (e) => {
@@ -15,11 +16,11 @@ const TodoFormEdit = ({ todos, addTodo, deleteTodo }) => {
     setInput('');
   };
 
-  const handleDelete = (e, id) => {
-    e.preventDefault();
+  // const handleDelete = (e, id) => {
+  //   e.preventDefault();
 
-    deleteTodo(id);
-  };
+  //   deleteTodo(id);
+  // };
 
   return (
     <div className={styles.todoform}>
@@ -38,7 +39,11 @@ const TodoFormEdit = ({ todos, addTodo, deleteTodo }) => {
         </button>
       </div>
 
-      <TodoListEdit todos={todos} onDelete={handleDelete} />
+      <TodoListEdit
+        todos={todos}
+        handleCheck={handleCheck}
+        deleteTodo={deleteTodo}
+      />
     </div>
   );
 };

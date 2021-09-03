@@ -3,11 +3,6 @@ import * as IoIcons from 'react-icons/io5';
 import styles from './TodoList.module.css';
 
 const TodoList = ({ todos, onDelete }) => {
-  // const [edit, setEdit] = useState({
-  //   id: null,
-  //   value: '',
-  // });
-
   if (!todos) return null;
 
   return todos.map((todo, i) => {

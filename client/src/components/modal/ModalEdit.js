@@ -9,7 +9,6 @@ const ModalEdit = ({ match, fetchTask, task, isFetching, isError }) => {
   const { id } = match.params;
 
   useEffect(() => {
-    // console.log(id);
     fetchTask(id);
   }, []);
 

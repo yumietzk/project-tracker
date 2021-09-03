@@ -69,19 +69,6 @@ router.patch('/:taskId', async (req, res) => {
 });
 
 // DELETE
-// router.delete('/', (req, res) => {
-//   const { id } = req.body;
-//   Task.findByIdAndRemove(id, (err) => {
-//     if (err) res.status(500).send();
-//     else {
-//       Task.find({}, (findErr, taskArray) => {
-//         if (findErr) res.status(500).send();
-//         else res.status(200).send(taskArray);
-//       });
-//     }
-//   });
-// });
-
 router.delete('/:taskId', async (req, res) => {
   try {
     await Task.remove({ _id: req.params.taskId });

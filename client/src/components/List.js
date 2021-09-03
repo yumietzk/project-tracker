@@ -1,28 +1,22 @@
 import React from 'react';
-// import { connect } from 'react-redux';
 import Card from './Card';
-// import { fetchTasks } from '../actions';
 import styles from './List.module.css';
 
-const List = ({ label, data, isFetching, isError }) => {
-  // useEffect(() => {
-  //   fetchTasks();
-  // }, []);
-
+const List = ({ label, data }) => {
   const renderCard = () => {
-    if (isFetching || !data) {
-      return <div>Now loading...</div>;
-    }
+    // if (isFetching || !data) {
+    //   return <div>Now loading...</div>;
+    // }
 
-    if (isError?.status) {
-      return <p>{isError.error}</p>;
-    }
+    // if (isError?.status) {
+    //   return <p>{isError.error}</p>;
+    // }
 
-    if (data.length === 0) {
-      return <p>No data.</p>;
-    }
+    // if (data.length === 0) {
+    //   return <p>No data.</p>;
+    // }
 
-    return data.map((item) => {
+    return data?.map((item) => {
       return (
         <Card
           id={item._id}
@@ -46,13 +40,5 @@ const List = ({ label, data, isFetching, isError }) => {
     </div>
   );
 };
-
-// const mapStateToProps = (state) => {
-//   return {
-//     tasks: state.data.tasks,
-//     isFetching: state.data.isFetching,
-//     isError: state.error.isError,
-//   };
-// };
 
 export default List;

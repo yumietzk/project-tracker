@@ -14,17 +14,17 @@ const Projects = ({ fetchTasks, tasks, isFetching, isError }) => {
   const inProgress = [];
   const completed = [];
 
-  // if (isFetching || !tasks) {
-  //   return <div>Now loading...</div>;
-  // }
+  if (isFetching || !tasks) {
+    return <div>Now loading...</div>;
+  }
 
-  // if (isError?.status) {
-  //   return <p>{isError.error}</p>;
-  // }
+  if (isError?.status) {
+    return <p>{isError.error}</p>;
+  }
 
-  // if (data.length === 0) {
-  //   return <p>No data.</p>;
-  // }
+  if (tasks.length === 0) {
+    return <p>No Projects yet.</p>;
+  }
 
   tasks?.map((task) => {
     if (task.status === 'No Status') noStatus.push(task);
@@ -38,20 +38,20 @@ const Projects = ({ fetchTasks, tasks, isFetching, isError }) => {
         <List
           label="No Status"
           data={noStatus}
-          isFetching={isFetching}
-          isError={isError}
+          // isFetching={isFetching}
+          // isError={isError}
         />
         <List
           label="In Progress"
           data={inProgress}
-          isFetching={isFetching}
-          isError={isError}
+          // isFetching={isFetching}
+          // isError={isError}
         />
         <List
           label="Completed"
           data={completed}
-          isFetching={isFetching}
-          isError={isError}
+          // isFetching={isFetching}
+          // isError={isError}
         />
       </div>
     </Home>

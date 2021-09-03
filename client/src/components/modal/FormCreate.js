@@ -1,10 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as IoIcons from 'react-icons/io5';
 import * as GrIcons from 'react-icons/gr';
 import * as CgIcons from 'react-icons/cg';
-import * as BsIcons from 'react-icons/bs';
 import { createTask } from '../../actions/index';
 import TodoForm from './TodoForm';
 import styles from './FormCreate.module.css';
@@ -20,10 +19,7 @@ const FormCreate = ({ createTask }) => {
   const [dueDate, setDueDate] = useState('-');
   const [dueYear, setDueYear] = useState('-');
   const [description, setDescription] = useState('');
-  // const [todoList, setTodoList] = useState([]);
   const [todos, setTodos] = useState([]);
-
-  // const ref = useRef();
 
   const months = [
     'January',
@@ -62,6 +58,7 @@ const FormCreate = ({ createTask }) => {
     const todo = {
       id: Math.floor(Math.random() * 10000),
       value: input,
+      todoChecked: false,
     };
 
     const newTodos = [...todos, todo];
@@ -73,49 +70,6 @@ const FormCreate = ({ createTask }) => {
     const updatedTodos = todos.filter((todo) => todo.id !== id);
     setTodos(updatedTodos);
   };
-
-  // const todoList = [];
-
-  // let index = 0;
-  // const onAddToDo = (e) => {
-  //   e.preventDefault();
-  //   setTodoList([...todoList, 'to do']); // [0, 1, ]
-
-  //   console.log(todoList);
-  //   console.log(typeof todoList);
-  // };
-
-  // const onDeleteToDo = (e) => {
-  //   e.preventDefault();
-
-  //   console.log(ref);
-  //   console.log(e.target);
-
-  //   const newList = todoList.filter((list, i) => {
-  //     return i !== todoList.length - 1;
-  //   });
-
-  //   setTodoList(newList);
-
-  //   console.log(todoList);
-  // };
-
-  // const renderToDo = () => {
-  //   if (!todoList) return;
-
-  //   if (todoList.length === 0) return;
-
-  //   return todoList.map((list, i) => {
-  //     return (
-  //       <div className={styles.item} key={i} ref={ref}>
-  //         <input className={styles.iteminput} type="text" placeholder={list} />
-  //         <button className={styles.itembtn} onClick={(e) => onDeleteToDo(e)}>
-  //           <IoIcons.IoAddOutline className={styles.crossicon} />
-  //         </button>
-  //       </div>
-  //     );
-  //   });
-  // };
 
   return (
     <div className={styles.form}>

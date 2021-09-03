@@ -1,50 +1,58 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { checkTodo, uncheckTodo } from '../../actions';
+import { updateTask } from '../../actions';
 import TaskTodo from './TaskTodo';
-import styles from './TasksTodoList.module.css';
 
-const TasksTodoList = ({ checkTodo, uncheckTodo, todos, isChecked }) => {
-  // const [checked, setChecked] = useState(false);
-  // const [id, setId] = useState(null);
+const TasksTodoList = ({ updateTask, data }) => {
+  const [todos, setTodos] = useState(data.todos);
 
-  // useEffect(() => {
-  //   if (checked) {
-  //     uncheckTodo(id);
-  //   }
+  const handleCheck = (id, isChecked) => {
+    const checkedTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, todoChecked: isChecked };
+      } else {
+        return { ...todo };
+      }
+    });
 
-  //   if (!checked) {
-  //     checkTodo(id);
-  //   }
-  // }, []);
+    setTodos(checkedTodos);
 
-  // const handleChecked = (e, id) => {
-  //   // e.preventDefault();
+    updateTask(
+      data._id,
+      data.title,
+      data.date,
+      data.status,
+      data.duedate,
+      data.description,
+      checkedTodos
+    );
+  };
 
-  //   // if (checked) {
-  //   //   uncheckTodo(id);
-  //   // }
+  // const handleCheck = () => {
+  //   // data.todos
 
-  //   // if (!checked) {
-  //   //   checkTodo(id);
-  //   // }
-  //   setId(id);
-  //   setChecked(!checked);
+  //   updateTask(
+  //     data._id,
+  //     data.title,
+  //     data.date,
+  //     data.status,
+  //     data.duedate,
+  //     data.description,
+  //     data.todos
+  //   );
   // };
 
   const renderTodos = () => {
-    return todos.map((todo) => {
-      return <TaskTodo todo={todo} id={todo.id} key={todo.id} />;
+    return todos.map((todo, i) => {
+      return (
+        <TaskTodo data={data} todo={todo} handleCheck={handleCheck} key={i} />
+      );
     });
   };
 
   return renderTodos();
 };
 
-// const mapStateToProps = (state) => {
-//   return {
-//     isChecked: state.todocheck, // [{isChecked: ,id: }, {}]
-//   };
-// };
-
-export default TasksTodoList;
+export default connect(null, {
+  updateTask,
+})(TasksTodoList);

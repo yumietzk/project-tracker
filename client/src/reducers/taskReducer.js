@@ -10,19 +10,47 @@ export default (state = { isFetching: false }, action) => {
       return {
         ...state,
         isFetching: false,
-        tasks: action.payload.tasks,
-        todoChecked: action.payload.todoChecked,
+        tasks: action.payload,
       };
 
     case 'RECEIVE_TASK':
       return { ...state, isFetching: false, selectedTask: action.payload };
 
     // case 'CHECK_TODO':
-    //   const target =
+    //   const checkList = state.tasks.map((task) => task.todos);
+    //   checkList.forEach((list) => {
+    //     list.map((item) => {
+    //       if (item.id === action.payload) {
+    //         item.todoChecked = true;
+    //       }
+    //     });
+    //   });
 
-    // case 'DELETE_TASK':
-    //   // const task = state.data.filter((item) => item.id !== action.payload);
-    //   return { ...state, isFetching: false, tasks: action.payload };
+    //   const checkTasks = checkList.map((data, i) => {
+    //     return {
+    //       ...state.tasks[i],
+    //       todos: data,
+    //     };
+    //   });
+    //   return { ...state, isFetching: false, tasks: checkTasks };
+
+    // case 'UNCHECK_TODO':
+    //   const uncheckList = state.tasks.map((task) => task.todos);
+    //   uncheckList.forEach((list) => {
+    //     list.map((item) => {
+    //       if (item.id === action.payload) {
+    //         item.todoChecked = false;
+    //       }
+    //     });
+    //   });
+
+    //   const uncheckTasks = uncheckList.map((data, i) => {
+    //     return {
+    //       ...state.tasks[i],
+    //       todos: data,
+    //     };
+    //   });
+    //   return { ...state, isFetching: false, tasks: uncheckTasks };
 
     default:
       return state;

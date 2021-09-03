@@ -1,36 +1,19 @@
 import React, { useState } from 'react';
 import * as IoIcons from 'react-icons/io5';
+import TodoEdit from './TodoEdit';
 import styles from './TodoListEdit.module.css';
 
-const TodoListEdit = ({ todos, onDelete }) => {
-  // const [edit, setEdit] = useState({
-  //   id: null,
-  //   value: '',
-  // });
-  const [checked, setChecked] = useState(false);
+const TodoListEdit = ({ todos, handleCheck, deleteTodo }) => {
+  if (!todos || todos.length === 0) return null;
 
-  const onCheck = () => {
-    setChecked(!checked);
-  };
-
-  if (!todos) return null;
-
-  return todos.map((todo, i) => {
+  return todos?.map((todo, i) => {
     return (
-      <div key={i} className={styles.todolist}>
-        <button className={styles.btn} onClick={(e) => onDelete(e, todo.id)}>
-          <IoIcons.IoCloseOutline className={styles.icon} />
-        </button>
-        <input
-          className={styles.checkbox}
-          type="checkbox"
-          checked={checked}
-          onChange={onCheck}
-        />
-        <div key={todo.id} className={styles.text}>
-          {todo.value}
-        </div>
-      </div>
+      <TodoEdit
+        todo={todo}
+        handleCheck={handleCheck}
+        deleteTodo={deleteTodo}
+        key={i}
+      />
     );
   });
 };

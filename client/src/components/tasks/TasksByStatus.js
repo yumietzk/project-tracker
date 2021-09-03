@@ -3,7 +3,7 @@ import * as GoIcons from 'react-icons/go';
 import TasksByProjects from './TasksByProjects';
 import styles from './TasksByStatus.module.css';
 
-const TasksByStatus = ({ type, data, isFetching, isError }) => {
+const TasksByStatus = ({ type, data }) => {
   const [display, setDisplay] = useState(false);
 
   const handleDisplay = () => {
@@ -26,8 +26,8 @@ const TasksByStatus = ({ type, data, isFetching, isError }) => {
       <div className={`${styles.projects} ${display ? styles.visible : null}`}>
         <TasksByProjects
           data={data}
-          isFetching={isFetching}
-          isError={isError}
+          // isFetching={isFetching}
+          // isError={isError}
         />
       </div>
     </div>

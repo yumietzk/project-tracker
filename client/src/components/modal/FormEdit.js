@@ -9,7 +9,7 @@ import TodoFormEdit from './TodoFormEdit';
 import styles from './FormEdit.module.css';
 
 const FormEdit = ({ updateTask, deleteTask, id, task }) => {
-  const splitdate = task?.date.split(', '); // []
+  const splitdate = task?.date.split(', ');
   const monthdate = splitdate[0].split(' ');
 
   const splitduedate = task?.duedate.split(', ');
@@ -49,6 +49,7 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
 
   const onFormUpdate = (e) => {
     e.preventDefault();
+    // console.log(newTodos);
 
     const newmonthdate = [month, date].join(' ');
     const newcreatedate = [newmonthdate, year].join(', ');
@@ -56,7 +57,15 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
     const newduemonthdate = [dueMonth, dueDate].join(' ');
     const newduedate = [newduemonthdate, dueYear].join(', ');
 
-    updateTask(id, title, newcreatedate, status, newduedate, description, todos);
+    updateTask(
+      id,
+      title,
+      newcreatedate,
+      status,
+      newduedate,
+      description,
+      todos
+    );
     history.push(`/`);
   };
 
@@ -67,13 +76,27 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
     history.push('/');
   };
 
+  // let newTodos;
+  const handleCheck = (id, isChecked) => {
+    const checkedTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, todoChecked: isChecked };
+      } else {
+        return { ...todo };
+      }
+    });
+
+    setTodos(checkedTodos);
+  };
+
   const addTodo = (input) => {
-    const todo = {
+    const newtodo = {
       id: Math.floor(Math.random() * 10000),
       value: input,
+      todoChecked: false,
     };
 
-    const newTodos = [...todos, todo];
+    const newTodos = [...todos, newtodo];
 
     setTodos(newTodos);
   };
@@ -198,7 +221,12 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
           />
         </div>
 
-        <TodoFormEdit todos={todos} addTodo={addTodo} deleteTodo={deleteTodo} />
+        <TodoFormEdit
+          todos={todos}
+          handleCheck={handleCheck}
+          addTodo={addTodo}
+          deleteTodo={deleteTodo}
+        />
 
         <div className={styles.btnform}>
           <button className={styles.update} onClick={(e) => onFormUpdate(e)}>

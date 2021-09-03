@@ -1,57 +1,57 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { checkTodo, uncheckTodo } from '../../actions';
+import { updateTask } from '../../actions';
 import styles from './TaskTodo.module.css';
 
-const TaskTodo = ({ checkTodo, uncheckTodo, todo, id, isChecked }) => {
-  const [checked, setChecked] = useState(
-    isChecked ? isChecked.isChecked : false
-  );
+const TaskTodo = ({ updateTask, data, todo, handleCheck }) => {
+  const [checked, setChecked] = useState(todo?.todoChecked);
 
-  // if (isChecked) setChecked(isChecked.isChecked);
+  // const handleCheck = (id, isChecked) => {
+  //   const checkedTodos = todos.map((todo) => {
+  //     if (todo.id === id) {
+  //       return { ...todo, todoChecked: isChecked };
+  //     } else {
+  //       return { ...todo };
+  //     }
+  //   });
 
-  // useEffect(() => {
-  //   if (checked) {
-  //     uncheckTodo(id);
-  //   }
+  //   setTodos(checkedTodos);
+  // };
 
-  //   if (!checked) {
-  //     checkTodo(id);
-  //   }
-  // }, []);
-
-  const handleChecked = () => {
-    if (checked) {
-      uncheckTodo(id);
-    }
-
-    if (!checked) {
-      checkTodo(id);
-    }
-
+  const onCheck = () => {
     setChecked(!checked);
+    handleCheck(todo.id, !checked);
+
+    // const newTodos = data?.todos.map((item) => {
+    //   if (item.id === todo?.id) {
+    //     return { ...item, todoChecked: checked };
+    //   }
+    // });
+
+    // updateTask(
+    //   data._id,
+    //   data.title,
+    //   data.date,
+    //   data.status,
+    //   data.duedate,
+    //   data.description,
+    //   newTodos
+    // );
   };
 
   return (
-    <div key={todo.id} className={styles.todo}>
+    <div className={styles.todo}>
       <input
         className={styles.checkbox}
         type="checkbox"
         checked={checked}
-        onChange={handleChecked}
+        onChange={onCheck}
       />
-      <p className={styles.text}>{todo.value}</p>
+      <p className={styles.text}>{todo?.value}</p>
     </div>
   );
 };
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    isChecked: state.todocheck.find((item) => item.id === ownProps.id), // {isChecked: , id: }
-  };
-};
-
-export default connect(mapStateToProps, {
-  checkTodo,
-  uncheckTodo,
+export default connect(null, {
+  updateTask,
 })(TaskTodo);

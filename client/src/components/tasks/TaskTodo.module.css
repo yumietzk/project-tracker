@@ -1,0 +1,13 @@
+.todo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.3rem;
+}
+
+.checkbox {
+  margin-right: 1rem;
+}
+
+.text {
+  font-size: 1.3rem;
+}

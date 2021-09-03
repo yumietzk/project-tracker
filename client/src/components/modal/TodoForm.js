@@ -5,7 +5,6 @@ import styles from './TodoForm.module.css';
 
 const TodoForm = ({ todos, addTodo, deleteTodo }) => {
   const [input, setInput] = useState('');
-  // const [todos, setTodos] = useState([]);
 
   const handleAdd = (e) => {
     e.preventDefault();
