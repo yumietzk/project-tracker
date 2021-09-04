@@ -4,18 +4,10 @@ import { connect } from 'react-redux';
 import * as BsIcons from 'react-icons/bs';
 import * as CgIcons from 'react-icons/cg';
 import * as IoIcons from 'react-icons/io5';
-import { deleteTask } from '../actions';
+import { deleteTask } from '../../actions';
 import styles from './Card.module.css';
 
-const Card = ({
-  deleteTask,
-  id,
-  title,
-  date,
-  status,
-  description,
-  duedate,
-}) => {
+const Card = ({ deleteTask, id, title, description, duedate }) => {
   const onClick = (id) => {
     deleteTask(id);
   };

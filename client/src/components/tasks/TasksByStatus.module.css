@@ -6,7 +6,6 @@
 .status {
   display: flex;
   align-items: center;
-  /* background-color: #fff; */
   padding: 0.5rem 0 0.5rem 0.3rem;
 }
 
@@ -34,7 +33,6 @@
 
 .projects {
   display: none;
-  /* background-color: #fff; */
   padding: 0.8rem;
   border-radius: 3px;
 }

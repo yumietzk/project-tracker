@@ -92,17 +92,3 @@ export const deleteTask = (id) => async (dispatch) => {
     });
   }
 };
-
-// export const checkTodo = (id) => async (dispatch) => {
-//   return {
-//     type: 'CHECK_TODO',
-//     payload: id,
-//   };
-// };
-
-// export const uncheckTodo = (id) => {
-//   return {
-//     type: 'UNCHECK_TODO',
-//     payload: id,
-//   };
-// };

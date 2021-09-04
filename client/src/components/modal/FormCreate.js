@@ -77,7 +77,6 @@ const FormCreate = ({ createTask }) => {
       <form className={styles.content}>
         <div className={styles.overview}>
           <div className={styles.title}>
-            {/* <label className={styles.label}>Title</label> */}
             <input
               className={styles.input}
               type="text"

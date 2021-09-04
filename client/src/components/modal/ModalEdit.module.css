@@ -1,12 +1,8 @@
-.tasks {
-  margin-top: 1rem;
-}
-
 .loading {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 8rem;
+  z-index: 100;
 }
 
 .icon {
@@ -25,9 +21,8 @@
 
 .message {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 8rem;
+  z-index: 100;
   font-size: 1.4rem;
 }

@@ -63,7 +63,6 @@
 
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
 }
 
 .title {
@@ -72,4 +71,34 @@
 
 .date {
   flex: 1;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 8rem;
+}
+
+.icon {
+  animation: spin 0.8s infinite linear;
+}
+
+@keyframes spin {
+  from {
+    transform: none;
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 8rem;
+  font-size: 1.4rem;
 }

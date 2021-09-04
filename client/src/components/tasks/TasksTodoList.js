@@ -28,25 +28,9 @@ const TasksTodoList = ({ updateTask, data }) => {
     );
   };
 
-  // const handleCheck = () => {
-  //   // data.todos
-
-  //   updateTask(
-  //     data._id,
-  //     data.title,
-  //     data.date,
-  //     data.status,
-  //     data.duedate,
-  //     data.description,
-  //     data.todos
-  //   );
-  // };
-
   const renderTodos = () => {
     return todos.map((todo, i) => {
-      return (
-        <TaskTodo data={data} todo={todo} handleCheck={handleCheck} key={i} />
-      );
+      return <TaskTodo todo={todo} handleCheck={handleCheck} key={i} />;
     });
   };
 

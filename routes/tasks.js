@@ -60,7 +60,6 @@ router.patch('/:taskId', async (req, res) => {
       }
     );
 
-    // res.status(200).send(updatedTask);
     const tasks = await Task.find();
     res.status(200).send(tasks);
   } catch (err) {

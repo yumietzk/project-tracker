@@ -1,5 +1,7 @@
-.tasks {
-  margin-top: 1rem;
+.projects {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .loading {
@@ -29,5 +31,8 @@
   justify-content: center;
   align-items: center;
   padding-top: 8rem;
+}
+
+.message > p {
   font-size: 1.4rem;
 }

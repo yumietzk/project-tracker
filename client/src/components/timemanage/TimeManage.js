@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import * as AiIcons from 'react-icons/ai';
 import { fetchTasks } from '../../actions';
 import Home from '../Home';
 import TimeManageList from './TimeManageList';
@@ -45,7 +46,11 @@ const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
 
   const renderProjects = () => {
     if (isFetching || !tasks) {
-      return <div>Now loading...</div>;
+      return (
+        <div className={styles.loading}>
+          <AiIcons.AiOutlineLoading3Quarters className={styles.icon} />
+        </div>
+      );
     }
 
     if (isError?.status) {
@@ -54,8 +59,8 @@ const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
 
     if (tasks && tasks.length === 0) {
       return (
-        <p>
-          No data yet. Create a new project by clicking plus button on top right
+        <p className={styles.message}>
+          No data yet. Create a new project by clicking add button on top right
           :)
         </p>
       );
@@ -101,7 +106,6 @@ const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
         <div className={styles.example}>
           <p className={styles.title}>Title</p>
           <p className={styles.date}>Due Date</p>
-          {/* <p>&nbsp;</p> */}
         </div>
 
         {renderProjects()}

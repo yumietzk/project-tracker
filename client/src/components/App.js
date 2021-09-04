@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
-import Projects from './Projects';
+import Projects from './projects/Projects';
 import Tasks from './tasks/Tasks';
 import TimeManage from './timemanage/TimeManage';
 import ModalCreate from './modal/ModalCreate';

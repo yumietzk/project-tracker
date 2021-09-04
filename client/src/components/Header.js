@@ -22,8 +22,6 @@ const Header = () => {
       <Link to="/formcreate" className={styles.create}>
         <BsIcons.BsPlus className={styles.createicon} />
       </Link>
-      {/* <button className={styles.button}>
-      </button> */}
     </div>
   );
 };

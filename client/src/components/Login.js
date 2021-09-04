@@ -23,9 +23,9 @@ const Login = () => {
 
   return (
     <div className={styles.login}>
-      <h1 className={styles.logo}>Task Tracker</h1>
+      <h1 className={styles.logo}>Project Tracker</h1>
       <div className={styles.title}>
-        <h2>Welcome back to Task Tracker.</h2>
+        <h2>Welcome back to Project Tracker.</h2>
         <p>
           New here?
           <Link to="/signup" className={styles.link}>
@@ -41,7 +41,6 @@ const Login = () => {
             className={styles.inputbox}
             name="email"
             type="email"
-            // placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
@@ -56,10 +55,6 @@ const Login = () => {
         </div>
 
         <button className={styles.btn}>Login</button>
-
-        {/* <div>
-          Sign up <Link to="/signup">here</Link>
-        </div> */}
       </form>
     </div>
   );

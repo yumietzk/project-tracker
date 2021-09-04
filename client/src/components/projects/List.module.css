@@ -2,8 +2,6 @@
   display: flex;
   flex-direction: column;
   padding: 0.8rem;
-  /* width: 100%;
-  border: 1px solid palevioletred; */
   overflow: hidden;
 }
 

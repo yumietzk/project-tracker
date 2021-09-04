@@ -24,11 +24,7 @@ const TasksByStatus = ({ type, data }) => {
       </div>
 
       <div className={`${styles.projects} ${display ? styles.visible : null}`}>
-        <TasksByProjects
-          data={data}
-          // isFetching={isFetching}
-          // isError={isError}
-        />
+        <TasksByProjects data={data} />
       </div>
     </div>
   );

@@ -49,7 +49,6 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
 
   const onFormUpdate = (e) => {
     e.preventDefault();
-    // console.log(newTodos);
 
     const newmonthdate = [month, date].join(' ');
     const newcreatedate = [newmonthdate, year].join(', ');
@@ -76,7 +75,6 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
     history.push('/');
   };
 
-  // let newTodos;
   const handleCheck = (id, isChecked) => {
     const checkedTodos = todos.map((todo) => {
       if (todo.id === id) {
@@ -102,7 +100,6 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
   };
 
   const deleteTodo = (id) => {
-    // const copyTodos = [...todos];
     const updatedTodos = todos.filter((todo) => todo.id !== id);
     setTodos(updatedTodos);
   };

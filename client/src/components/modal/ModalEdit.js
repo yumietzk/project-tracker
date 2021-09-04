@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
+import * as AiIcons from 'react-icons/ai';
 import { fetchTask } from '../../actions';
 import Overlay from './Overlay';
 import FormEdit from './FormEdit';
+import styles from './ModalEdit.module.css';
 
 const ModalEdit = ({ match, fetchTask, task, isFetching, isError }) => {
   const { id } = match.params;
@@ -14,7 +16,11 @@ const ModalEdit = ({ match, fetchTask, task, isFetching, isError }) => {
 
   const renderFormEdit = () => {
     if (isFetching || !task) {
-      return <div>Now loading...</div>;
+      return (
+        <div className={styles.loading}>
+          <AiIcons.AiOutlineLoading3Quarters className={styles.icon} />
+        </div>
+      );
     }
 
     if (isError?.status) {
@@ -22,7 +28,7 @@ const ModalEdit = ({ match, fetchTask, task, isFetching, isError }) => {
     }
 
     if (task && task.length === 0) {
-      return <p>No data.</p>;
+      return <div className={styles.message}>No data yet.</div>;
     }
 
     return <FormEdit id={id} task={task} />;

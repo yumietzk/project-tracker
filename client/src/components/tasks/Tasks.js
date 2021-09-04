@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import * as AiIcons from 'react-icons/ai';
 import { fetchTasks } from '../../actions';
 import Home from '../Home';
 import TasksByStatus from './TasksByStatus';
@@ -10,46 +11,40 @@ const Tasks = ({ fetchTasks, tasks, isFetching, isError }) => {
     fetchTasks();
   }, []);
 
-  const noStatus = [];
-  const inProgress = [];
+  const renderTasks = () => {
+    const noStatus = [];
+    const inProgress = [];
 
-  if (isFetching || !tasks) {
-    return <div>Now loading...</div>;
-  }
+    if (isFetching || !tasks) {
+      return (
+        <div className={styles.loading}>
+          <AiIcons.AiOutlineLoading3Quarters className={styles.icon} />
+        </div>
+      );
+    }
 
-  if (isError?.status) {
-    return <p>{isError.error}</p>;
-  }
+    if (isError?.status) {
+      return <p>{isError.error}</p>;
+    }
 
-  if (tasks.length === 0) {
-    return <p>No Tasks Yet.</p>;
-  }
+    if (tasks.length === 0) {
+      return <p className={styles.message}>No tasks yet.</p>;
+    }
 
-  // if (!tasks) return 'No Tasks.';
+    tasks?.map((task) => {
+      if (task.status === 'No Status') noStatus.push(task);
+      if (task.status === 'In Progress') inProgress.push(task);
+    });
 
-  tasks?.map((task) => {
-    if (task.status === 'No Status') noStatus.push(task);
-    if (task.status === 'In Progress') inProgress.push(task);
-  });
-
-  return (
-    <Home>
+    return (
       <div className={styles.tasks}>
-        <TasksByStatus
-          type="No Status"
-          data={noStatus}
-          // isFetching={isFetching}
-          // isError={isError}
-        />
-        <TasksByStatus
-          type="In Progress"
-          data={inProgress}
-          // isFetching={isFetching}
-          // isError={isError}
-        />
+        <TasksByStatus type="No Status" data={noStatus} />
+        <TasksByStatus type="In Progress" data={inProgress} />
       </div>
-    </Home>
-  );
+    );
+  };
+
+  return <Home>{renderTasks()}</Home>;
 };
 
 const mapStateToProps = (state) => {

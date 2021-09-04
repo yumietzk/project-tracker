@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchTasks } from '../actions';
+import * as AiIcons from 'react-icons/ai';
+import { fetchTasks } from '../../actions';
+import Home from '../Home';
 import List from './List';
-import Home from './Home';
 import styles from './Projects.module.css';
 
 const Projects = ({ fetchTasks, tasks, isFetching, isError }) => {
@@ -16,7 +17,11 @@ const Projects = ({ fetchTasks, tasks, isFetching, isError }) => {
     const completed = [];
 
     if (isFetching || !tasks) {
-      return <div>Now loading...</div>;
+      return (
+        <div className={styles.loading}>
+          <AiIcons.AiOutlineLoading3Quarters className={styles.icon} />
+        </div>
+      );
     }
 
     if (isError?.status) {
@@ -24,7 +29,14 @@ const Projects = ({ fetchTasks, tasks, isFetching, isError }) => {
     }
 
     if (tasks.length === 0) {
-      return <p>No projects yet. Create a new project and manage it.</p>;
+      return (
+        <div className={styles.message}>
+          <p>
+            No projects yet. Create a new project by clicking add button on top
+            right and manage it :)
+          </p>
+        </div>
+      );
     }
 
     tasks?.map((task) => {
@@ -42,31 +54,7 @@ const Projects = ({ fetchTasks, tasks, isFetching, isError }) => {
     );
   };
 
-  return (
-    <Home>
-      {renderProjects()}
-      {/* <div className={styles.projects}>
-        <List
-          label="No Status"
-          data={noStatus}
-          // isFetching={isFetching}
-          // isError={isError}
-        />
-        <List
-          label="In Progress"
-          data={inProgress}
-          // isFetching={isFetching}
-          // isError={isError}
-        />
-        <List
-          label="Completed"
-          data={completed}
-          // isFetching={isFetching}
-          // isError={isError}
-        /> 
-      </div> */}
-    </Home>
-  );
+  return <Home>{renderProjects()}</Home>;
 };
 
 const mapStateToProps = (state) => {

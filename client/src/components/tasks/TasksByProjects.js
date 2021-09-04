@@ -1,37 +1,11 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { updateTask } from '../../actions';
+import React from 'react';
 import TasksTodoList from './TasksTodoList';
 import styles from './TasksByProjects.module.css';
 
-const TasksByProjects = ({ updateTask, data }) => {
-  // const handleCheck = () => {
-  //   updateTask(id, title, date, status, duedate, description, todos);
-  // };
-
-  // const handleCheck = (id, isChecked) => {
-  //   const checkedTodos = todos.map((todo) => {
-  //     if (todo.id === id) {
-  //       return { ...todo, todoChecked: isChecked };
-  //     } else {
-  //       return { ...todo };
-  //     }
-  //   });
-
-  //   setTodos(checkedTodos);
-  // };
-
+const TasksByProjects = ({ data }) => {
   const renderProjects = () => {
-    // if (isFetching || !data) {
-    //   return <div>Now loading...</div>;
-    // }
-
-    // if (isError?.status) {
-    //   return <p>{isError.error}</p>;
-    // }
-
     if (!data || data.length === 0) {
-      return <p>No Tasks.</p>;
+      return <p className={styles.message}>No Tasks.</p>;
     }
 
     return data?.map((item) => {
@@ -54,6 +28,4 @@ const TasksByProjects = ({ updateTask, data }) => {
   return renderProjects();
 };
 
-export default connect(null, {
-  updateTask,
-})(TasksByProjects);
+export default TasksByProjects;
