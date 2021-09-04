@@ -23,12 +23,12 @@ const TodoForm = ({ todos, addTodo, deleteTodo }) => {
 
   return (
     <div className={styles.todoform}>
-      <h2>To Do</h2>
+      <h2>Task</h2>
       <div className={styles.todo}>
         <input
           className={styles.todoinput}
           type="text"
-          placeholder="to do"
+          placeholder="task"
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />

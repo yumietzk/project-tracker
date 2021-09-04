@@ -1,0 +1,98 @@
+.project {
+  background-color: #fff;
+  border-radius: 3px;
+  padding: 1rem 1.3rem;
+  font-size: 1.2rem;
+
+  display: flex;
+  align-items: center;
+}
+
+.project + .project {
+  border-top: 0.1rem solid rgb(221, 221, 221);
+}
+
+.title {
+  flex: 0 1 40%;
+}
+
+.date {
+  flex: 0 1 37%;
+}
+
+.others {
+  flex: 0 1 15%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.detail {
+  padding: 0.3rem 0.5rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 3px;
+  background-color: transparent;
+  cursor: pointer;
+  color: transparent;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.tasksleft {
+  font: 1.1rem;
+  color: transparent;
+  transition: all 0.2s;
+}
+
+.project:hover .detail {
+  color: #101d2cbb;
+  background-color: #bebebe42;
+}
+
+.project:hover .tasksleft {
+  color: #101d2cbb;
+}
+
+.project:hover .detail:hover {
+  background-color: #bebebe79;
+}
+
+.fire {
+  flex: 1;
+  color: transparent;
+  font-size: 1.4rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.render {
+  color: red;
+}
+
+.projectNoStatus,
+.projectInProgress {
+  position: relative;
+}
+
+.projectNoStatus::before,
+.projectInProgress::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 4px;
+}
+
+.projectNoStatus::before {
+  background-color: #1d49db;
+}
+
+.projectInProgress::before {
+  background-color: #26864b;
+}

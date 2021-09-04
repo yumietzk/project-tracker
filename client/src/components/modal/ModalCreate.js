@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Overlay from './Overlay';
 import FormCreate from './FormCreate';
 
-const Modal = () => {
+const ModalCreate = () => {
   return (
     <React.Fragment>
       {ReactDOM.createPortal(<Overlay />, document.getElementById('overlay'))}
@@ -12,4 +12,4 @@ const Modal = () => {
   );
 };
 
-export default Modal;
+export default ModalCreate;

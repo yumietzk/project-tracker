@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import * as AiIcons from 'react-icons/ai';
-import { fetchTasks } from '../actions';
-import Home from './Home';
+import { fetchTasks } from '../../actions';
+import Home from '../Home';
+import TimeManageList from './TimeManageList';
 import styles from './TimeManage.module.css';
 
 const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
@@ -42,7 +42,6 @@ const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
 
     if (daysLeft <= 2) return true;
   };
-  // if (tasks) calcDueDate(tasks[0].duedate);
 
   const renderProjects = () => {
     if (isFetching || !tasks) {
@@ -54,7 +53,12 @@ const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
     }
 
     if (tasks && tasks.length === 0) {
-      return <p>No data.</p>;
+      return (
+        <p>
+          No data yet. Create a new project by clicking plus button on top right
+          :)
+        </p>
+      );
     }
 
     const sortedTask = [...tasks];
@@ -66,33 +70,18 @@ const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
       });
     }
 
-    // console.log(tasks);
     const targettasks = sort ? sortedTask : tasks;
 
-    return targettasks.map((task) => {
+    return targettasks.map((task, i) => {
       if (task.status === 'Completed') return null;
 
       return (
-        <div
-          key={task._id}
-          className={`${styles.project} ${
-            task.status === 'No Status'
-              ? styles.projectNoStatus
-              : task.status === 'In Progress'
-              ? styles.projectInProgress
-              : null
-          }`}
-        >
-          <h3 className={styles.title}>{task.title}</h3>
-          <p className={styles.date}>{renderDueDate(task.duedate)}</p>
-          <p
-            className={`${styles.fire} ${
-              handleFire(task.duedate) ? styles.render : null
-            }`}
-          >
-            <AiIcons.AiTwotoneFire />
-          </p>
-        </div>
+        <TimeManageList
+          task={task}
+          renderDueDate={renderDueDate}
+          handleFire={handleFire}
+          key={i}
+        />
       );
     });
   };
@@ -112,7 +101,7 @@ const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
         <div className={styles.example}>
           <p className={styles.title}>Title</p>
           <p className={styles.date}>Due Date</p>
-          <p className={styles.fire}>&nbsp;</p>
+          {/* <p>&nbsp;</p> */}
         </div>
 
         {renderProjects()}
