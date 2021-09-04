@@ -41,7 +41,7 @@ const FormCreate = ({ createTask }) => {
   ];
   const years = [2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030];
 
-  const onSubmit = (e) => {
+  const onFormCreate = (e) => {
     e.preventDefault();
 
     const monthdate = [month, date].join(' ');
@@ -188,7 +188,7 @@ const FormCreate = ({ createTask }) => {
 
         <TodoForm todos={todos} addTodo={addTodo} deleteTodo={deleteTodo} />
 
-        <button className={styles.btn} onClick={onSubmit}>
+        <button className={styles.btn} onClick={onFormCreate}>
           Create
         </button>
       </form>

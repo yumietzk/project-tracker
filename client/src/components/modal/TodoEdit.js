@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as IoIcons from 'react-icons/io5';
 import styles from './TodoListEdit.module.css';
 
 const TodoEdit = ({ todo, handleCheck, deleteTodo }) => {
-  const [checked, setChecked] = useState(todo?.todoChecked);
+  // console.log(todo?.todoChecked);
+  const [checked, setChecked] = useState('');
+  // console.log(checked);
+
+  useEffect(() => {
+    setChecked(todo?.todoChecked);
+  }, [todo]);
 
   const onCheck = () => {
     setChecked(!checked);

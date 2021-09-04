@@ -14,7 +14,7 @@ export const createTask =
 
       dispatch({
         type: 'CREATE_TASK',
-        payload: response.date,
+        payload: response.data,
       });
     } catch (err) {
       console.log(err);

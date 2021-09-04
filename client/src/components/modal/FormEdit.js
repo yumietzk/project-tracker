@@ -102,6 +102,7 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
   };
 
   const deleteTodo = (id) => {
+    // const copyTodos = [...todos];
     const updatedTodos = todos.filter((todo) => todo.id !== id);
     setTodos(updatedTodos);
   };

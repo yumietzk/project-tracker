@@ -6,6 +6,7 @@ import styles from './TodoListEdit.module.css';
 const TodoListEdit = ({ todos, handleCheck, deleteTodo }) => {
   if (!todos || todos.length === 0) return null;
 
+  // console.log(todos);
   return todos?.map((todo, i) => {
     return (
       <TodoEdit

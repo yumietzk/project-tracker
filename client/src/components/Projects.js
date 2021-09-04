@@ -10,31 +10,42 @@ const Projects = ({ fetchTasks, tasks, isFetching, isError }) => {
     fetchTasks();
   }, []);
 
-  const noStatus = [];
-  const inProgress = [];
-  const completed = [];
+  const renderProjects = () => {
+    const noStatus = [];
+    const inProgress = [];
+    const completed = [];
 
-  if (isFetching || !tasks) {
-    return <div>Now loading...</div>;
-  }
+    if (isFetching || !tasks) {
+      return <div>Now loading...</div>;
+    }
 
-  if (isError?.status) {
-    return <p>{isError.error}</p>;
-  }
+    if (isError?.status) {
+      return <p>{isError.error}</p>;
+    }
 
-  if (tasks.length === 0) {
-    return <p>No Projects yet.</p>;
-  }
+    if (tasks.length === 0) {
+      return <p>No projects yet. Create a new project and manage it.</p>;
+    }
 
-  tasks?.map((task) => {
-    if (task.status === 'No Status') noStatus.push(task);
-    if (task.status === 'In Progress') inProgress.push(task);
-    if (task.status === 'Completed') completed.push(task);
-  });
+    tasks?.map((task) => {
+      if (task.status === 'No Status') noStatus.push(task);
+      if (task.status === 'In Progress') inProgress.push(task);
+      if (task.status === 'Completed') completed.push(task);
+    });
+
+    return (
+      <div className={styles.projects}>
+        <List label="No Status" data={noStatus} />
+        <List label="In Progress" data={inProgress} />
+        <List label="Completed" data={completed} />
+      </div>
+    );
+  };
 
   return (
     <Home>
-      <div className={styles.projects}>
+      {renderProjects()}
+      {/* <div className={styles.projects}>
         <List
           label="No Status"
           data={noStatus}
@@ -52,8 +63,8 @@ const Projects = ({ fetchTasks, tasks, isFetching, isError }) => {
           data={completed}
           // isFetching={isFetching}
           // isError={isError}
-        />
-      </div>
+        /> 
+      </div> */}
     </Home>
   );
 };
