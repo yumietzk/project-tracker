@@ -4,6 +4,14 @@
   grid-template-columns: repeat(3, 1fr);
 }
 
+/* 600px */
+@media only screen and (max-width: 37.5em) {
+  .projects {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .loading {
   display: flex;
   justify-content: center;

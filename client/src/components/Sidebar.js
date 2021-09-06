@@ -8,7 +8,7 @@ import styles from './Sidebar.module.css';
 const Sidebar = () => {
   return (
     <div className={styles.sidebar}>
-      <div className={styles.logo}>Logo</div>
+      <div className={styles.logo}>Project Tracker</div>
       <div className={styles.nav}>
         <Link to="/" className={styles.link}>
           <CgIcons.CgWorkAlt className={styles.icon} />

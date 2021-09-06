@@ -36,9 +36,7 @@
   font-size: 1.2rem;
   margin-bottom: 1.1rem;
   width: 87%;
-  /* word-break: normal; */
   overflow-wrap: break-word;
-  /* overflow-x: hidden; */
 }
 
 .datedelete {

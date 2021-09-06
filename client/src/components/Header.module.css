@@ -2,9 +2,20 @@
   flex: 0 1 5.5rem;
   width: 100%;
   padding-right: 1rem;
+
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+
+/* 500px */
+@media only screen and (max-width: 31.25em) {
+  .header {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    padding: 0;
+  }
 }
 
 .logout {
@@ -21,11 +32,25 @@
   align-items: center;
 }
 
+/* 600px */
+@media only screen and (max-width: 37.5em) {
+  .logout {
+    margin-bottom: 0.8rem;
+  }
+}
+
 .logout > p {
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
   color: transparent;
   transition: all 0.3s;
+}
+
+/* 600px */
+@media only screen and (max-width: 37.5em) {
+  .logout > p {
+    font-size: 0.4rem;
+  }
 }
 
 .logout:hover > p {

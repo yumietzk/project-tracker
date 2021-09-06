@@ -3,6 +3,14 @@
   display: flex;
 }
 
+/* 500px */
+@media only screen and (max-width: 31.25em) {
+  .home {
+    flex-direction: column;
+    position: relative;
+  }
+}
+
 .main {
   flex: 1;
   min-height: 100vh;
@@ -16,4 +24,11 @@
   margin: 0.5rem;
   margin-right: 0;
   width: 100%;
+}
+
+/* 500px */
+@media only screen and (max-width: 31.25em) {
+  .content {
+    margin-top: 1rem;
+  }
 }

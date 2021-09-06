@@ -91,88 +91,96 @@ const FormCreate = ({ createTask }) => {
               <IoIcons.IoTimeOutline className={styles.icon} />
               Date created
             </label>
-            <select
-              className={styles.input}
-              value={month}
-              onChange={(e) => setMonth(e.target.value)}
-            >
-              <option>-</option>
-              {months.map((month, i) => {
-                return <option key={i}>{month}</option>;
-              })}
-            </select>
-            <select
-              className={styles.input}
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-            >
-              <option>-</option>
-              {dates.map((date, i) => {
-                return <option key={i}>{date}</option>;
-              })}
-            </select>
-            <select
-              className={styles.input}
-              value={year}
-              onChange={(e) => setYear(e.target.value)}
-            >
-              <option>-</option>
-              {years.map((year, i) => {
-                return <option key={i}>{year}</option>;
-              })}
-            </select>
+            <div className={styles.selectgroup}>
+              <select
+                className={styles.select}
+                value={month}
+                onChange={(e) => setMonth(e.target.value)}
+              >
+                <option>-</option>
+                {months.map((month, i) => {
+                  return <option key={i}>{month}</option>;
+                })}
+              </select>
+              <select
+                className={styles.select}
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+              >
+                <option>-</option>
+                {dates.map((date, i) => {
+                  return <option key={i}>{date}</option>;
+                })}
+              </select>
+              <select
+                className={styles.select}
+                value={year}
+                onChange={(e) => setYear(e.target.value)}
+              >
+                <option>-</option>
+                {years.map((year, i) => {
+                  return <option key={i}>{year}</option>;
+                })}
+              </select>
+            </div>
           </div>
+
           <div className={styles.status}>
             <label className={styles.label}>
               <GrIcons.GrStatusPlaceholderSmall className={styles.icon} />
               Status
             </label>
-            <select
-              className={styles.input}
-              value={status}
-              onChange={(e) => setStatus(e.target.value)}
-            >
-              <option value="">-</option>
-              <option value="No Status">No Status</option>
-              <option value="In Progress">In Progress</option>
-              <option value="Completed">Completed</option>
-            </select>
+            <div className={styles.selectgroup}>
+              <select
+                className={styles.select}
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
+              >
+                <option value="">-</option>
+                <option value="No Status">No Status</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+              </select>
+            </div>
           </div>
+
           <div className={styles.duedate}>
             <label className={styles.label}>
               <CgIcons.CgCalendarDue className={styles.icon} />
               Due Date
             </label>
-            <select
-              className={styles.input}
-              value={dueMonth}
-              onChange={(e) => setDueMonth(e.target.value)}
-            >
-              <option>-</option>
-              {months.map((month, i) => {
-                return <option key={i}>{month}</option>;
-              })}
-            </select>
-            <select
-              className={styles.input}
-              value={dueDate}
-              onChange={(e) => setDueDate(e.target.value)}
-            >
-              <option>-</option>
-              {dates.map((date, i) => {
-                return <option key={i}>{date}</option>;
-              })}
-            </select>
-            <select
-              className={styles.input}
-              value={dueYear}
-              onChange={(e) => setDueYear(e.target.value)}
-            >
-              <option>-</option>
-              {years.map((year, i) => {
-                return <option key={i}>{year}</option>;
-              })}
-            </select>
+            <div className={styles.selectgroup}>
+              <select
+                className={styles.select}
+                value={dueMonth}
+                onChange={(e) => setDueMonth(e.target.value)}
+              >
+                <option>-</option>
+                {months.map((month, i) => {
+                  return <option key={i}>{month}</option>;
+                })}
+              </select>
+              <select
+                className={styles.select}
+                value={dueDate}
+                onChange={(e) => setDueDate(e.target.value)}
+              >
+                <option>-</option>
+                {dates.map((date, i) => {
+                  return <option key={i}>{date}</option>;
+                })}
+              </select>
+              <select
+                className={styles.select}
+                value={dueYear}
+                onChange={(e) => setDueYear(e.target.value)}
+              >
+                <option>-</option>
+                {years.map((year, i) => {
+                  return <option key={i}>{year}</option>;
+                })}
+              </select>
+            </div>
           </div>
         </div>
 

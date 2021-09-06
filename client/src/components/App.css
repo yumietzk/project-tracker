@@ -11,6 +11,20 @@ html {
   box-sizing: border-box;
 }
 
+/* 850px */
+@media only screen and (max-width: 53.125em) {
+  html {
+    font-size: 55%;
+  }
+}
+
+/* 600px */
+@media only screen and (max-width: 37.5em) {
+  html {
+    font-size: 40%;
+  }
+}
+
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 300;

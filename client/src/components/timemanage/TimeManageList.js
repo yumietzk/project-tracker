@@ -37,21 +37,25 @@ const TimeManageList = ({ task, renderDueDate, handleFire }) => {
           : null
       }`}
     >
-      <h3 className={styles.title}>{task.title}</h3>
-      <p className={styles.date}>{renderDueDate(task.duedate)}</p>
-      <div className={styles.others}>
-        <Link to={`/detail/${task._id}`} className={styles.detail}>
-          Detail
-        </Link>
-        <p className={styles.tasksleft}>{renderCount()}</p>
+      <div className={styles.maincontent}>
+        <h3 className={styles.title}>{task.title}</h3>
+        <p className={styles.date}>{renderDueDate(task.duedate)}</p>
       </div>
-      <p
-        className={`${styles.fire} ${
-          handleFire(task.duedate) ? styles.render : null
-        }`}
-      >
-        <AiIcons.AiTwotoneFire />
-      </p>
+      <div className={styles.subcontent}>
+        <div className={styles.others}>
+          <Link to={`/detail/${task._id}`} className={styles.detail}>
+            Detail
+          </Link>
+          <p className={styles.tasksleft}>{renderCount()}</p>
+        </div>
+        <p
+          className={`${styles.fire} ${
+            handleFire(task.duedate) ? styles.render : null
+          }`}
+        >
+          <AiIcons.AiTwotoneFire />
+        </p>
+      </div>
     </div>
   );
 };

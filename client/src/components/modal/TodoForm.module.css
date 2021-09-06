@@ -1,5 +1,13 @@
 .todoform {
+  width: 90%;
   margin-bottom: 1.8rem;
+}
+
+/* 800px */
+@media only screen and (max-width: 50em) {
+  .todoform {
+    width: 100%;
+  }
 }
 
 .todoform > h2 {

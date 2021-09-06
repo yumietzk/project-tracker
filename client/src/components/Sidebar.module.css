@@ -9,9 +9,23 @@
   flex-direction: column;
 }
 
+/* 500px */
+@media only screen and (max-width: 31.25em) {
+  .sidebar {
+    flex: 0 1 10%;
+    min-height: 10%;
+    align-items: flex-start;
+    background-color: transparent;
+  }
+}
+
 .logo {
-  flex: 0 1 5rem;
-  padding: 1rem;
+  flex: 0 1 6rem;
+  padding: 1.2rem 1rem 1rem 1rem;
+  color: #f06102;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 700;
 }
 
 .nav {
@@ -19,6 +33,13 @@
 
   display: flex;
   flex-direction: column;
+}
+
+/* 500px */
+@media only screen and (max-width: 31.25em) {
+  .nav {
+    flex-direction: row;
+  }
 }
 
 .link {
@@ -53,6 +74,13 @@
 
 .link:hover::after {
   transform: scaleY(1);
+}
+
+/* 500px */
+@media only screen and (max-width: 31.25em) {
+  .link:hover::after {
+    transform: scaleY(0);
+  }
 }
 
 .icon {
