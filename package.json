@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -14,5 +15,8 @@
     "express": "^4.17.1",
     "mongoose": "^5.13.8",
     "nodemon": "^2.0.12"
+  },
+  "engines": {
+    "node": "12.16.1"
   }
 }
