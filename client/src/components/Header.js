@@ -1,15 +1,18 @@
 import React from 'react';
 import { auth } from '../firebase';
 import { Link, useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { signOut } from '../actions';
 import * as BsIcons from 'react-icons/bs';
 import * as GrIcons from 'react-icons/gr';
 import styles from './Header.module.css';
 
-const Header = () => {
+const Header = ({ signOut }) => {
   const history = useHistory();
 
   const onLogout = () => {
     auth.signOut();
+    signOut();
     history.push('/login');
   };
 
@@ -26,4 +29,6 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default connect(null, {
+  signOut,
+})(Header);

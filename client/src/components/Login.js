@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { auth } from '../firebase';
 import { Link, useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { signIn } from '../actions';
 import styles from './Login.module.css';
 
-const Login = () => {
+const Login = ({ signIn }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const history = useHistory();
@@ -14,6 +16,12 @@ const Login = () => {
 
     try {
       await auth.signInWithEmailAndPassword(email, password);
+
+      const userSignIn = await auth.onAuthStateChanged((user) => {
+        signIn(user.uid);
+      });
+      userSignIn();
+
       history.push('/');
     } catch (err) {
       console.log(err);
@@ -60,4 +68,6 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default connect(null, {
+  signIn,
+})(Login);

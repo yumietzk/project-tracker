@@ -1,7 +1,23 @@
 import axios from 'axios';
 
+export const signIn = (userId) => {
+  return {
+    type: 'SIGN_IN',
+    payload: userId,
+  };
+};
+
+export const signOut = () => {
+  return {
+    type: 'SIGN_OUT',
+  };
+};
+
 export const createTask =
-  (title, date, status, duedate, description, todos) => async (dispatch) => {
+  (title, date, status, duedate, description, todos) =>
+  async (dispatch, getState) => {
+    const { userId } = getState().auth;
+
     try {
       const response = await axios.post('/api/tasks', {
         title,
@@ -10,11 +26,12 @@ export const createTask =
         duedate,
         description,
         todos,
+        userId,
       });
 
       dispatch({
         type: 'CREATE_TASK',
-        payload: response.data,
+        payload: { data: response.data, userId: userId },
       });
     } catch (err) {
       console.log(err);
@@ -25,12 +42,17 @@ export const createTask =
     }
   };
 
-export const fetchTasks = () => async (dispatch) => {
+export const fetchTasks = () => async (dispatch, getState) => {
   try {
+    const { userId } = getState().auth;
+
     dispatch({ type: 'REQUEST_DATA' });
 
     const response = await axios.get('/api/tasks');
-    dispatch({ type: 'RECEIVE_TASKS', payload: response.data });
+    dispatch({
+      type: 'RECEIVE_TASKS',
+      payload: { data: response.data, userId: userId },
+    });
   } catch (err) {
     console.log(err);
     dispatch({
@@ -57,7 +79,9 @@ export const fetchTask = (id) => async (dispatch) => {
 
 export const updateTask =
   (id, title, date, status, duedate, description, todos) =>
-  async (dispatch) => {
+  async (dispatch, getState) => {
+    const { userId } = getState().auth;
+
     try {
       const response = await axios.patch(`/api/tasks/${id}`, {
         title,
@@ -68,7 +92,10 @@ export const updateTask =
         todos,
       });
 
-      dispatch({ type: 'UPDATE_TASK', payload: response.data });
+      dispatch({
+        type: 'UPDATE_TASK',
+        payload: { data: response.data, userId: userId },
+      });
     } catch (err) {
       console.log(err);
       dispatch({
@@ -78,12 +105,17 @@ export const updateTask =
     }
   };
 
-export const deleteTask = (id) => async (dispatch) => {
+export const deleteTask = (id) => async (dispatch, getState) => {
   try {
+    const { userId } = getState().auth;
+
     dispatch({ type: 'REQUEST_DATA' });
 
     const response = await axios.delete(`/api/tasks/${id}`);
-    dispatch({ type: 'DELETE_TASK', payload: response.data });
+    dispatch({
+      type: 'DELETE_TASK',
+      payload: { data: response.data, userId: userId },
+    });
   } catch (err) {
     console.log(err);
     dispatch({

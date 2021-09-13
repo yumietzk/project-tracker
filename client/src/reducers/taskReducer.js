@@ -7,10 +7,14 @@ export default (state = { isFetching: false }, action) => {
     case 'RECEIVE_TASKS':
     case 'UPDATE_TASK':
     case 'DELETE_TASK':
+      const data = action.payload.data.filter(
+        (data) => data.userId === action.payload.userId
+      );
+
       return {
         ...state,
         isFetching: false,
-        tasks: action.payload,
+        tasks: data,
       };
 
     case 'RECEIVE_TASK':

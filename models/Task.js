@@ -13,6 +13,7 @@ const TaskSchema = mongoose.Schema({
       todoChecked: Boolean,
     },
   ],
+  userId: String,
 });
 
 module.exports = mongoose.model('Task', TaskSchema);

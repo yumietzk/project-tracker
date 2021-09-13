@@ -1,15 +1,19 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { useAuthContext } from '../context/AuthContext';
+import { connect } from 'react-redux';
 
-const PrivateRoute = ({ component, exact, path }) => {
-  const { user } = useAuthContext();
-
-  return user ? (
+const PrivateRoute = ({ isSignedIn, component, exact, path }) => {
+  return isSignedIn ? (
     <Route exact={exact} path={path} component={component} />
   ) : (
     <Redirect to="/login" />
   );
 };
 
-export default PrivateRoute;
+const mapStateToProps = (state) => {
+  return {
+    isSignedIn: state.auth.isSignedIn,
+  };
+};
+
+export default connect(mapStateToProps)(PrivateRoute);

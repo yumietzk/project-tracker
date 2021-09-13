@@ -1,19 +1,13 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { auth } from '../firebase';
 import * as AiIcons from 'react-icons/ai';
 import styles from './AuthContext.module.css';
 
-const AuthContext = createContext();
-
-export const useAuthContext = () => {
-  return useContext(AuthContext);
-};
-
-export const AuthProvider = ({ children }) => {
+const FirebaseAuth = ({ children }) => {
   const [user, setUser] = useState('');
   const [loading, setLoading] = useState(true);
 
-  const value = { user, loading };
+  // const value = { user, loading };
 
   useEffect(() => {
     const unsubscribed = auth.onAuthStateChanged((user) => {
@@ -34,8 +28,8 @@ export const AuthProvider = ({ children }) => {
       </div>
     );
   } else {
-    return (
-      <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
-    );
+    return { children };
   }
 };
+
+export default FirebaseAuth;
