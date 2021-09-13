@@ -24,7 +24,7 @@ const ModalDetail = ({ match, fetchTask, task, isFetching, isError }) => {
     }
 
     if (isError?.status) {
-      return <p>{isError.error}</p>;
+      return <p>{isError.errorMessage}</p>;
     }
 
     if (task && task.length === 0) {

@@ -54,7 +54,7 @@ const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
     }
 
     if (isError?.status) {
-      return <p>{isError.error}</p>;
+      return <p>{isError.errorMessage}</p>;
     }
 
     if (tasks && tasks.length === 0) {

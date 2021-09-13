@@ -25,7 +25,7 @@ const Projects = ({ fetchTasks, tasks, isFetching, isError }) => {
     }
 
     if (isError?.status) {
-      return <p>{isError.error}</p>;
+      return <p>{isError.errorMessage}</p>;
     }
 
     if (tasks.length === 0) {

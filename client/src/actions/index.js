@@ -37,7 +37,9 @@ export const createTask =
       console.log(err);
       dispatch({
         type: 'RECEIVE_DATA_FAILED',
-        payload: err.response,
+        payload: {
+          message: 'Something went wrong. Could not create a new project.',
+        },
       });
     }
   };
@@ -57,7 +59,9 @@ export const fetchTasks = () => async (dispatch, getState) => {
     console.log(err);
     dispatch({
       type: 'RECEIVE_DATA_FAILED',
-      payload: err.response,
+      payload: {
+        message: 'Something went wrong. Could not get data.',
+      },
     });
   }
 };
@@ -72,7 +76,9 @@ export const fetchTask = (id) => async (dispatch) => {
     console.log(err);
     dispatch({
       type: 'RECEIVE_DATA_FAILED',
-      payload: err.response,
+      payload: {
+        message: 'Something went wrong. Could not get data.',
+      },
     });
   }
 };
@@ -100,7 +106,9 @@ export const updateTask =
       console.log(err);
       dispatch({
         type: 'RECEIVE_DATA_FAILED',
-        payload: err.response,
+        payload: {
+          message: 'Something went wrong. Could not update data.',
+        },
       });
     }
   };
@@ -120,7 +128,9 @@ export const deleteTask = (id) => async (dispatch, getState) => {
     console.log(err);
     dispatch({
       type: 'RECEIVE_DATA_FAILED',
-      payload: err.response,
+      payload: {
+        message: 'Something went wrong. Could not delete a project.',
+      },
     });
   }
 };
