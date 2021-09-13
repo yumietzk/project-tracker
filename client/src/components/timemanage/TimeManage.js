@@ -66,6 +66,14 @@ const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
       );
     }
 
+    if (tasks.every((task) => task.status === 'Completed')) {
+      return (
+        <p className={styles.message}>
+          All projects are finished :) No more new projects now.
+        </p>
+      );
+    }
+
     const sortedTask = [...tasks];
     if (sort) {
       sortedTask.sort((task1, task2) => {

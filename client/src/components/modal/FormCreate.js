@@ -14,7 +14,7 @@ const FormCreate = ({ createTask }) => {
   const [month, setMonth] = useState('-');
   const [date, setDate] = useState('-');
   const [year, setYear] = useState('-');
-  const [status, setStatus] = useState('-');
+  const [status, setStatus] = useState('No Status');
   const [dueMonth, setDueMonth] = useState('-');
   const [dueDate, setDueDate] = useState('-');
   const [dueYear, setDueYear] = useState('-');
@@ -136,7 +136,6 @@ const FormCreate = ({ createTask }) => {
                 value={status}
                 onChange={(e) => setStatus(e.target.value)}
               >
-                <option value="">-</option>
                 <option value="No Status">No Status</option>
                 <option value="In Progress">In Progress</option>
                 <option value="Completed">Completed</option>
