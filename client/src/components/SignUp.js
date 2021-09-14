@@ -17,10 +17,11 @@ const SignUp = ({ signIn }) => {
     try {
       await auth.createUserWithEmailAndPassword(email, password);
 
-      const userSignIn = await auth.onAuthStateChanged((user) => {
-        signIn(user.uid);
+      await auth.onAuthStateChanged((user) => {
+        if (user) {
+          signIn(user.uid);
+        }
       });
-      userSignIn();
 
       history.push('/');
     } catch (err) {

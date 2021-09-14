@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { signIn } from '../actions';
+import { auth } from '../firebase';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import Projects from './projects/Projects';
@@ -12,7 +15,19 @@ import SignUp from './SignUp';
 import Login from './Login';
 import './App.css';
 
-const App = () => {
+const App = ({ signIn }) => {
+  useEffect(() => {
+    const unsubscribed = auth.onAuthStateChanged((user) => {
+      if (user) {
+        signIn(user.uid);
+      }
+    });
+
+    return () => {
+      unsubscribed();
+    };
+  }, []);
+
   return (
     <div>
       <BrowserRouter>
@@ -31,4 +46,6 @@ const App = () => {
   );
 };
 
-export default App;
+export default connect(null, {
+  signIn,
+})(App);

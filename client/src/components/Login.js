@@ -17,10 +17,9 @@ const Login = ({ signIn }) => {
     try {
       await auth.signInWithEmailAndPassword(email, password);
 
-      const userSignIn = await auth.onAuthStateChanged((user) => {
+      await auth.onAuthStateChanged((user) => {
         signIn(user.uid);
       });
-      userSignIn();
 
       history.push('/');
     } catch (err) {
