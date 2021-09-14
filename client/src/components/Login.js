@@ -18,7 +18,7 @@ const Login = ({ signIn }) => {
       await auth.signInWithEmailAndPassword(email, password);
 
       await auth.onAuthStateChanged((user) => {
-        signIn(user.uid);
+        signIn(user.uid, user.email);
       });
 
       history.push('/');

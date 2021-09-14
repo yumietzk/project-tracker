@@ -18,6 +18,35 @@
   }
 }
 
+.userinfo {
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+/* 500px */
+@media only screen and (max-width: 31.25em) {
+  .userinfo {
+    position: absolute;
+    top: 5rem;
+    left: 1.5rem;
+  }
+}
+
+.usericon {
+  font-size: 2.2rem;
+  margin-right: 0.5rem;
+}
+
+.userinfo > p {
+  font-size: 1.4rem;
+}
+
+.others {
+  display: flex;
+  align-items: center;
+}
+
 .logout {
   border: none;
   background-color: #fff;

@@ -19,7 +19,7 @@ const App = ({ signIn }) => {
   useEffect(() => {
     const unsubscribed = auth.onAuthStateChanged((user) => {
       if (user) {
-        signIn(user.uid);
+        signIn(user.uid, user.email);
       }
     });
 

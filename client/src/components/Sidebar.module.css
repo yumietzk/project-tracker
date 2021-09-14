@@ -39,6 +39,7 @@
 @media only screen and (max-width: 31.25em) {
   .nav {
     flex-direction: row;
+    margin-top: 3rem;
   }
 }
 

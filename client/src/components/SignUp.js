@@ -19,7 +19,7 @@ const SignUp = ({ signIn }) => {
 
       await auth.onAuthStateChanged((user) => {
         if (user) {
-          signIn(user.uid);
+          signIn(user.uid, user.email);
         }
       });
 

@@ -1,10 +1,13 @@
 import axios from 'axios';
 import history from '../history';
 
-export const signIn = (userId) => {
+export const signIn = (userId, email) => {
   return {
     type: 'SIGN_IN',
-    payload: userId,
+    payload: {
+      userId: userId,
+      email: email,
+    },
   };
 };
 
