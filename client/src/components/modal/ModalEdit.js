@@ -2,17 +2,28 @@ import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import * as AiIcons from 'react-icons/ai';
-import { fetchTask } from '../../actions';
+import { fetchTask, clearEditError } from '../../actions';
 import Overlay from './Overlay';
 import FormEdit from './FormEdit';
 import styles from './ModalEdit.module.css';
 
-const ModalEdit = ({ match, fetchTask, task, isFetching, isError }) => {
+const ModalEdit = ({
+  match,
+  fetchTask,
+  clearEditError,
+  task,
+  isFetching,
+  isError,
+}) => {
   const { id } = match.params;
 
   useEffect(() => {
     fetchTask(id);
   }, []);
+
+  const handleError = () => {
+    clearEditError(id);
+  };
 
   const renderFormEdit = () => {
     if (isFetching || !task) {
@@ -24,7 +35,14 @@ const ModalEdit = ({ match, fetchTask, task, isFetching, isError }) => {
     }
 
     if (isError?.status) {
-      return <p>{isError.errorMessage}</p>;
+      return (
+        <div className={styles.form}>
+          <p className={styles.error}>{isError.errorMessage}</p>
+          <button className={styles.errorbtn} onClick={handleError}>
+            Update again
+          </button>
+        </div>
+      );
     }
 
     if (task && task.length === 0) {
@@ -55,4 +73,5 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   fetchTask,
+  clearEditError,
 })(ModalEdit);

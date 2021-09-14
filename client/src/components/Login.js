@@ -49,6 +49,7 @@ const Login = ({ signIn }) => {
             className={styles.inputbox}
             name="email"
             type="email"
+            required="required"
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
@@ -58,6 +59,7 @@ const Login = ({ signIn }) => {
             className={styles.inputbox}
             name="password"
             type="password"
+            required="required"
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>

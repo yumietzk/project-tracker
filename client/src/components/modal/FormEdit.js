@@ -4,11 +4,24 @@ import * as IoIcons from 'react-icons/io5';
 import * as GrIcons from 'react-icons/gr';
 import * as CgIcons from 'react-icons/cg';
 import { connect } from 'react-redux';
-import { updateTask, deleteTask } from '../../actions';
+import {
+  updateTask,
+  deleteTask,
+  createEditError,
+  clearEditError,
+} from '../../actions';
 import TodoFormEdit from './TodoFormEdit';
 import styles from './FormEdit.module.css';
 
-const FormEdit = ({ updateTask, deleteTask, id, task }) => {
+const FormEdit = ({
+  updateTask,
+  deleteTask,
+  createEditError,
+  clearEditError,
+  id,
+  task,
+  isError,
+}) => {
   const splitdate = task?.date.split(', ');
   const monthdate = splitdate[0].split(' ');
 
@@ -50,6 +63,20 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
   const onFormUpdate = (e) => {
     e.preventDefault();
 
+    if (
+      !title ||
+      month === '-' ||
+      date === '-' ||
+      year === '-' ||
+      dueMonth === '-' ||
+      dueDate === '-' ||
+      dueYear === '-' ||
+      !description
+    ) {
+      createEditError(id);
+      return;
+    }
+
     const newmonthdate = [month, date].join(' ');
     const newcreatedate = [newmonthdate, year].join(', ');
 
@@ -67,6 +94,10 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
     );
     history.push(`/`);
   };
+
+  // const handleError = () => {
+  //   clearEditError(id);
+  // };
 
   const onFormDelete = (e) => {
     e.preventDefault();
@@ -104,6 +135,17 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
     setTodos(updatedTodos);
   };
 
+  // if (isError?.status) {
+  //   return (
+  //     <div className={styles.form}>
+  //       <p className={styles.error}>{isError.errorMessage}</p>
+  //       <button className={styles.errorbtn} onClick={handleError}>
+  //         Update again
+  //       </button>
+  //     </div>
+  //   );
+  // }
+
   return (
     <div className={styles.form}>
       <h1 className={styles.newproject}>Edit Project</h1>
@@ -115,6 +157,7 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
               type="text"
               value={title}
               placeholder="Title"
+              required="required"
               onChange={(e) => setTitle(e.target.value)}
             />
           </div>
@@ -122,12 +165,13 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
           <div className={styles.date}>
             <label className={styles.label}>
               <IoIcons.IoTimeOutline className={styles.icon} />
-              Date created
+              Date created *
             </label>
             <div className={styles.selectgroup}>
               <select
                 className={styles.select}
                 value={month}
+                required
                 onChange={(e) => setMonth(e.target.value)}
               >
                 <option>-</option>
@@ -138,6 +182,7 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
               <select
                 className={styles.select}
                 value={date}
+                required
                 onChange={(e) => setDate(e.target.value)}
               >
                 <option>-</option>
@@ -148,6 +193,7 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
               <select
                 className={styles.select}
                 value={year}
+                required
                 onChange={(e) => setYear(e.target.value)}
               >
                 <option>-</option>
@@ -161,12 +207,13 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
           <div className={styles.status}>
             <label className={styles.label}>
               <GrIcons.GrStatusPlaceholderSmall className={styles.icon} />
-              Status
+              Status *
             </label>
             <div className={styles.selectgroup}>
               <select
                 className={styles.select}
                 value={status}
+                required
                 onChange={(e) => setStatus(e.target.value)}
               >
                 <option value="No Status">No Status</option>
@@ -179,12 +226,13 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
           <div className={styles.duedate}>
             <label className={styles.label}>
               <CgIcons.CgCalendarDue className={styles.icon} />
-              Due Date
+              Due Date *
             </label>
             <div className={styles.selectgroup}>
               <select
                 className={styles.select}
                 value={dueMonth}
+                required
                 onChange={(e) => setDueMonth(e.target.value)}
               >
                 <option>-</option>
@@ -195,6 +243,7 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
               <select
                 className={styles.select}
                 value={dueDate}
+                required
                 onChange={(e) => setDueDate(e.target.value)}
               >
                 <option>-</option>
@@ -205,6 +254,7 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
               <select
                 className={styles.select}
                 value={dueYear}
+                required
                 onChange={(e) => setDueYear(e.target.value)}
               >
                 <option>-</option>
@@ -217,10 +267,11 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
         </div>
 
         <div className={styles.description}>
-          <h2>Description</h2>
+          <h2>Description *</h2>
           <textarea
             className={styles.textarea}
             value={description}
+            required
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
@@ -233,13 +284,10 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
         />
 
         <div className={styles.btnform}>
-          <button className={styles.update} onClick={(e) => onFormUpdate(e)}>
+          <button className={styles.update} onClick={onFormUpdate}>
             Update
           </button>
-          <button
-            className={styles.deleteicon}
-            onClick={(e) => onFormDelete(e)}
-          >
+          <button className={styles.deleteicon} onClick={onFormDelete}>
             <IoIcons.IoTrashOutline />
           </button>
         </div>
@@ -248,7 +296,15 @@ const FormEdit = ({ updateTask, deleteTask, id, task }) => {
   );
 };
 
-export default connect(null, {
+const mapStateToProps = (state) => {
+  return {
+    isError: state.error.isError,
+  };
+};
+
+export default connect(mapStateToProps, {
   updateTask,
   deleteTask,
+  createEditError,
+  clearEditError,
 })(FormEdit);

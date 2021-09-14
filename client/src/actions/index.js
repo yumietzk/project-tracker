@@ -1,4 +1,5 @@
 import axios from 'axios';
+import history from '../history';
 
 export const signIn = (userId) => {
   return {
@@ -36,9 +37,10 @@ export const createTask =
     } catch (err) {
       console.log(err);
       dispatch({
-        type: 'RECEIVE_DATA_FAILED',
+        type: 'CREATE_DATA_FAILED',
         payload: {
-          message: 'Something went wrong. Could not create a new project.',
+          message:
+            'Something went wrong :( Could not create a new project. Please try again.',
         },
       });
     }
@@ -49,6 +51,7 @@ export const fetchTasks = () => async (dispatch, getState) => {
     const { userId } = getState().auth;
 
     dispatch({ type: 'REQUEST_DATA' });
+    dispatch({ type: 'ERROR_CLEARED' });
 
     const response = await axios.get('/api/tasks');
     dispatch({
@@ -60,7 +63,8 @@ export const fetchTasks = () => async (dispatch, getState) => {
     dispatch({
       type: 'RECEIVE_DATA_FAILED',
       payload: {
-        message: 'Something went wrong. Could not get data.',
+        message:
+          'Something went wrong :( Could not get data. Please try again.',
       },
     });
   }
@@ -69,6 +73,7 @@ export const fetchTasks = () => async (dispatch, getState) => {
 export const fetchTask = (id) => async (dispatch) => {
   try {
     dispatch({ type: 'REQUEST_DATA' });
+    dispatch({ type: 'ERROR_CLEARED' });
 
     const response = await axios.get(`/api/tasks/${id}`);
     dispatch({ type: 'RECEIVE_TASK', payload: response.data });
@@ -77,7 +82,8 @@ export const fetchTask = (id) => async (dispatch) => {
     dispatch({
       type: 'RECEIVE_DATA_FAILED',
       payload: {
-        message: 'Something went wrong. Could not get data.',
+        message:
+          'Something went wrong :( Could not get data. Please try again.',
       },
     });
   }
@@ -86,9 +92,11 @@ export const fetchTask = (id) => async (dispatch) => {
 export const updateTask =
   (id, title, date, status, duedate, description, todos) =>
   async (dispatch, getState) => {
-    const { userId } = getState().auth;
-
     try {
+      const { userId } = getState().auth;
+
+      dispatch({ type: 'ERROR_CLEARED' });
+
       const response = await axios.patch(`/api/tasks/${id}`, {
         title,
         date,
@@ -105,9 +113,10 @@ export const updateTask =
     } catch (err) {
       console.log(err);
       dispatch({
-        type: 'RECEIVE_DATA_FAILED',
+        type: 'UPDATE_DATA_FAILED',
         payload: {
-          message: 'Something went wrong. Could not update data.',
+          message:
+            'Something went wrong :( Could not update data. Please try again.',
         },
       });
     }
@@ -118,6 +127,7 @@ export const deleteTask = (id) => async (dispatch, getState) => {
     const { userId } = getState().auth;
 
     dispatch({ type: 'REQUEST_DATA' });
+    dispatch({ type: 'ERROR_CLEARED' });
 
     const response = await axios.delete(`/api/tasks/${id}`);
     dispatch({
@@ -127,10 +137,51 @@ export const deleteTask = (id) => async (dispatch, getState) => {
   } catch (err) {
     console.log(err);
     dispatch({
-      type: 'RECEIVE_DATA_FAILED',
+      type: 'DELETE_DATA_FAILED',
       payload: {
-        message: 'Something went wrong. Could not delete a project.',
+        message:
+          'Something went wrong :( Could not delete a project. Please try again.',
       },
     });
   }
+};
+
+export const createError = () => {
+  history.push(`/formcreate`);
+
+  return {
+    type: 'ERROR_CREATED',
+    payload: {
+      message:
+        'Something went wrong :( Could not create a new project. Please check if you fill in all required fields: "Title", "Date created", "Status", "Due Date", "Description',
+    },
+  };
+};
+
+export const createEditError = (id) => {
+  history.push(`/formedit/${id}`);
+
+  return {
+    type: 'ERROR_CREATED',
+    payload: {
+      message:
+        'Something went wrong :( Could not update the project. Please check if you fill in all required fields: "Title", "Date created", "Status", "Due Date", "Description',
+    },
+  };
+};
+
+export const clearError = () => {
+  history.push(`/formcreate`);
+
+  return {
+    type: 'ERROR_CLEARED',
+  };
+};
+
+export const clearEditError = (id) => {
+  history.push(`/formedit/${id}`);
+
+  return {
+    type: 'ERROR_CLEARED',
+  };
 };

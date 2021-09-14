@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import * as IoIcons from 'react-icons/io5';
 import * as GrIcons from 'react-icons/gr';
 import * as CgIcons from 'react-icons/cg';
-import { createTask } from '../../actions/index';
+import { createTask, createError, clearError } from '../../actions/index';
 import TodoForm from './TodoForm';
 import styles from './FormCreate.module.css';
 
-const FormCreate = ({ createTask }) => {
+const FormCreate = ({ createTask, createError, clearError, isError }) => {
   const history = useHistory();
   const [title, setTitle] = useState('');
   const [month, setMonth] = useState('-');
@@ -20,6 +20,7 @@ const FormCreate = ({ createTask }) => {
   const [dueYear, setDueYear] = useState('-');
   const [description, setDescription] = useState('');
   const [todos, setTodos] = useState([]);
+  // const [error, setError] = useState(false);
 
   const months = [
     'January',
@@ -44,6 +45,20 @@ const FormCreate = ({ createTask }) => {
   const onFormCreate = (e) => {
     e.preventDefault();
 
+    if (
+      !title ||
+      month === '-' ||
+      date === '-' ||
+      year === '-' ||
+      dueMonth === '-' ||
+      dueDate === '-' ||
+      dueYear === '-' ||
+      !description
+    ) {
+      createError();
+      return;
+    }
+
     const monthdate = [month, date].join(' ');
     const createdate = [monthdate, year].join(', ');
 
@@ -52,6 +67,10 @@ const FormCreate = ({ createTask }) => {
 
     createTask(title, createdate, status, duedate, description, todos);
     history.push(`/`);
+  };
+
+  const handleError = () => {
+    clearError();
   };
 
   const addTodo = (input) => {
@@ -71,6 +90,17 @@ const FormCreate = ({ createTask }) => {
     setTodos(updatedTodos);
   };
 
+  if (isError?.status) {
+    return (
+      <div className={styles.form}>
+        <p className={styles.error}>{isError.errorMessage}</p>
+        <button className={styles.errorbtn} onClick={handleError}>
+          Create again
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.form}>
       <h1 className={styles.newproject}>New Project</h1>
@@ -82,6 +112,7 @@ const FormCreate = ({ createTask }) => {
               type="text"
               value={title}
               placeholder="Title"
+              required="required"
               onChange={(e) => setTitle(e.target.value)}
             />
           </div>
@@ -89,12 +120,13 @@ const FormCreate = ({ createTask }) => {
           <div className={styles.date}>
             <label className={styles.label}>
               <IoIcons.IoTimeOutline className={styles.icon} />
-              Date created
+              Date created *
             </label>
             <div className={styles.selectgroup}>
               <select
                 className={styles.select}
                 value={month}
+                required
                 onChange={(e) => setMonth(e.target.value)}
               >
                 <option>-</option>
@@ -105,6 +137,7 @@ const FormCreate = ({ createTask }) => {
               <select
                 className={styles.select}
                 value={date}
+                required
                 onChange={(e) => setDate(e.target.value)}
               >
                 <option>-</option>
@@ -115,6 +148,7 @@ const FormCreate = ({ createTask }) => {
               <select
                 className={styles.select}
                 value={year}
+                required
                 onChange={(e) => setYear(e.target.value)}
               >
                 <option>-</option>
@@ -128,12 +162,13 @@ const FormCreate = ({ createTask }) => {
           <div className={styles.status}>
             <label className={styles.label}>
               <GrIcons.GrStatusPlaceholderSmall className={styles.icon} />
-              Status
+              Status *
             </label>
             <div className={styles.selectgroup}>
               <select
                 className={styles.select}
                 value={status}
+                required
                 onChange={(e) => setStatus(e.target.value)}
               >
                 <option value="No Status">No Status</option>
@@ -146,12 +181,13 @@ const FormCreate = ({ createTask }) => {
           <div className={styles.duedate}>
             <label className={styles.label}>
               <CgIcons.CgCalendarDue className={styles.icon} />
-              Due Date
+              Due Date *
             </label>
             <div className={styles.selectgroup}>
               <select
                 className={styles.select}
                 value={dueMonth}
+                required
                 onChange={(e) => setDueMonth(e.target.value)}
               >
                 <option>-</option>
@@ -162,6 +198,7 @@ const FormCreate = ({ createTask }) => {
               <select
                 className={styles.select}
                 value={dueDate}
+                required
                 onChange={(e) => setDueDate(e.target.value)}
               >
                 <option>-</option>
@@ -172,6 +209,7 @@ const FormCreate = ({ createTask }) => {
               <select
                 className={styles.select}
                 value={dueYear}
+                required
                 onChange={(e) => setDueYear(e.target.value)}
               >
                 <option>-</option>
@@ -184,10 +222,11 @@ const FormCreate = ({ createTask }) => {
         </div>
 
         <div className={styles.description}>
-          <h2>Description</h2>
+          <h2>Description *</h2>
           <textarea
             className={styles.textarea}
             value={description}
+            required
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
@@ -202,6 +241,14 @@ const FormCreate = ({ createTask }) => {
   );
 };
 
-export default connect(null, {
+const mapStateToProps = (state) => {
+  return {
+    isError: state.error.isError,
+  };
+};
+
+export default connect(mapStateToProps, {
   createTask,
+  createError,
+  clearError,
 })(FormCreate);

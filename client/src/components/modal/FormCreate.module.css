@@ -228,3 +228,23 @@
     right: 2.5rem;
   }
 }
+
+.error {
+  font-size: 1.6rem;
+  line-height: 1.8rem;
+  margin-top: 2rem;
+}
+
+.errorbtn {
+  width: 30%;
+  margin: 4rem auto 0;
+  padding: 1rem 1.3rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #26864b;
+  cursor: pointer;
+}
+
+.errorbtn:hover {
+  background-color: #26864be5;
+}
