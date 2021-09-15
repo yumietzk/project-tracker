@@ -1,4 +1,5 @@
 .home {
+  max-width: 144rem;
   width: 95vw;
   display: flex;
 }
