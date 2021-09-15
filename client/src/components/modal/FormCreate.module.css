@@ -144,12 +144,6 @@
   color: #cfcfcf;
 }
 
-.select {
-  font-size: 1.2rem;
-  padding: 0.5rem 0.7rem;
-  border: none;
-}
-
 .label {
   flex: 0 1 12rem;
   font-size: 1.2rem;
@@ -164,16 +158,26 @@
   }
 }
 
+.icon {
+  margin-right: 0.5rem;
+  font-size: 1.3rem;
+}
+
 .selectgroup {
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
-.icon {
-  margin-right: 0.5rem;
-  font-size: 1.3rem;
+.select {
+  font-size: 1.2rem;
+  padding: 0.5rem 0.7rem;
+  border: none;
+}
+
+.select:not(:last-child) {
+  margin-right: 1rem;
 }
 
 .description {
