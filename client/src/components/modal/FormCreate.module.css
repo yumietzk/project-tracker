@@ -72,10 +72,14 @@
   flex: 1;
   padding: 1rem;
   position: relative;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .overview {
-  margin-bottom: 3rem;
+  flex: 0 1 10%;
+  margin-bottom: 1rem;
 }
 
 .title,
@@ -181,6 +185,7 @@
 }
 
 .description {
+  flex: 0 1 15%;
   margin-bottom: 1.8rem;
 }
 
@@ -214,9 +219,8 @@
 }
 
 .btn {
-  position: absolute;
-  bottom: 1.5rem;
-  right: 1.5rem;
+  flex: 0 1 3rem;
+  align-self: flex-end;
   border: none;
   padding: 1rem 1.5rem;
   background-color: #26864b;

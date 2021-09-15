@@ -38,7 +38,9 @@ const TodoForm = ({ todos, addTodo, deleteTodo }) => {
         </button>
       </div>
 
-      <TodoList todos={todos} onDelete={handleDelete} />
+      <div className={styles.todolists}>
+        <TodoList todos={todos} onDelete={handleDelete} />
+      </div>
     </div>
   );
 };

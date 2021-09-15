@@ -32,11 +32,13 @@ const TodoFormEdit = ({ todos, handleCheck, addTodo, deleteTodo }) => {
         </button>
       </div>
 
-      <TodoListEdit
-        todos={todos}
-        handleCheck={handleCheck}
-        deleteTodo={deleteTodo}
-      />
+      <div className={styles.todolists}>
+        <TodoListEdit
+          todos={todos}
+          handleCheck={handleCheck}
+          deleteTodo={deleteTodo}
+        />
+      </div>
     </div>
   );
 };

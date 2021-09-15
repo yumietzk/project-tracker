@@ -72,10 +72,14 @@
   flex: 1;
   padding: 1rem;
   position: relative;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .overview {
-  margin-bottom: 3rem;
+  flex: 0 1 10%;
+  margin-bottom: 1rem;
 }
 
 .title,
@@ -181,6 +185,7 @@
 }
 
 .description {
+  flex: 0 1 15%;
   margin-bottom: 1.8rem;
 }
 
@@ -215,9 +220,9 @@
 }
 
 .btnform {
-  position: absolute;
-  bottom: 2rem;
-  right: 1.7rem;
+  flex: 0 1 3rem;
+  align-self: flex-end;
+
   display: flex;
   align-items: flex-end;
 }
@@ -247,23 +252,3 @@
   font-size: 2.5rem;
   cursor: pointer;
 }
-
-/* .error {
-  font-size: 3rem;
-  line-height: 1.8rem;
-  margin-top: 2rem;
-}
-
-.errorbtn {
-  width: 30%;
-  margin: 4rem auto 0;
-  padding: 1rem 1.3rem;
-  border: none;
-  border-radius: 3px;
-  background-color: #26864b;
-  cursor: pointer;
-}
-
-.errorbtn:hover {
-  background-color: #26864be5;
-} */

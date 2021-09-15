@@ -1,13 +1,28 @@
 .todoform {
+  flex: 1;
+  width: 90%;
   margin-bottom: 1.8rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* 800px */
+@media only screen and (max-width: 50em) {
+  .todoform {
+    width: 100%;
+  }
 }
 
 .todoform > h2 {
+  flex: 0 1 2.5rem;
   font-size: 1.7rem;
   margin-bottom: 0.5rem;
 }
 
 .todo {
+  flex: 0 1 2rem;
+
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
@@ -47,4 +62,9 @@
 .todobtn:hover {
   background-color: #f4f2f2;
   color: #101d2c91;
+}
+
+.todolists {
+  flex: 1;
+  overflow-y: scroll;
 }
