@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as IoIcons from 'react-icons/io5';
@@ -20,7 +20,6 @@ const FormCreate = ({ createTask, createError, clearError, isError }) => {
   const [dueYear, setDueYear] = useState('-');
   const [description, setDescription] = useState('');
   const [todos, setTodos] = useState([]);
-  // const [error, setError] = useState(false);
 
   const months = [
     'January',
@@ -41,6 +40,21 @@ const FormCreate = ({ createTask, createError, clearError, isError }) => {
     22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
   ];
   const years = [2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030];
+
+  useEffect(() => {
+    const setCurrentDate = () => {
+      const now = new Date();
+      const currentMonth = now.getMonth();
+      const currentDate = now.getDate();
+      const currentYear = now.getFullYear();
+
+      setMonth(months[currentMonth]);
+      setDate(currentDate);
+      setYear(currentYear);
+    };
+
+    setCurrentDate();
+  }, []);
 
   const onFormCreate = (e) => {
     e.preventDefault();
