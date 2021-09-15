@@ -95,10 +95,6 @@ const FormEdit = ({
     history.push(`/`);
   };
 
-  // const handleError = () => {
-  //   clearEditError(id);
-  // };
-
   const onFormDelete = (e) => {
     e.preventDefault();
 
@@ -134,17 +130,6 @@ const FormEdit = ({
     const updatedTodos = todos.filter((todo) => todo.id !== id);
     setTodos(updatedTodos);
   };
-
-  // if (isError?.status) {
-  //   return (
-  //     <div className={styles.form}>
-  //       <p className={styles.error}>{isError.errorMessage}</p>
-  //       <button className={styles.errorbtn} onClick={handleError}>
-  //         Update again
-  //       </button>
-  //     </div>
-  //   );
-  // }
 
   return (
     <div className={styles.form}>
