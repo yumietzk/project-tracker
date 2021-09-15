@@ -43,7 +43,7 @@ export const createTask =
         type: 'CREATE_DATA_FAILED',
         payload: {
           message:
-            'Something went wrong :( Could not create a new project. Please try again.',
+            'Something went wrong. Could not create a new project. Please try again.',
         },
       });
     }
@@ -66,8 +66,7 @@ export const fetchTasks = () => async (dispatch, getState) => {
     dispatch({
       type: 'RECEIVE_DATA_FAILED',
       payload: {
-        message:
-          'Something went wrong :( Could not get data. Please try again.',
+        message: 'Something went wrong. Could not get data. Please try again.',
       },
     });
   }
@@ -85,8 +84,7 @@ export const fetchTask = (id) => async (dispatch) => {
     dispatch({
       type: 'RECEIVE_DATA_FAILED',
       payload: {
-        message:
-          'Something went wrong :( Could not get data. Please try again.',
+        message: 'Something went wrong. Could not get data. Please try again.',
       },
     });
   }
@@ -119,7 +117,7 @@ export const updateTask =
         type: 'UPDATE_DATA_FAILED',
         payload: {
           message:
-            'Something went wrong :( Could not update data. Please try again.',
+            'Something went wrong. Could not update data. Please try again.',
         },
       });
     }
@@ -143,7 +141,7 @@ export const deleteTask = (id) => async (dispatch, getState) => {
       type: 'DELETE_DATA_FAILED',
       payload: {
         message:
-          'Something went wrong :( Could not delete a project. Please try again.',
+          'Something went wrong. Could not delete a project. Please try again.',
       },
     });
   }
@@ -156,7 +154,7 @@ export const createError = () => {
     type: 'ERROR_CREATED',
     payload: {
       message:
-        'Something went wrong :( Could not create a new project. Please check if you fill in all required fields: "Title", "Date created", "Status", "Due Date", "Description',
+        'Something went wrong. Could not create a new project. Please check if you fill in all required fields: "Title", "Date created", "Status", "Due Date", "Description',
     },
   };
 };
@@ -168,7 +166,7 @@ export const createEditError = (id) => {
     type: 'ERROR_CREATED',
     payload: {
       message:
-        'Something went wrong :( Could not update the project. Please check if you fill in all required fields: "Title", "Date created", "Status", "Due Date", "Description',
+        'Something went wrong. Could not update the project. Please check if you fill in all required fields: "Title", "Date created", "Status", "Due Date", "Description',
     },
   };
 };
