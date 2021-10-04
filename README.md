@@ -6,7 +6,7 @@
 
 
 A project tracker app built with MERN stack (Mongo DB, Express, React JS, Node.js).  
-I used Firebase for user authentication. After users log in, they can create a new project and manage it. This app allows users to show and manage all projects by status, all tasks and due dates of each projects for time management.  
+I used Firebase for user authentication. After users log in, they can create a new project and manage it. This app allows users to show and manage all projects by status and all tasks and due dates of each project for time management.  
 
 ### To log in  
 Use below login email and password, or sign in as a new user.  
