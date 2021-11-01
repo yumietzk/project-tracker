@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { Router, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signIn } from '../actions';
 import { auth } from '../firebase';
@@ -12,6 +12,7 @@ import ModalCreate from './modal/ModalCreate';
 import ModalEdit from './modal/ModalEdit';
 import SignUp from './SignUp';
 import Login from './Login';
+import history from '../history';
 import './App.css';
 
 const App = ({ signIn }) => {
@@ -29,7 +30,7 @@ const App = ({ signIn }) => {
 
   return (
     <div>
-      <BrowserRouter>
+      <Router history={history}>
         <Switch>
           <PrivateRoute path="/" exact component={Projects} />
           <PrivateRoute path="/tasks" component={Tasks} />
@@ -39,7 +40,7 @@ const App = ({ signIn }) => {
           <PublicRoute path="/signup" component={SignUp} />
           <PublicRoute path="/login" component={Login} />
         </Switch>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 };

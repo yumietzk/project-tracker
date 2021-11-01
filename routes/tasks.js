@@ -19,8 +19,10 @@ router.post('/', async (req, res) => {
     await task.save();
 
     const tasks = await Task.find();
+    // OK
     res.status(200).send(tasks);
   } catch (err) {
+    // Internal Server Error
     res.status(500).send('task create failed.');
   }
 });
@@ -29,8 +31,10 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
   try {
     const tasks = await Task.find();
+    // OK
     res.status(200).send(tasks);
   } catch (err) {
+    // Internal Server Error
     res.status(500).send(err.message);
   }
 });
@@ -62,8 +66,10 @@ router.patch('/:taskId', async (req, res) => {
     );
 
     const tasks = await Task.find();
+    // OK
     res.status(200).send(tasks);
   } catch (err) {
+    // Internal Server Error
     res.status(500).send(err.message);
   }
 });
@@ -74,8 +80,10 @@ router.delete('/:taskId', async (req, res) => {
     await Task.remove({ _id: req.params.taskId });
 
     const tasks = await Task.find();
+    // OK
     res.status(200).send(tasks);
   } catch (err) {
+    // Internal Server Error
     res.status(500).send(err.message);
   }
 });

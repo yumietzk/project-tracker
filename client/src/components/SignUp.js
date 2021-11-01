@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { auth } from '../firebase';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signIn } from '../actions';
+import history from '../history';
 import styles from './SignUp.module.css';
 
 const SignUp = ({ signIn }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const history = useHistory();
   const [error, setError] = useState('');
 
   const onSubmit = async (e) => {
