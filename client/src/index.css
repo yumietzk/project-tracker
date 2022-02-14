@@ -28,7 +28,7 @@ html {
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 300;
-  background-color: #f4f2f2;
+  background-color: #f1eeed;
   color: #101d2c;
   padding: 2rem;
   min-height: 100vh;
@@ -37,3 +37,22 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+/* COLORS */
+/* #F1EEED */
+/* #B6C9C9 */
+/* #0F2A29 */
+/* #274C4B */
+/* #5E5E5D */
+/* #45A3A4 */
+/* #BD413E */
+
+/* 2000px 125em */
+/* 1200px 75em */
+/* 800px 50em */
+/* 450px 28.125em */
+
+/*  */
+/* 600px 37.5em */
+/* 700px 43.75em */
+/* 300px 18.75em */
