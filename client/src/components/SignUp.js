@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signIn } from '../actions';
 import history from '../history';
+import Landing from './Landing';
 import styles from './SignUp.module.css';
 
 const SignUp = ({ signIn }) => {
@@ -31,7 +32,7 @@ const SignUp = ({ signIn }) => {
   };
 
   return (
-    <div className={styles.signup}>
+    <Landing>
       <h1 className={styles.title}>Sign Up</h1>
       <p className={styles.description}>
         Already have an account?
@@ -63,7 +64,7 @@ const SignUp = ({ signIn }) => {
         </div>
         <button className={styles.btn}>Sign up</button>
       </form>
-    </div>
+    </Landing>
   );
 };
 

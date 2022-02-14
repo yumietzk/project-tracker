@@ -29,9 +29,9 @@ body {
   font-family: 'Lato', sans-serif;
   font-weight: 300;
   background-color: #f1eeed;
-  color: #101d2c;
-  padding: 2rem;
-  min-height: 100vh;
+  color: #0f2a29;
+  /* height: 100vh;
+  width: 100vw; */
 
   display: flex;
   justify-content: center;

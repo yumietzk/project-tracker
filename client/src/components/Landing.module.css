@@ -1,0 +1,32 @@
+.landing {
+  display: flex;
+  align-items: center;
+
+  height: 100vh;
+  width: 100vw;
+}
+
+.landing-left {
+  flex: 0 1 55%;
+  height: 100%;
+  background-image: url(../images/login.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 90%;
+}
+
+.landing-right {
+  flex: 1;
+  height: 100%;
+  background-color: #fff;
+  color: #0f2a29;
+  padding: 15rem 4.5rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.right-container {
+  margin-top: auto;
+  margin-bottom: auto;
+}

@@ -1,28 +1,17 @@
-.signup {
-  background-color: #fff;
-  padding: 4rem 4.5rem;
-  border-radius: 5px;
-  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.2);
-  width: 40rem;
-
-  display: flex;
-  flex-direction: column;
-}
-
 .title {
   font-size: 2.8rem;
-  margin-bottom: 1rem;
-  color: #26864b;
+  margin-bottom: 3rem;
+  color: #274c4b;
 }
 
 .description {
   font-size: 1.3rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 4rem;
 }
 
 .link {
   margin-left: 0.7rem;
-  color: #1d49db;
+  color: #45a3a4;
 }
 
 .form {
@@ -33,7 +22,7 @@
 .input {
   display: flex;
   flex-direction: column;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   color: #101d2c;
 }
 
@@ -43,8 +32,9 @@
 }
 
 .inputbox {
+  height: 4rem;
   padding: 0.5rem 1rem;
-  border: 0.5px solid #8d9196;
+  border: 0.5px solid #5e5e5d;
   border-radius: 4px;
 }
 
@@ -54,7 +44,7 @@
 
 .btn {
   border: none;
-  background-color: #1d49db;
+  background-color: #45a3a4;
   padding: 1.5rem;
   color: #fff;
   border-radius: 5px;
@@ -65,5 +55,5 @@
 .error {
   font-size: 1.3rem;
   margin-bottom: 1.5rem;
-  color: #e21d1d;
+  color: #bd413e;
 }

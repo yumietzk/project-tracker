@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Routes } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signIn } from '../actions';
 import { auth } from '../firebase';
@@ -29,19 +29,21 @@ const App = ({ signIn }) => {
   }, []);
 
   return (
-    <div>
-      <BrowserRouter>
-        <Routes>
-          <PrivateRoute path="/" exact component={Projects} />
+    // <div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+        {/* <PrivateRoute path="/" exact component={Projects} />
           <PrivateRoute path="/tasks" component={Tasks} />
           <PrivateRoute path="/timemanage" component={TimeManage} />
           <PrivateRoute path="/formcreate" component={ModalCreate} />
           <PrivateRoute path="/formedit/:id" component={ModalEdit} />
           <PublicRoute path="/signup" component={SignUp} />
-          <PublicRoute path="/login" component={Login} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+          <PublicRoute path="/login" component={Login} /> */}
+      </Routes>
+    </BrowserRouter>
+    // </div>
   );
 };
 

@@ -3,11 +3,11 @@ import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const PrivateRoute = ({ isSignedIn, component, exact, path }) => {
-  return isSignedIn ? (
-    <Route exact={exact} path={path} component={component} />
-  ) : (
-    <Redirect to="/login" />
-  );
+  // return isSignedIn ? (
+  //   <Route exact={exact} path={path} component={component} />
+  // ) : (
+  //   <Redirect to="/login" />
+  // );
 };
 
 const mapStateToProps = (state) => {
