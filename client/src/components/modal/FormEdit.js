@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import * as IoIcons from 'react-icons/io5';
 import * as GrIcons from 'react-icons/gr';
 import * as CgIcons from 'react-icons/cg';
@@ -11,6 +10,7 @@ import {
   clearEditError,
 } from '../../actions';
 import TodoFormEdit from './TodoFormEdit';
+import history from '../../history';
 import styles from './FormEdit.module.css';
 
 const FormEdit = ({
@@ -28,7 +28,6 @@ const FormEdit = ({
   const splitduedate = task?.duedate.split(', ');
   const duemonthdate = splitduedate[0].split(' ');
 
-  const history = useHistory();
   const [title, setTitle] = useState(task?.title);
   const [month, setMonth] = useState(monthdate[0]);
   const [date, setDate] = useState(monthdate[1]);

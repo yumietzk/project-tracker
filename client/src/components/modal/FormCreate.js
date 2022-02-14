@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as IoIcons from 'react-icons/io5';
 import * as GrIcons from 'react-icons/gr';
 import * as CgIcons from 'react-icons/cg';
 import { createTask, createError, clearError } from '../../actions/index';
 import TodoForm from './TodoForm';
+import history from '../../history';
 import styles from './FormCreate.module.css';
 
 const FormCreate = ({ createTask, createError, clearError, isError }) => {
-  const history = useHistory();
   const [title, setTitle] = useState('');
   const [month, setMonth] = useState('-');
   const [date, setDate] = useState('-');

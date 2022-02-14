@@ -1,5 +1,9 @@
 import React, { useEffect } from 'react';
+<<<<<<< HEAD
 import { BrowserRouter, Routes } from 'react-router-dom';
+=======
+import { Router, Switch } from 'react-router-dom';
+>>>>>>> origin/master
 import { connect } from 'react-redux';
 import { signIn } from '../actions';
 import { auth } from '../firebase';
@@ -12,6 +16,7 @@ import ModalCreate from './modal/ModalCreate';
 import ModalEdit from './modal/ModalEdit';
 import SignUp from './SignUp';
 import Login from './Login';
+import history from '../history';
 import './App.css';
 
 const App = ({ signIn }) => {
@@ -29,8 +34,13 @@ const App = ({ signIn }) => {
 
   return (
     <div>
+<<<<<<< HEAD
       <BrowserRouter>
         <Routes>
+=======
+      <Router history={history}>
+        <Switch>
+>>>>>>> origin/master
           <PrivateRoute path="/" exact component={Projects} />
           <PrivateRoute path="/tasks" component={Tasks} />
           <PrivateRoute path="/timemanage" component={TimeManage} />
@@ -38,8 +48,13 @@ const App = ({ signIn }) => {
           <PrivateRoute path="/formedit/:id" component={ModalEdit} />
           <PublicRoute path="/signup" component={SignUp} />
           <PublicRoute path="/login" component={Login} />
+<<<<<<< HEAD
         </Routes>
       </BrowserRouter>
+=======
+        </Switch>
+      </Router>
+>>>>>>> origin/master
     </div>
   );
 };

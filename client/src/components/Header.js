@@ -1,16 +1,15 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as AiIcons from 'react-icons/ai';
 import { auth } from '../firebase';
 import { signOut } from '../actions';
 import * as BsIcons from 'react-icons/bs';
 import * as GrIcons from 'react-icons/gr';
+import history from '../history';
 import styles from './Header.module.css';
 
 const Header = ({ signOut, user }) => {
-  const history = useHistory();
-
   const onLogout = () => {
     auth.signOut();
     signOut();
