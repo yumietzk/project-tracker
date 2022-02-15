@@ -10,7 +10,7 @@
 
   display: grid;
   grid-template-columns: max-content 1fr;
-  grid-template-rows: 5rem 1fr;
+  grid-template-rows: 5.5rem 1fr;
 }
 
 /* 500px */
@@ -30,10 +30,8 @@
 } */
 
 .content {
-  /* flex: 1;
-  margin: 0.5rem;
-  margin-right: 0;
-  width: 100%; */
+  padding: 1rem;
+  padding-right: 0;
 }
 
 /* 500px */

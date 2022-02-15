@@ -1,7 +1,7 @@
 .header {
-  flex: 0 1 5.5rem;
+  /* flex: 0 1 5.5rem;
   width: 100%;
-  padding-right: 1rem;
+  padding-right: 1rem; */
 
   display: flex;
   justify-content: flex-end;
@@ -93,7 +93,7 @@
 
 .create {
   border: none;
-  background-color: #f06102;
+  background-color: #df4b14;
   border-radius: 3px;
   height: 2.5rem;
   width: 2.5rem;

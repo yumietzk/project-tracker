@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import * as AiIcons from 'react-icons/ai';
 import { fetchTasks } from '../../actions';
-import Home from '../Home';
+import Home from '../../components/Home';
 import TimeManageList from './TimeManageList';
 import styles from './TimeManage.module.css';
 

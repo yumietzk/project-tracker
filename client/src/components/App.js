@@ -7,7 +7,7 @@ import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import Projects from '../routes/projects/Projects';
 import Tasks from '../routes/tasks/Tasks';
-import TimeManage from './timemanage/TimeManage';
+import TimeManage from '../routes/timemanage/TimeManage';
 import ModalCreate from './modal/ModalCreate';
 import ModalEdit from './modal/ModalEdit';
 import SignUp from './SignUp';
@@ -33,7 +33,7 @@ const App = ({ signIn }) => {
     <BrowserRouter>
       <Routes>
         <Route
-          path="/signup"
+          path="signup"
           element={
             <PublicRoute>
               <SignUp />
@@ -41,7 +41,7 @@ const App = ({ signIn }) => {
           }
         />
         <Route
-          path="/login"
+          path="login"
           element={
             <PublicRoute>
               <Login />
@@ -57,7 +57,7 @@ const App = ({ signIn }) => {
           }
         />
         <Route
-          path="/tasks"
+          path="tasks"
           element={
             <PrivateRoute>
               <Tasks />
@@ -65,7 +65,7 @@ const App = ({ signIn }) => {
           }
         />
         <Route
-          path="/timemanage"
+          path="timemanage"
           element={
             <PrivateRoute>
               <TimeManage />

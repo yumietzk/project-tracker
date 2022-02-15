@@ -1,6 +1,6 @@
 .logo {
   font-size: 3.5rem;
-  color: #bd413e;
+  color: #df4b14;
   margin-bottom: 3rem;
 }
 
@@ -19,7 +19,7 @@
 
 .link {
   margin-left: 0.7rem;
-  color: #274c4b;
+  color: #243242;
 }
 
 .form {
@@ -31,7 +31,7 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 3rem;
-  color: #0f2a29;
+  color: inherit;
 }
 
 .label {
@@ -54,7 +54,7 @@
   border: none;
   background-color: #274c4b;
   padding: 1.5rem;
-  color: #fff;
+  color: #f6f5f4;
   border-radius: 5px;
   margin-top: 3rem;
   cursor: pointer;
@@ -63,5 +63,5 @@
 .error {
   font-size: 1.3rem;
   margin-bottom: 1.5rem;
-  color: #bd413e;
+  color: #ff2b1d;
 }

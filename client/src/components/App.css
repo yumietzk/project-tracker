@@ -27,9 +27,9 @@ html {
 
 body {
   font-family: 'Lato', sans-serif;
-  font-weight: 300;
-  background-color: #f1eeed;
-  color: #0f2a29;
+  font-weight: 400;
+  background-color: #f6f5f4;
+  color: #243242;
   /* height: 100vh;
   width: 100vw; */
 
@@ -39,13 +39,21 @@ body {
 }
 
 /* COLORS */
-/* #F1EEED */
-/* #B6C9C9 */
-/* #0F2A29 */
-/* #274C4B */
-/* #5E5E5D */
-/* #45A3A4 */
-/* #BD413E */
+/* #F6F5F4 */
+/* #D5C6B9 */
+/* #C3B8A6 */
+/* #949686 */
+/* #ADC8C8 */
+/* #243242 */
+/* #274c4b */
+/* #DF4B14 */
+/* sub */
+/* #1725A4 */
+/* #016D15 */
+/* error color */
+/* #FF2B1D */
+/* sub */
+/* #E83A30 */
 
 /* 2000px 125em */
 /* 1200px 75em */
