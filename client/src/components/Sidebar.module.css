@@ -1,23 +1,29 @@
 .sidebar {
-  flex: 0 0 20%;
+  grid-row: 1 / -1;
+  background-color: #fff;
+  border-radius: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  /* flex: 0 0 20%;
   background-color: #fff;
   min-height: 100vh;
   margin-right: 0.5rem;
   border-radius: 1rem;
 
   display: flex;
-  flex-direction: column;
+  flex-direction: column; */
 }
 
 /* 500px */
-@media only screen and (max-width: 31.25em) {
+/* @media only screen and (max-width: 31.25em) {
   .sidebar {
     flex: 0 1 10%;
     min-height: 10%;
     align-items: flex-start;
     background-color: transparent;
   }
-}
+} */
 
 .logo {
   flex: 0 1 6rem;

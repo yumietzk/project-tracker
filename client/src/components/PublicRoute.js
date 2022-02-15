@@ -1,12 +1,12 @@
-import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const PublicRoute = ({ isSignedIn, component, exact, path }) => {
+const PublicRoute = ({ children, isSignedIn }) => {
+  return !isSignedIn ? children : <Navigate to="/" />;
   // return !isSignedIn ? (
-  //   <Route exact={exact} path={path} component={component} />
+  //   <Route exact={exact} path={path} element={element} />
   // ) : (
-  //   <Redirect to="/" />
+  //   <Navigate to="/" />
   // );
 };
 

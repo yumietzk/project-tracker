@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as AiIcons from 'react-icons/ai';
 import { fetchTasks } from '../../actions';
-import Home from '../Home';
+import Home from '../../components/Home';
 import List from './List';
 import styles from './Projects.module.css';
 

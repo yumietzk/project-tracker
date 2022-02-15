@@ -5,8 +5,8 @@ import { signIn } from '../actions';
 import { auth } from '../firebase';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
-import Projects from './projects/Projects';
-import Tasks from './tasks/Tasks';
+import Projects from '../routes/projects/Projects';
+import Tasks from '../routes/tasks/Tasks';
 import TimeManage from './timemanage/TimeManage';
 import ModalCreate from './modal/ModalCreate';
 import ModalEdit from './modal/ModalEdit';
@@ -32,11 +32,47 @@ const App = ({ signIn }) => {
     // <div>
     <BrowserRouter>
       <Routes>
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
-        {/* <PrivateRoute path="/" exact component={Projects} />
-          <PrivateRoute path="/tasks" component={Tasks} />
-          <PrivateRoute path="/timemanage" component={TimeManage} />
+        <Route
+          path="/signup"
+          element={
+            <PublicRoute>
+              <SignUp />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <Projects />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/tasks"
+          element={
+            <PrivateRoute>
+              <Tasks />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/timemanage"
+          element={
+            <PrivateRoute>
+              <TimeManage />
+            </PrivateRoute>
+          }
+        />
+        {/* 
           <PrivateRoute path="/formcreate" component={ModalCreate} />
           <PrivateRoute path="/formedit/:id" component={ModalEdit} />
           <PublicRoute path="/signup" component={SignUp} />

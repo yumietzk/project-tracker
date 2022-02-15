@@ -7,10 +7,10 @@ const Home = ({ children }) => {
   return (
     <div className={styles.home}>
       <Sidebar />
-      <div className={styles.main}>
-        <Header />
-        <div className={styles.content}>{children}</div>
-      </div>
+      {/* <div className={styles.main}> */}
+      <Header />
+      <div className={styles.content}>{children}</div>
+      {/* </div> */}
     </div>
   );
 };
