@@ -1,19 +1,27 @@
-import React from 'react';
-import TodoEdit from './TodoEdit';
+import React, { useEffect, useState } from 'react';
+import styles from './TodoEdit.module.css';
 
-const TodoListEdit = ({ todos, handleCheck, deleteTodo }) => {
-  if (!todos || todos.length === 0) return null;
+const TodoListEdit = ({ todo, handleCheck }) => {
+  // const { id, value, todoChecked } = todo;
+  const [checked, setChecked] = useState(todo?.todoChecked);
 
-  return todos?.map((todo, i) => {
-    return (
-      <TodoEdit
-        todo={todo}
-        handleCheck={handleCheck}
-        deleteTodo={deleteTodo}
-        key={i}
-      />
-    );
-  });
+  useEffect(() => {
+    setChecked(todo?.todoChecked);
+  }, [todo]);
+
+  const onCheck = () => {
+    setChecked(!checked);
+    handleCheck(todo?.id, !checked);
+  };
+
+  return (
+    <input
+      className={styles.checkbox}
+      type="checkbox"
+      checked={checked}
+      onChange={onCheck}
+    />
+  );
 };
 
 export default TodoListEdit;

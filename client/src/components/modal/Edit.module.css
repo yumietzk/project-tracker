@@ -1,0 +1,42 @@
+.btns {
+  display: flex;
+  align-items: flex-end;
+}
+
+/* 500px */
+@media only screen and (max-width: 31.25em) {
+  .btns {
+    bottom: 2.5rem;
+    right: 2.5rem;
+  }
+}
+
+.update {
+  flex: 1;
+  border: none;
+  padding: 1.5rem 1.5rem;
+  background-color: #243242;
+  color: #fff;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.update:hover {
+  background-color: #36414d;
+}
+
+.delete {
+  flex: 0 1 3rem;
+  background: none;
+  border: none;
+  font-size: 3rem;
+  color: #ff2b1d;
+  margin-left: 0.3rem;
+  margin-right: -0.3rem;
+  cursor: pointer;
+}
+
+.delete:hover {
+  color: #ff4335;
+}

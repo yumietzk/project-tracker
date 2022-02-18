@@ -1,12 +1,16 @@
 export default (state = { isFetching: false }, action) => {
   switch (action.type) {
-    case 'REQUEST_DATA':
-      return { ...state, isFetching: true };
-
     case 'CREATE_TASK':
-    case 'RECEIVE_TASKS':
+    case 'REQUEST_TASKS':
+    case 'REQUEST_TASK':
     case 'UPDATE_TASK':
     case 'DELETE_TASK':
+      return { ...state, isFetching: true };
+
+    case 'CREATED_TASK':
+    case 'RECEIVED_TASKS':
+    case 'UPDATED_TASK':
+    case 'DELETED_TASK':
       const data = action.payload.data.filter(
         (data) => data.userId === action.payload.userId
       );

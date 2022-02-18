@@ -8,11 +8,11 @@ import PublicRoute from './PublicRoute';
 import Projects from '../routes/projects/Projects';
 import Tasks from '../routes/tasks/Tasks';
 import TimeManage from '../routes/timemanage/TimeManage';
-import ModalCreate from './modal/ModalCreate';
-import ModalEdit from './modal/ModalEdit';
+// import ModalCreate from './modal/ModalCreate';
+// import ModalEdit from './modal/ModalEdit';
 import SignUp from './SignUp';
 import Login from './Login';
-import history from '../history';
+// import history from '../history';
 import './App.css';
 
 const App = ({ signIn }) => {
@@ -74,9 +74,7 @@ const App = ({ signIn }) => {
         />
         {/* 
           <PrivateRoute path="/formcreate" component={ModalCreate} />
-          <PrivateRoute path="/formedit/:id" component={ModalEdit} />
-          <PublicRoute path="/signup" component={SignUp} />
-          <PublicRoute path="/login" component={Login} /> */}
+          <PrivateRoute path="/formedit/:id" component={ModalEdit} /> */}
       </Routes>
     </BrowserRouter>
     // </div>

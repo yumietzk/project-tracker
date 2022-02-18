@@ -101,6 +101,11 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  transition: all 0.3s;
+}
+
+.create:hover {
+  background-color: #df5d2f;
 }
 
 .createicon {

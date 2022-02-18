@@ -9,7 +9,7 @@ import * as GrIcons from 'react-icons/gr';
 import history from '../history';
 import styles from './Header.module.css';
 
-const Header = ({ signOut, user }) => {
+const Header = ({ handleFormCreate, signOut, user }) => {
   const onLogout = () => {
     auth.signOut();
     signOut();
@@ -27,9 +27,12 @@ const Header = ({ signOut, user }) => {
           <p>LOGOUT</p>
           <GrIcons.GrLogout className={styles.logouticon} />
         </button>
-        <Link to="/formcreate" className={styles.create}>
+        <div className={styles.create} onClick={handleFormCreate}>
           <BsIcons.BsPlus className={styles.createicon} />
-        </Link>
+        </div>
+        {/* <Link to="/formcreate" className={styles.create}>
+          <BsIcons.BsPlus className={styles.createicon} />
+        </Link> */}
       </div>
     </div>
   );

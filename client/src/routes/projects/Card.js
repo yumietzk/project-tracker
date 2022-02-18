@@ -7,8 +7,15 @@ import * as IoIcons from 'react-icons/io5';
 import { deleteTask } from '../../actions';
 import styles from './Card.module.css';
 
-const Card = ({ deleteTask, id, title, description, duedate }) => {
-  const onClick = (id) => {
+const Card = ({
+  handleFormEdit,
+  deleteTask,
+  id,
+  title,
+  description,
+  duedate,
+}) => {
+  const handleDelete = (id) => {
     deleteTask(id);
   };
 
@@ -20,9 +27,9 @@ const Card = ({ deleteTask, id, title, description, duedate }) => {
     <div className={styles.card}>
       <h3 className={styles.title}>
         {title || '(No title)'}
-        <Link to={`/formedit/${id}`} className={styles.btn}>
+        <div className={styles.btn} onClick={() => handleFormEdit(id)}>
           <BsIcons.BsThreeDots className={styles.btnicon} />
-        </Link>
+        </div>
       </h3>
       <p className={styles.description}>
         {truncate(description, 150) || '(no description)'}
@@ -32,7 +39,7 @@ const Card = ({ deleteTask, id, title, description, duedate }) => {
           <CgIcons.CgCalendarDue className={styles.dateicon} />
           {duedate || '(no due date)'}
         </p>
-        <button className={styles.delete} onClick={() => onClick(id)}>
+        <button className={styles.delete} onClick={() => handleDelete(id)}>
           <IoIcons.IoTrashOutline />
         </button>
       </div>

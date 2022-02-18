@@ -11,6 +11,7 @@
   display: grid;
   grid-template-columns: max-content 1fr;
   grid-template-rows: 5.5rem 1fr;
+  position: relative;
 }
 
 /* 500px */
@@ -40,3 +41,32 @@
     margin-top: 1rem;
   }
 } */
+
+.hidden {
+  display: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 85%;
+  width: 40%;
+  background-color: #fff;
+  border-radius: 2.5rem;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  padding: 3.5rem 4.5rem;
+  z-index: 10;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(148, 150, 134, 0.425);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+}

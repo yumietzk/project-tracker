@@ -1,4 +1,4 @@
-.todolist {
+.list {
   margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
@@ -22,7 +22,7 @@
 }
 
 .icon:hover {
-  color: red;
+  color: #ff2b1d;
 }
 
 .text {

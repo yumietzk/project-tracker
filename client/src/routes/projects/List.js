@@ -2,11 +2,12 @@ import React from 'react';
 import Card from './Card';
 import styles from './List.module.css';
 
-const List = ({ label, data }) => {
+const List = ({ handleFormEdit, label, data }) => {
   const renderCard = () => {
     return data?.map((item) => {
       return (
         <Card
+          handleFormEdit={handleFormEdit}
           id={item._id}
           title={item.title}
           description={item.description}
