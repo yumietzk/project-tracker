@@ -8,17 +8,17 @@ export default (
     case 'RECEIVE_TASK_FAILED':
     case 'UPDATE_TASK_FAILED':
     case 'DELETE_TASK_FAILED':
-    case 'ERROR_CREATED':
+      // case 'ERROR_CREATED':
       return {
         ...state,
         isError: { status: true, errorMessage: action.payload.message },
       };
 
-    case 'ERROR_CLEARED':
-      return {
-        ...state,
-        isError: { status: false, errorMessage: null },
-      };
+    // case 'ERROR_CLEARED':
+    //   return {
+    //     ...state,
+    //     isError: { status: false, errorMessage: null },
+    //   };
 
     default:
       return state;

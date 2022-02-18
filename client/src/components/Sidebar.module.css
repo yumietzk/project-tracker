@@ -1,7 +1,7 @@
 .sidebar {
   grid-row: 1 / -1;
   background-color: #fff;
-  border-radius: 1rem;
+  border-radius: 1.5rem;
 
   display: flex;
   flex-direction: column;

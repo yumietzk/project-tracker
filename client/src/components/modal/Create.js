@@ -1,19 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createTask, createError, clearError } from '../../actions/index';
 import ToDo from './ToDo';
 import styles from './Create.module.css';
 
 const Create = ({ todos, setTodos, isError }) => {
   // fetching中の記載はどこ？
-  if (isError?.status) {
-    return (
-      <div className={styles.form}>
-        <p className={styles.error}>{isError.errorMessage}</p>
-        <button className={styles.errorbtn}>Create again</button>
-      </div>
-    );
-  }
+  // if (isError?.status) {
+  //   return (
+  //     <div className={styles.form}>
+  //       <p className={styles.error}>{isError.errorMessage}</p>
+  //       <button className={styles.errorbtn}>Create again</button>
+  //     </div>
+  //   );
+  // }
 
   return (
     <React.Fragment>
@@ -25,14 +24,16 @@ const Create = ({ todos, setTodos, isError }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    isError: state.error.isError,
-  };
-};
+// const mapStateToProps = (state) => {
+//   return {
+//     isError: state.error.isError,
+//   };
+// };
 
-export default connect(mapStateToProps, {
-  createTask,
-  createError,
-  clearError,
-})(Create);
+// export default connect(mapStateToProps, {
+//   createTask,
+//   createError,
+//   clearError,
+// })(Create);
+
+export default Create;

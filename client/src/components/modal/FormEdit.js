@@ -46,7 +46,7 @@ const FormEdit = ({
   };
 
   const renderForm = () => {
-    if (isFetching) {
+    if (isFetching || !data) {
       return <LoadingIndicator />;
     }
 

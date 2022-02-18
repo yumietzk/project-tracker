@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as AiIcons from 'react-icons/ai';
 import { fetchTasks } from '../../actions';
 import List from './List';
+import LoadingIndicator from '../../helpers/LoadingIndicator';
 import styles from './ProjectsContent.module.css';
 
 const ProjectsContent = ({
@@ -16,54 +17,60 @@ const ProjectsContent = ({
     fetchTasks();
   }, []);
 
-  const noStatus = [];
-  const inProgress = [];
-  const completed = [];
+  let noStatus = [];
+  let inProgress = [];
+  let completed = [];
 
-  if (isFetching || !tasks) {
-    return (
-      <div className={styles.loading}>
-        <AiIcons.AiOutlineLoading3Quarters className={styles.icon} />
-      </div>
-    );
-  }
+  const renderContent = () => {
+    if (isFetching || !tasks) {
+      return <LoadingIndicator />;
+    }
 
-  if (isError?.status) {
-    return <p>{isError.errorMessage}</p>;
-  }
+    if (isError?.status) {
+      return <p>{isError.errorMessage}</p>;
+    }
 
-  if (tasks.length === 0) {
-    return (
-      <div className={styles.message}>
-        <p>
-          No projects yet. Create a new project by clicking add button on top
-          right and manage it :)
-        </p>
-      </div>
-    );
-  }
+    if (tasks) {
+      if (tasks.length === 0) {
+        return (
+          <div className={styles.message}>
+            <p>
+              No projects yet. Create a new project by clicking add button on
+              top right and manage it :)
+            </p>
+          </div>
+        );
+      } else {
+        tasks.map((task) => {
+          if (task.status === 'No Status') noStatus.push(task);
+          if (task.status === 'In Progress') inProgress.push(task);
+          if (task.status === 'Completed') completed.push(task);
+        });
 
-  tasks?.map((task) => {
-    if (task.status === 'No Status') noStatus.push(task);
-    if (task.status === 'In Progress') inProgress.push(task);
-    if (task.status === 'Completed') completed.push(task);
-  });
+        return (
+          <div className={styles.projects}>
+            <List
+              handleFormEdit={handleFormEdit}
+              label="No Status"
+              data={noStatus}
+            />
+            <List
+              handleFormEdit={handleFormEdit}
+              label="In Progress"
+              data={inProgress}
+            />
+            <List
+              handleFormEdit={handleFormEdit}
+              label="Completed"
+              data={completed}
+            />
+          </div>
+        );
+      }
+    }
+  };
 
-  return (
-    <div className={styles.projects}>
-      <List handleFormEdit={handleFormEdit} label="No Status" data={noStatus} />
-      <List
-        handleFormEdit={handleFormEdit}
-        label="In Progress"
-        data={inProgress}
-      />
-      <List
-        handleFormEdit={handleFormEdit}
-        label="Completed"
-        data={completed}
-      />
-    </div>
-  );
+  return renderContent();
 };
 
 const mapStateToProps = (state) => {
