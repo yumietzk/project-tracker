@@ -4,7 +4,7 @@ import styles from './TasksByProjects.module.css';
 
 const TasksByProjects = ({ data }) => {
   const renderProjects = () => {
-    if (!data || data.length === 0) {
+    if (data?.length === 0) {
       return <p className={styles.message}>No Tasks.</p>;
     }
 
