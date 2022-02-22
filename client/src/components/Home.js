@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
+import { Routes, Route, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchTask } from '../actions';
-import Header from './Header';
 import Sidebar from './Sidebar';
+import Header from './Header';
+import Projects from '../routes/projects/Projects';
+import Tasks from '../routes/tasks/Tasks';
+import TimeManage from '../routes/timemanage/TimeManage';
 import FormCreate from './modal/FormCreate';
 import FormEdit from './modal/FormEdit';
 import styles from './Home.module.css';
 
-const Home = ({ children, fetchTask }) => {
+const Home = ({ fetchTask }) => {
   const [isFormCreateOpen, setIsFormCreateOpen] = useState(false);
   const [isFormEditOpen, setIsFormEditOpen] = useState(false);
   const [id, setId] = useState(null);
+
+  const params = useParams();
+  const paramsArr = Object.values(params);
 
   const handleFormCreate = () => {
     setIsFormCreateOpen(true);
@@ -22,15 +29,21 @@ const Home = ({ children, fetchTask }) => {
     setIsFormEditOpen(true);
   };
 
-  const childElement = React.cloneElement(children, {
-    handleFormEdit: handleFormEdit,
-  });
-
   return (
     <div className={styles.home}>
-      <Sidebar />
+      <Sidebar currentPage={paramsArr[0]} />
       <Header handleFormCreate={handleFormCreate} />
-      <div className={styles.content}>{childElement}</div>
+
+      <div className={styles.content}>
+        <Routes>
+          <Route
+            path="/"
+            element={<Projects handleFormEdit={handleFormEdit} />}
+          />
+          <Route path="tasks" element={<Tasks />} />
+          <Route path="timemanage" element={<TimeManage />} />
+        </Routes>
+      </div>
 
       {/* modal */}
       <div

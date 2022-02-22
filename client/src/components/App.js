@@ -5,9 +5,10 @@ import { signIn } from '../actions';
 import { auth } from '../firebase';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
-import Projects from '../routes/projects/Projects';
-import Tasks from '../routes/tasks/Tasks';
-import TimeManage from '../routes/timemanage/TimeManage';
+import Home from './Home';
+// import Projects from '../routes/projects/Projects';
+// import Tasks from '../routes/tasks/Tasks';
+// import TimeManage from '../routes/timemanage/TimeManage';
 import SignUp from './SignUp';
 import Login from './Login';
 import './App.css';
@@ -45,26 +46,10 @@ const App = ({ signIn }) => {
           }
         />
         <Route
-          path="/"
+          path="/*"
           element={
             <PrivateRoute>
-              <Projects />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="tasks"
-          element={
-            <PrivateRoute>
-              <Tasks />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="timemanage"
-          element={
-            <PrivateRoute>
-              <TimeManage />
+              <Home />
             </PrivateRoute>
           }
         />
