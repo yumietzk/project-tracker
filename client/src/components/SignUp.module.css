@@ -14,44 +14,6 @@
   color: #243242;
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-}
-
-.input {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 3rem;
-  color: inherit;
-}
-
-.label {
-  margin-bottom: 1rem;
-  font-size: 1.3rem;
-}
-
-.inputbox {
-  height: 4rem;
-  padding: 0.5rem 1rem;
-  border: 0.5px solid #5e5e5d;
-  border-radius: 4px;
-}
-
-.inputbox:focus {
-  outline: none;
-}
-
-.btn {
-  border: none;
-  background-color: #df4b14;
-  padding: 1.5rem;
-  color: #f6f5f4;
-  border-radius: 5px;
-  margin-top: 2.8rem;
-  cursor: pointer;
-}
-
 .error {
   font-size: 1.3rem;
   margin-bottom: 1.5rem;

@@ -83,6 +83,10 @@
   background-color: #adc8c818;
 }
 
+.selected::after {
+  transform: scaleY(1);
+}
+
 .icon {
   margin-right: 1rem;
   font-size: 1.6rem;

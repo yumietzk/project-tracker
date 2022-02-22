@@ -4,16 +4,15 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signIn } from '../actions';
 import Landing from './Landing';
+import LandingForm from './LandingForm';
 import history from '../history';
 import styles from './Login.module.css';
 
 const Login = ({ signIn }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = async (values) => {
+    const { email, password } = values;
 
     try {
       await auth.signInWithEmailAndPassword(email, password);
@@ -41,31 +40,10 @@ const Login = ({ signIn }) => {
           </Link>
         </p>
       </div>
-      {error && <p className={styles.error}>{error}</p>}
-      <form className={styles.form} onSubmit={onSubmit}>
-        <div className={styles.input}>
-          <label className={styles.label}>Email</label>
-          <input
-            className={styles.inputbox}
-            name="email"
-            type="email"
-            required="required"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className={styles.input}>
-          <label className={styles.label}>Password</label>
-          <input
-            className={styles.inputbox}
-            name="password"
-            type="password"
-            required="required"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
 
-        <button className={styles.btn}>Login</button>
-      </form>
+      {error && <p className={styles.error}>{error}</p>}
+
+      <LandingForm onSubmit={onSubmit} label="Login" />
     </Landing>
   );
 };

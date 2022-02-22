@@ -5,15 +5,14 @@ import { connect } from 'react-redux';
 import { signIn } from '../actions';
 import history from '../history';
 import Landing from './Landing';
+import LandingForm from './LandingForm';
 import styles from './SignUp.module.css';
 
 const SignUp = ({ signIn }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = async (values) => {
+    const { email, password } = values;
 
     try {
       await auth.createUserWithEmailAndPassword(email, password);
@@ -40,30 +39,10 @@ const SignUp = ({ signIn }) => {
           Login
         </Link>
       </p>
+
       {error && <p className={styles.error}>{error}</p>}
-      <form className={styles.form} onSubmit={onSubmit}>
-        <div className={styles.input}>
-          <label className={styles.label}>Email</label>
-          <input
-            className={styles.inputbox}
-            name="email"
-            type="email"
-            required="required"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className={styles.input}>
-          <label className={styles.label}>Password</label>
-          <input
-            className={styles.inputbox}
-            name="password"
-            type="password"
-            required="required"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button className={styles.btn}>Sign up</button>
-      </form>
+
+      <LandingForm onSubmit={onSubmit} label="Sign Up" />
     </Landing>
   );
 };

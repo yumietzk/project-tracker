@@ -1,0 +1,42 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+  color: inherit;
+}
+
+.label {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.inputbox {
+  height: 4rem;
+  padding: 0.5rem 1rem;
+  border: 0.5px solid #5e5e5d;
+  border-radius: 4px;
+}
+
+.inputbox:focus {
+  outline: none;
+}
+
+.btn {
+  border: none;
+  background-color: #274c4b;
+  padding: 1.5rem;
+  color: #f6f5f4;
+  border-radius: 5px;
+  margin-top: 3rem;
+  cursor: pointer;
+}
+
+.valid-error {
+  font-size: 1.2rem;
+  color: #ff2b1d;
+}
