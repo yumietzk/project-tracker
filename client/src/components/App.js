@@ -8,11 +8,8 @@ import PublicRoute from './PublicRoute';
 import Projects from '../routes/projects/Projects';
 import Tasks from '../routes/tasks/Tasks';
 import TimeManage from '../routes/timemanage/TimeManage';
-// import ModalCreate from './modal/ModalCreate';
-// import ModalEdit from './modal/ModalEdit';
 import SignUp from './SignUp';
 import Login from './Login';
-// import history from '../history';
 import './App.css';
 
 const App = ({ signIn }) => {
@@ -29,7 +26,6 @@ const App = ({ signIn }) => {
   }, []);
 
   return (
-    // <div>
     <BrowserRouter>
       <Routes>
         <Route
@@ -72,12 +68,8 @@ const App = ({ signIn }) => {
             </PrivateRoute>
           }
         />
-        {/* 
-          <PrivateRoute path="/formcreate" component={ModalCreate} />
-          <PrivateRoute path="/formedit/:id" component={ModalEdit} /> */}
       </Routes>
     </BrowserRouter>
-    // </div>
   );
 };
 

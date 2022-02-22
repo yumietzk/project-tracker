@@ -55,11 +55,11 @@
 }
 
 .nostatus::before {
-  background-color: #1d49db;
+  background-color: #e2d8cf;
 }
 
 .inprogress::before {
-  background-color: #26864b;
+  background-color: #df4b14;
 }
 
 .example {
