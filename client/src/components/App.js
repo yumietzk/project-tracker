@@ -5,12 +5,9 @@ import { signIn } from '../actions';
 import { auth } from '../firebase';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
-import Home from './Home';
-// import Projects from '../routes/projects/Projects';
-// import Tasks from '../routes/tasks/Tasks';
-// import TimeManage from '../routes/timemanage/TimeManage';
 import SignUp from './SignUp';
 import Login from './Login';
+import Home from './Home';
 import './App.css';
 
 const App = ({ signIn }) => {

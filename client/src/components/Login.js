@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { auth } from '../firebase';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signIn } from '../actions';
 import Landing from './Landing';
 import LandingForm from './LandingForm';
-import history from '../history';
 import styles from './Login.module.css';
 
 const Login = ({ signIn }) => {
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const onSubmit = async (values) => {
     const { email, password } = values;
@@ -21,7 +21,7 @@ const Login = ({ signIn }) => {
         signIn(user.uid, user.email);
       });
 
-      history.push('/');
+      navigate('/');
     } catch (err) {
       console.log(err);
       setError(err.message);

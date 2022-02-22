@@ -1,19 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as AiIcons from 'react-icons/ai';
 import { auth } from '../firebase';
 import { signOut } from '../actions';
 import * as BsIcons from 'react-icons/bs';
 import * as GrIcons from 'react-icons/gr';
-import history from '../history';
 import styles from './Header.module.css';
 
 const Header = ({ handleFormCreate, signOut, user }) => {
+  const navigate = useNavigate();
+
   const onLogout = () => {
     auth.signOut();
     signOut();
-    history.push('/login');
+    navigate('/login');
   };
 
   return (
@@ -30,9 +31,6 @@ const Header = ({ handleFormCreate, signOut, user }) => {
         <div className={styles.create} onClick={handleFormCreate}>
           <BsIcons.BsPlus className={styles.createicon} />
         </div>
-        {/* <Link to="/formcreate" className={styles.create}>
-          <BsIcons.BsPlus className={styles.createicon} />
-        </Link> */}
       </div>
     </div>
   );

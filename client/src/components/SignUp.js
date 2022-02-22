@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { auth } from '../firebase';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signIn } from '../actions';
-import history from '../history';
 import Landing from './Landing';
 import LandingForm from './LandingForm';
 import styles from './SignUp.module.css';
 
 const SignUp = ({ signIn }) => {
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const onSubmit = async (values) => {
     const { email, password } = values;
@@ -23,7 +23,7 @@ const SignUp = ({ signIn }) => {
         }
       });
 
-      history.push('/');
+      navigate('/');
     } catch (err) {
       console.log(err);
       setError(err.message);
