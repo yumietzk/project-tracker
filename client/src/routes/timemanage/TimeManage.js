@@ -5,7 +5,7 @@ import TimeManageList from './TimeManageList';
 import LoadingIndicator from '../../helpers/LoadingIndicator';
 import styles from './TimeManage.module.css';
 
-const TimeManageContent = ({ fetchTasks, tasks, isFetching, isError }) => {
+const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
   const [sort, setSort] = useState(false);
 
   useEffect(() => {
@@ -131,4 +131,4 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   fetchTasks,
-})(TimeManageContent);
+})(TimeManage);

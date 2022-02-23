@@ -6,6 +6,7 @@
 }
 
 .reference {
+  margin-top: 6rem;
   margin-bottom: 2rem;
 
   display: flex;
@@ -117,4 +118,8 @@
   align-items: center;
   padding-top: 8rem;
   font-size: 1.4rem;
+}
+
+.item-data {
+  color: #adc8c8;
 }

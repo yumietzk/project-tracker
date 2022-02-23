@@ -6,7 +6,8 @@ import Sidebar from './Sidebar';
 import Header from './Header';
 import Projects from '../routes/projects/Projects';
 import Tasks from '../routes/tasks/Tasks';
-import TimeManage from '../routes/timemanage/TimeManage';
+// import TimeManage from '../routes/timemanage/TimeManage';
+import TimeManageTimeline from '../routes/timemanage/TimeManageTimeline';
 import FormCreate from './modal/FormCreate';
 import FormEdit from './modal/FormEdit';
 import styles from './Home.module.css';
@@ -41,7 +42,7 @@ const Home = ({ fetchTask }) => {
             element={<Projects handleFormEdit={handleFormEdit} />}
           />
           <Route path="tasks" element={<Tasks />} />
-          <Route path="timemanage" element={<TimeManage />} />
+          <Route path="timemanage" element={<TimeManageTimeline />} />
         </Routes>
       </div>
 
