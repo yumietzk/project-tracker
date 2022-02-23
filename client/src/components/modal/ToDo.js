@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import * as BsIcons from 'react-icons/bs';
-import ToDoList from './ToDoList';
-import styles from './ToDo.module.css';
+import TodoList from './TodoList';
+import styles from './Todo.module.css';
 
-const ToDo = ({ todos, setTodos, edit }) => {
+const Todo = ({ todos, setTodos, edit }) => {
   const [input, setInput] = useState('');
 
   const addTodo = (input) => {
@@ -46,10 +46,10 @@ const ToDo = ({ todos, setTodos, edit }) => {
       </div>
 
       <div className={styles.lists}>
-        <ToDoList todos={todos} setTodos={setTodos} edit={edit} />
+        <TodoList todos={todos} setTodos={setTodos} edit={edit} />
       </div>
     </div>
   );
 };
 
-export default ToDo;
+export default Todo;

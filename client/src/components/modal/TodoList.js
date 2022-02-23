@@ -1,9 +1,9 @@
 import React from 'react';
 import * as IoIcons from 'react-icons/io5';
 import TodoListEdit from './TodoListEdit';
-import styles from './ToDoList.module.css';
+import styles from './TodoList.module.css';
 
-const ToDoList = ({ todos, setTodos, edit }) => {
+const TodoList = ({ todos, setTodos, edit }) => {
   const deleteTodo = (id) => {
     const updatedTodos = todos.filter((todo) => todo.id !== id);
     setTodos(updatedTodos);
@@ -49,4 +49,4 @@ const ToDoList = ({ todos, setTodos, edit }) => {
   });
 };
 
-export default ToDoList;
+export default TodoList;
