@@ -9,6 +9,10 @@
   flex-direction: column;
 }
 
+.card-dragged {
+  background-color: #d5c6b9;
+}
+
 .title {
   font-size: 1.5rem;
   margin-bottom: 1.2rem;

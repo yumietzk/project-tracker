@@ -1,4 +1,5 @@
 import React from 'react';
+import { Droppable } from 'react-beautiful-dnd';
 import Card from './Card';
 import styles from './List.module.css';
 
@@ -7,16 +8,13 @@ const List = ({ handleFormEdit, label, data }) => {
     if (data.length === 0) {
       return null;
     } else {
-      return data.map((item) => {
+      return data.map((item, i) => {
         return (
           <Card
             handleFormEdit={handleFormEdit}
-            // id={item._id}
-            // title={item.title}
-            // description={item.description}
-            // duedate={item.duedate}
             key={item._id}
             item={item}
+            index={i}
           />
         );
       });
@@ -28,7 +26,20 @@ const List = ({ handleFormEdit, label, data }) => {
       <h2 className={styles.title}>
         {label} ({data.length})
       </h2>
-      <div className={styles.cards}>{renderCard()}</div>
+      <Droppable droppableId={label}>
+        {(provided, snapshot) => (
+          <div
+            className={`${styles.cards} ${
+              snapshot.isDraggingOver && styles['cards-draggedOver']
+            }`}
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+          >
+            {renderCard()}
+            {provided.placeholder}
+          </div>
+        )}
+      </Droppable>
     </div>
   );
 };

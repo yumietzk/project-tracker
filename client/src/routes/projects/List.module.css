@@ -28,3 +28,7 @@
 .cards::-webkit-scrollbar {
   display: none;
 }
+
+.cards-draggedOver {
+  background-color: #d5c6b921;
+}

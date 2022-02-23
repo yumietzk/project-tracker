@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import * as AiIcons from 'react-icons/ai';
-import { fetchTasks } from '../../actions';
+import { DragDropContext } from 'react-beautiful-dnd';
+import { fetchTasks, updateTask } from '../../actions';
 import List from './List';
 import LoadingIndicator from '../../helpers/LoadingIndicator';
 import styles from './Projects.module.css';
@@ -9,17 +9,81 @@ import styles from './Projects.module.css';
 const Projects = ({
   handleFormEdit,
   fetchTasks,
+  updateTask,
   tasks,
   isFetching,
   isError,
 }) => {
+  const [dataArr, setDataArr] = useState({
+    noStatus: [],
+    inProgress: [],
+    completed: [],
+  });
+
   useEffect(() => {
     fetchTasks();
   }, []);
 
-  let noStatus = [];
-  let inProgress = [];
-  let completed = [];
+  useEffect(() => {
+    if (tasks && tasks.length !== 0) {
+      let noStatus = [];
+      let inProgress = [];
+      let completed = [];
+
+      tasks.map((task) => {
+        if (task.status === 'No Status') noStatus.push(task);
+        if (task.status === 'In Progress') inProgress.push(task);
+        if (task.status === 'Completed') completed.push(task);
+      });
+
+      setDataArr({
+        ...dataArr,
+        noStatus: noStatus,
+        inProgress: inProgress,
+        completed: completed,
+      });
+    }
+  }, [tasks]);
+
+  const onDragEnd = (result) => {
+    const { destination, source, draggableId } = result;
+    console.log(result);
+
+    if (!destination) return;
+    // sorting among list might be implemented later
+    if (destination.droppableId === source.droppableId) return;
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    )
+      return;
+
+    const targetTask = tasks.find((task) => task._id === draggableId);
+    const { _id: id, title, date, duedate, description, todos } = targetTask;
+
+    // when changing status
+    if (destination.droppableId !== source.droppableId) {
+      updateTask(
+        id,
+        title,
+        date,
+        destination.droppableId,
+        duedate,
+        description,
+        todos
+      );
+
+      // For now, sorting among list is not implemented.
+      // let targetArr;
+      // if (destination.droppableId === 'No Status') {
+      //   targetArr = dataArr.noStatus;
+      // } else if (destination.droppableId === 'In Progress') {
+      //   targetArr = dataArr.inProgress;
+      // } else if (destination.droppableId === 'Completed') {
+      //   targetArr = dataArr.completed;
+      // }
+    }
+  };
 
   const renderContent = () => {
     if (isFetching || !tasks) {
@@ -41,30 +105,26 @@ const Projects = ({
           </div>
         );
       } else {
-        tasks.map((task) => {
-          if (task.status === 'No Status') noStatus.push(task);
-          if (task.status === 'In Progress') inProgress.push(task);
-          if (task.status === 'Completed') completed.push(task);
-        });
-
         return (
-          <div className={styles.projects}>
-            <List
-              handleFormEdit={handleFormEdit}
-              label="No Status"
-              data={noStatus}
-            />
-            <List
-              handleFormEdit={handleFormEdit}
-              label="In Progress"
-              data={inProgress}
-            />
-            <List
-              handleFormEdit={handleFormEdit}
-              label="Completed"
-              data={completed}
-            />
-          </div>
+          <DragDropContext onDragEnd={onDragEnd}>
+            <div className={styles.projects}>
+              <List
+                handleFormEdit={handleFormEdit}
+                label="No Status"
+                data={dataArr.noStatus}
+              />
+              <List
+                handleFormEdit={handleFormEdit}
+                label="In Progress"
+                data={dataArr.inProgress}
+              />
+              <List
+                handleFormEdit={handleFormEdit}
+                label="Completed"
+                data={dataArr.completed}
+              />
+            </div>
+          </DragDropContext>
         );
       }
     }
@@ -83,4 +143,5 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   fetchTasks,
+  updateTask,
 })(Projects);
