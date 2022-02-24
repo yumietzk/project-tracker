@@ -5,9 +5,44 @@
   padding-right: 1rem;
 }
 
+.calendar {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #274c4b;
+
+  display: flex;
+  align-items: center;
+}
+
+.togglebtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-left: 0.6rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.toggleicon {
+  font-size: 2rem;
+}
+
+.timeline {
+  padding-bottom: 5rem;
+  border-bottom: 0.5px solid #949686;
+  margin-top: 2rem;
+}
+
+.timeline-title {
+  font-size: 1.9rem;
+  font-style: italic;
+}
+
 .reference {
-  margin-top: 6rem;
   margin-bottom: 2rem;
+  margin-top: 4.5rem;
 
   display: flex;
   justify-content: space-between;
@@ -16,12 +51,16 @@
 
 .btnsort {
   border: none;
-  background-color: #ffb003;
+  background-color: #ffb617;
   font-size: 1.1rem;
   color: #fff;
   padding: 0.5rem 0.7rem;
   cursor: pointer;
   border-radius: 5px;
+}
+
+.btnsort:hover {
+  background-color: #ffb003;
 }
 
 .nostatus,
@@ -67,7 +106,7 @@
   background-color: #fff;
   border-radius: 3px;
   margin-bottom: 1.3rem;
-  padding: 0.5rem 1.3rem;
+  padding: 0 2.2rem;
   font-size: 1rem;
 
   display: flex;
@@ -83,32 +122,20 @@
 }
 
 .title {
-  flex: 0 1 40%;
+  flex: 1;
+  padding: 0.5rem 0;
+  border-right: 0.2rem solid #f6f5f4;
+}
+
+.tasks {
+  flex: 0 1 26%;
+  padding: 0.5rem 0 0.5rem 0.9rem;
+  border-right: 0.2rem solid #f6f5f4;
 }
 
 .date {
-  flex: 1;
-}
-
-.loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 8rem;
-}
-
-.icon {
-  animation: spin 0.8s infinite linear;
-}
-
-@keyframes spin {
-  from {
-    transform: none;
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+  flex: 0 1 26%;
+  padding: 0.5rem 0 0.5rem 0.9rem;
 }
 
 .message {
@@ -118,8 +145,4 @@
   align-items: center;
   padding-top: 8rem;
   font-size: 1.4rem;
-}
-
-.item-data {
-  color: #adc8c8;
 }

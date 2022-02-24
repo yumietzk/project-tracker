@@ -1,34 +1,52 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as AiIcons from 'react-icons/ai';
 import styles from './TimeManageList.module.css';
 
-const TimeManageList = ({ task, renderDueDate, handleFire }) => {
-  const [detail, setDetail] = useState(false);
-
-  const tasksleftCount = () => {
-    let count = task.todos.length;
-    task.todos.map((todo) => {
-      if (todo.todoChecked) {
-        count--;
-      }
-    });
-    return count;
+const TimeManageList = ({ showDetail, setIsDetail, task, calcDate }) => {
+  const handleClick = (id) => {
+    showDetail(id);
+    setIsDetail(true);
   };
 
-  const renderCount = () => {
-    const count = tasksleftCount();
+  const renderTasksLeft = () => {
+    let count = task.todos.length;
 
     if (count === 0) {
-      return 'All tasks completed';
-    } else if (count === 1) {
-      return '1 task left';
+      return 'No task registered';
     } else {
-      return `${count} tasks left`;
+      task.todos.map((todo) => {
+        if (todo.todoChecked) {
+          count--;
+        }
+      });
+
+      if (count === 0) {
+        return 'All tasks completed';
+      } else if (count === 1) {
+        return '1 task left';
+      } else {
+        return `${count} tasks left`;
+      }
     }
   };
 
-  const truncate = (str, n) => {
-    return str?.length > n ? `${str.substr(0, n - 1)}...` : str;
+  const renderDueDate = (date) => {
+    const daysLeft = calcDate(date);
+
+    if (daysLeft < -1) return `${Math.abs(daysLeft)} days ago`;
+    if (daysLeft === -1) return 'Yesterday';
+    if (daysLeft === 0) return 'Today';
+    if (daysLeft === 1) return 'Tomorrow';
+    if (daysLeft <= 7) return `${daysLeft} days left`;
+    else {
+      return date;
+    }
+  };
+
+  const handleFire = (date) => {
+    const daysLeft = calcDate(date);
+
+    if (daysLeft <= 2) return true;
   };
 
   return (
@@ -43,57 +61,26 @@ const TimeManageList = ({ task, renderDueDate, handleFire }) => {
             : null
         }`}
       >
-        <div className={styles.maincontent}>
-          <h3 className={styles.title}>{task.title}</h3>
-          <p className={styles.date}>{renderDueDate(task.duedate)}</p>
+        <div className={styles.title}>
+          <div className={styles['title-text']}>{task.title}</div>
+          <button
+            className={styles['title-btn']}
+            onClick={() => handleClick(task._id)}
+          >
+            Details
+          </button>
         </div>
-        <div className={styles.subcontent}>
-          <div className={styles.others}>
-            <button className={styles.btn} onClick={() => setDetail(!detail)}>
-              {!detail ? 'Detail' : 'Hide'}
-            </button>
-            <p className={styles.tasksleft}>{renderCount()}</p>
+        <div className={styles.tasks}>{renderTasksLeft()}</div>
+        <div className={styles.date}>
+          <div className={styles['date-text']}>
+            {renderDueDate(task.duedate)}
           </div>
-          <p
-            className={`${styles.fire} ${
-              handleFire(task.duedate) ? styles.render : null
+          <div
+            className={`${styles['fire-icon']} ${
+              handleFire(task.duedate) && styles.visible
             }`}
           >
             <AiIcons.AiTwotoneFire />
-          </p>
-        </div>
-      </div>
-
-      <div
-        className={`${styles.detail} ${
-          task.status === 'No Status'
-            ? styles.detailNoStatus
-            : task.status === 'In Progress'
-            ? styles.detailInProgress
-            : null
-        } ${detail ? styles.visible : null}`}
-      >
-        <div className={styles.subcontent}>
-          <div className={styles['sub-left']}>
-            <p className={styles.subtitle}>Description:</p>
-            <p className={styles['detail-description']}>
-              {truncate(task.description, 150) || '(no description)'}
-            </p>
-          </div>
-          <div className={styles['sub-right']}>
-            <p className={styles.subtitle}>Tasks:</p>
-            {task.todos.map((todo, i) => {
-              return (
-                <p
-                  key={i}
-                  className={`${styles.todos} ${
-                    todo.todoChecked ? styles.checked : null
-                  }`}
-                >
-                  &mdash; {todo.value}
-                </p>
-              );
-            })}
           </div>
         </div>
       </div>

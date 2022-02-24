@@ -1,46 +1,89 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import Timeline, {
+  TimelineHeaders,
+  SidebarHeader,
+  DateHeader,
+} from 'react-calendar-timeline';
+import 'react-calendar-timeline/lib/Timeline.css';
+import moment from 'moment';
+import * as GoIcons from 'react-icons/go';
+import * as IoIcons from 'react-icons/io5';
 import { fetchTasks } from '../../actions';
 import TimeManageList from './TimeManageList';
 import LoadingIndicator from '../../helpers/LoadingIndicator';
 import styles from './TimeManage.module.css';
 
-const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
+const TimeManage = ({
+  showDetail,
+  setIsDetail,
+  fetchTasks,
+  tasks,
+  isFetching,
+  isError,
+}) => {
   const [sort, setSort] = useState(false);
+  const [groups, setGroups] = useState([]);
+  const [items, setItems] = useState([]);
+  const [isDisplayed, setIsDisplayed] = useState(false);
+
+  const handleDisplay = () => {
+    setIsDisplayed(!isDisplayed);
+  };
 
   useEffect(() => {
     fetchTasks();
   }, []);
 
-  const calcDueDate = (date) => {
+  useEffect(() => {
+    if (tasks) {
+      if (
+        tasks.length !== 0 &&
+        !tasks.every((task) => task.status === 'Completed')
+      ) {
+        let groupData = [];
+        let itemData = [];
+
+        tasks.map((task, i) => {
+          if (task.status === 'Completed') return;
+
+          groupData.push({
+            id: i + 1,
+            title: task.title,
+          });
+          itemData.push({
+            id: i + 1,
+            group: i + 1,
+            title: task.title,
+            start_time: moment().add(calcDate(task.date), 'days'),
+            end_time: moment().add(calcDate(task.duedate), 'days'),
+            canMove: false,
+            canResize: false,
+            canChangeGroup: false,
+            itemProps: {
+              style: {
+                background: '#adc8c8',
+                border: 'none',
+              },
+            },
+          });
+        });
+
+        setGroups(groupData);
+        setItems(itemData);
+      }
+    }
+  }, [tasks]);
+
+  const calcDate = (date) => {
     const targetdate = new Date(date);
     const now = new Date();
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
-    const calcDaysLeft = (date1, date2) =>
-      (date2 - date1) / (1000 * 60 * 60 * 24);
+    const calcDays = (date1, date2) => (date2 - date1) / (1000 * 60 * 60 * 24);
 
-    const daysLeft = calcDaysLeft(+today, +targetdate);
-    return daysLeft;
-  };
-
-  const renderDueDate = (date) => {
-    const daysLeft = calcDueDate(date);
-
-    if (daysLeft < -1) return `${Math.abs(daysLeft)} days ago`;
-    if (daysLeft === -1) return 'Yesterday';
-    if (daysLeft === 0) return 'Today';
-    if (daysLeft === 1) return 'Tomorrow';
-    if (daysLeft <= 7) return `${daysLeft} days left`;
-    else {
-      return date;
-    }
-  };
-
-  const handleFire = (date) => {
-    const daysLeft = calcDueDate(date);
-
-    if (daysLeft <= 2) return true;
+    const days = calcDays(+today, +targetdate);
+    return days;
   };
 
   const renderContent = () => {
@@ -81,6 +124,51 @@ const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
 
           return (
             <div className={styles.timemanage}>
+              <div className={styles.calendar}>
+                Timeline Calendar
+                <button className={styles.togglebtn} onClick={handleDisplay}>
+                  {isDisplayed ? (
+                    <GoIcons.GoTriangleUp className={styles.toggleicon} />
+                  ) : (
+                    <IoIcons.IoCalendarOutline className={styles.toggleicon} />
+                  )}
+                </button>
+              </div>
+
+              {isDisplayed && (
+                <div className={styles.timeline}>
+                  <Timeline
+                    groups={groups}
+                    items={items}
+                    // これは多分デフォルトで画面上に表示されている期間の設定
+                    // innerwidthによって変える
+                    defaultTimeStart={moment().add(-1, 'days')}
+                    defaultTimeEnd={moment().add(45, 'days')}
+                  >
+                    <TimelineHeaders style={{ background: 'none' }}>
+                      <SidebarHeader
+                        style={{ display: 'flex', alignItems: 'center' }}
+                      >
+                        {({ getRootProps }) => {
+                          return (
+                            <div
+                              {...getRootProps()}
+                              className={styles['timeline-title']}
+                            ></div>
+                          );
+                        }}
+                      </SidebarHeader>
+                      {/* innerwidthによってunitをyear, monthとかにする */}
+                      <DateHeader
+                        unit="month"
+                        style={{ color: '#274c4b', fontWeight: 'bold' }}
+                      ></DateHeader>
+                      <DateHeader unit="day"></DateHeader>
+                    </TimelineHeaders>
+                  </Timeline>
+                </div>
+              )}
+
               <div className={styles.reference}>
                 <div className={styles.type}>
                   <div className={styles.nostatus}>No Status</div>
@@ -95,8 +183,9 @@ const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
               </div>
 
               <div className={styles.example}>
-                <p className={styles.title}>Title</p>
-                <p className={styles.date}>Due Date</p>
+                <div className={styles.title}>Title</div>
+                <div className={styles.tasks}>Tasks</div>
+                <div className={styles.date}>Due Date</div>
               </div>
 
               {targettasks.map((task, i) => {
@@ -104,9 +193,10 @@ const TimeManage = ({ fetchTasks, tasks, isFetching, isError }) => {
 
                 return (
                   <TimeManageList
+                    showDetail={showDetail}
+                    setIsDetail={setIsDetail}
                     task={task}
-                    renderDueDate={renderDueDate}
-                    handleFire={handleFire}
+                    calcDate={calcDate}
                     key={i}
                   />
                 );

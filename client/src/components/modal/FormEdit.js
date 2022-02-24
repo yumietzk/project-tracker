@@ -12,6 +12,7 @@ const FormEdit = ({
   isError,
   setIsFormEditOpen,
   id,
+  title,
 }) => {
   const [todos, setTodos] = useState([]);
 
@@ -57,7 +58,7 @@ const FormEdit = ({
     if (data) {
       return (
         <FormTemplate
-          type="Edit Project"
+          type={title}
           data={data}
           edit={true}
           id={id}

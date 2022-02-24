@@ -6,8 +6,7 @@ import Sidebar from './Sidebar';
 import Header from './Header';
 import Projects from '../routes/projects/Projects';
 import Tasks from '../routes/tasks/Tasks';
-// import TimeManage from '../routes/timemanage/TimeManage';
-import TimeManageTimeline from '../routes/timemanage/TimeManageTimeline';
+import TimeManage from '../routes/timemanage/TimeManage';
 import FormCreate from './modal/FormCreate';
 import FormEdit from './modal/FormEdit';
 import styles from './Home.module.css';
@@ -16,6 +15,7 @@ const Home = ({ fetchTask }) => {
   const [isFormCreateOpen, setIsFormCreateOpen] = useState(false);
   const [isFormEditOpen, setIsFormEditOpen] = useState(false);
   const [id, setId] = useState(null);
+  const [isDetail, setIsDetail] = useState(false);
 
   const params = useParams();
   const paramsArr = Object.values(params);
@@ -42,7 +42,15 @@ const Home = ({ fetchTask }) => {
             element={<Projects handleFormEdit={handleFormEdit} />}
           />
           <Route path="tasks" element={<Tasks />} />
-          <Route path="timemanage" element={<TimeManageTimeline />} />
+          <Route
+            path="timemanage"
+            element={
+              <TimeManage
+                showDetail={handleFormEdit}
+                setIsDetail={setIsDetail}
+              />
+            }
+          />
         </Routes>
       </div>
 
@@ -55,7 +63,11 @@ const Home = ({ fetchTask }) => {
         {isFormCreateOpen ? (
           <FormCreate setIsFormCreateOpen={setIsFormCreateOpen} />
         ) : isFormEditOpen ? (
-          <FormEdit setIsFormEditOpen={setIsFormEditOpen} id={id} />
+          <FormEdit
+            setIsFormEditOpen={setIsFormEditOpen}
+            id={id}
+            title={isDetail ? 'Details' : 'Edit Project'}
+          />
         ) : null}
       </div>
       <div
