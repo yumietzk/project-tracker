@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import * as AiIcons from 'react-icons/ai';
 import { fetchTasks } from '../../actions';
 import TasksByStatus from './TasksByStatus';
 import LoadingIndicator from '../../helpers/LoadingIndicator';

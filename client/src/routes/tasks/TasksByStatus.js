@@ -1,29 +1,14 @@
-import React, { useState } from 'react';
-import * as GoIcons from 'react-icons/go';
+import React from 'react';
 import TasksByProjects from './TasksByProjects';
 import styles from './TasksByStatus.module.css';
 
 const TasksByStatus = ({ type, data }) => {
-  const [display, setDisplay] = useState(false);
-
-  const handleDisplay = () => {
-    setDisplay(!display);
-  };
-
   return (
     <div className={styles.content}>
       <div className={styles.status}>
-        <button className={styles.togglebtn} onClick={handleDisplay}>
-          {display ? (
-            <GoIcons.GoTriangleDown className={styles.toggleicon} />
-          ) : (
-            <GoIcons.GoTriangleRight className={styles.toggleicon} />
-          )}
-        </button>
         <h2>{type}</h2>
       </div>
-
-      <div className={`${styles.projects} ${display ? styles.visible : null}`}>
+      <div className={styles.projects}>
         <TasksByProjects data={data} />
       </div>
     </div>
