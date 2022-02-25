@@ -2,7 +2,13 @@ import React from 'react';
 import * as AiIcons from 'react-icons/ai';
 import styles from './TimeManageList.module.css';
 
-const TimeManageList = ({ showDetail, setIsDetail, task, calcDate }) => {
+const TimeManageList = ({
+  showDetail,
+  setIsDetail,
+  isDarkMode,
+  task,
+  calcDate,
+}) => {
   const handleClick = (id) => {
     showDetail(id);
     setIsDetail(true);
@@ -53,24 +59,32 @@ const TimeManageList = ({ showDetail, setIsDetail, task, calcDate }) => {
     <div className={styles.content}>
       <div
         key={task._id}
-        className={`${styles.project} ${
+        className={`${styles.project} ${isDarkMode && styles['project-dark']} ${
           task.status === 'No Status'
-            ? styles.projectNoStatus
+            ? styles['project-nostatus']
             : task.status === 'In Progress'
-            ? styles.projectInProgress
+            ? styles['project-inprogress']
             : null
         }`}
       >
-        <div className={styles.title}>
+        <div
+          className={`${styles.title} ${isDarkMode && styles['title-dark']}`}
+        >
           <div className={styles['title-text']}>{task.title}</div>
           <button
-            className={styles['title-btn']}
+            className={`${styles['title-btn']} ${
+              isDarkMode && styles['title-btn-dark']
+            }`}
             onClick={() => handleClick(task._id)}
           >
             Details
           </button>
         </div>
-        <div className={styles.tasks}>{renderTasksLeft()}</div>
+        <div
+          className={`${styles.tasks} ${isDarkMode && styles['tasks-dark']}`}
+        >
+          {renderTasksLeft()}
+        </div>
         <div className={styles.date}>
           <div className={styles['date-text']}>
             {renderDueDate(task.duedate)}

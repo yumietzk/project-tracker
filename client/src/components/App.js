@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signIn } from '../actions';
@@ -8,9 +8,11 @@ import PublicRoute from './PublicRoute';
 import SignUp from './SignUp';
 import Login from './Login';
 import Home from './Home';
-import './App.css';
+import styles from './App.module.css';
 
 const App = ({ signIn }) => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
   useEffect(() => {
     const unsubscribed = auth.onAuthStateChanged((user) => {
       if (user) {
@@ -46,7 +48,9 @@ const App = ({ signIn }) => {
           path="/*"
           element={
             <PrivateRoute>
-              <Home />
+              <div className={`${isDarkMode && styles.main}`}>
+                <Home isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+              </div>
             </PrivateRoute>
           }
         />

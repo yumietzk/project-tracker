@@ -15,6 +15,10 @@
   color: #274c4b;
 }
 
+.status-dark > h2 {
+  color: #5b8e86;
+}
+
 .projects {
   padding: 0.8rem;
   border-radius: 3px;

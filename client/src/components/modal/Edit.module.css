@@ -26,6 +26,14 @@
   background-color: #36414d;
 }
 
+.update-dark {
+  background-color: #457c74;
+}
+
+.update-dark:hover {
+  background-color: #5b8e86;
+}
+
 .delete {
   flex: 0 1 3rem;
   background: none;
@@ -35,8 +43,17 @@
   margin-left: 0.3rem;
   margin-right: -0.3rem;
   cursor: pointer;
+  transition: all 0.3s;
 }
 
 .delete:hover {
   color: #ff4335;
+}
+
+.delete-dark {
+  color: #d64510;
+}
+
+.delete-dark:hover {
+  color: #d8653c;
 }

@@ -28,12 +28,21 @@
   background-color: #f6f5f4;
 }
 
+.todo-input-dark {
+  background-color: #334148;
+  color: inherit;
+}
+
 .todo-input:focus {
   outline: none;
 }
 
 .todo-input::placeholder {
   color: #d5c6b9;
+}
+
+.todo-input-dark::placeholder {
+  color: #ccc;
 }
 
 .btn {
@@ -51,14 +60,21 @@
   align-items: center;
 }
 
+.btn-dark {
+  color: #ccc;
+}
+
 .btn:hover {
   background-color: #f6f5f4;
   color: #d5c6b9;
+}
+
+.btn-dark:hover {
+  background-color: #243036;
 }
 
 .lists {
   flex: 1;
   height: 10rem;
   overflow-y: scroll;
-  /* border: 1px solid black; */
 }

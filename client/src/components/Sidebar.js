@@ -5,21 +5,25 @@ import * as RiIcons from 'react-icons/ri';
 import * as IoIcons from 'react-icons/io5';
 import styles from './Sidebar.module.css';
 
-const Sidebar = ({ currentPage }) => {
+const Sidebar = ({ currentPage, isDarkMode }) => {
   const [selectedPage, setSelectedPage] = useState('projects');
 
   return (
-    <div className={styles.sidebar}>
-      <div className={styles.logo}>Project Tracker</div>
+    <div
+      className={`${styles.sidebar} ${isDarkMode && styles['sidebar-dark']}`}
+    >
+      <div className={`${styles.logo} ${isDarkMode && styles['logo-dark']}`}>
+        Project Tracker
+      </div>
       <div className={styles.nav}>
         <Link
           to="/"
           // className={styles.link}
-          className={`${styles.link} ${
+          className={`${isDarkMode ? styles['link-dark'] : styles.link} ${
             currentPage === '' || selectedPage === 'projects'
               ? styles.selected
               : null
-          }`}
+          } `}
           onClick={() => setSelectedPage('projects')}
         >
           <CgIcons.CgWorkAlt className={styles.icon} />
@@ -27,7 +31,7 @@ const Sidebar = ({ currentPage }) => {
         </Link>
         <Link
           to="/tasks"
-          className={`${styles.link} ${
+          className={`${isDarkMode ? styles['link-dark'] : styles.link} ${
             currentPage === 'tasks' || selectedPage === 'tasks'
               ? styles.selected
               : null
@@ -39,7 +43,7 @@ const Sidebar = ({ currentPage }) => {
         </Link>
         <Link
           to="/timemanage"
-          className={`${styles.link} ${
+          className={`${isDarkMode ? styles['link-dark'] : styles.link} ${
             currentPage === 'timemanage' || selectedPage === 'timemanage'
               ? styles.selected
               : null

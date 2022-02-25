@@ -14,6 +14,10 @@
   align-items: center;
 }
 
+.calendar-dark {
+  color: #ccc;
+}
+
 .togglebtn {
   display: flex;
   align-items: center;
@@ -27,6 +31,10 @@
 
 .toggleicon {
   font-size: 2rem;
+}
+
+.toggleicon-dark {
+  color: #ccc;
 }
 
 .timeline {
@@ -63,6 +71,15 @@
   background-color: #ffb003;
 }
 
+.btnsort-dark {
+  color: #ccc;
+  background-color: #242655;
+}
+
+.btnsort-dark:hover {
+  background-color: #1c1e4e;
+}
+
 .nostatus,
 .inprogress {
   background-color: #fff;
@@ -78,6 +95,11 @@
   .inprogress {
     width: 13rem;
   }
+}
+
+.nostatus-dark,
+.inprogress-dark {
+  background-color: #0c0d14;
 }
 
 .nostatus {
@@ -102,6 +124,10 @@
   background-color: #274c4b;
 }
 
+.inprogress-dark::before {
+  background-color: #3a579e;
+}
+
 .example {
   background-color: #fff;
   border-radius: 3px;
@@ -121,6 +147,10 @@
   }
 }
 
+.example-dark {
+  background-color: #0c0d14;
+}
+
 .title {
   flex: 1;
   padding: 0.5rem 0;
@@ -136,6 +166,16 @@
 .date {
   flex: 0 1 26%;
   padding: 0.5rem 0 0.5rem 0.9rem;
+}
+
+.title-dark,
+.tasks-dark {
+  color: #ccc;
+  border-right: 0.2rem solid #999999;
+}
+
+.date-dark {
+  color: #ccc;
 }
 
 .message {

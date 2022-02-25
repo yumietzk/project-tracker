@@ -11,7 +11,7 @@ import FormCreate from './modal/FormCreate';
 import FormEdit from './modal/FormEdit';
 import styles from './Home.module.css';
 
-const Home = ({ fetchTask }) => {
+const Home = ({ isDarkMode, setIsDarkMode, fetchTask }) => {
   const [isFormCreateOpen, setIsFormCreateOpen] = useState(false);
   const [isFormEditOpen, setIsFormEditOpen] = useState(false);
   const [id, setId] = useState(null);
@@ -32,22 +32,32 @@ const Home = ({ fetchTask }) => {
 
   return (
     <div className={styles.home}>
-      <Sidebar currentPage={paramsArr[0]} />
-      <Header handleFormCreate={handleFormCreate} />
+      <Sidebar currentPage={paramsArr[0]} isDarkMode={isDarkMode} />
+      <Header
+        handleFormCreate={handleFormCreate}
+        isDarkMode={isDarkMode}
+        setIsDarkMode={setIsDarkMode}
+      />
 
       <div className={styles.content}>
         <Routes>
           <Route
             path="/"
-            element={<Projects handleFormEdit={handleFormEdit} />}
+            element={
+              <Projects
+                handleFormEdit={handleFormEdit}
+                isDarkMode={isDarkMode}
+              />
+            }
           />
-          <Route path="tasks" element={<Tasks />} />
+          <Route path="tasks" element={<Tasks isDarkMode={isDarkMode} />} />
           <Route
             path="timemanage"
             element={
               <TimeManage
                 showDetail={handleFormEdit}
                 setIsDetail={setIsDetail}
+                isDarkMode={isDarkMode}
               />
             }
           />
@@ -56,15 +66,19 @@ const Home = ({ fetchTask }) => {
 
       {/* modal */}
       <div
-        className={`${styles.modal} ${
+        className={`${styles.modal} ${isDarkMode && styles['modal-dark']} ${
           !isFormCreateOpen && !isFormEditOpen && styles.hidden
         }`}
       >
         {isFormCreateOpen ? (
-          <FormCreate setIsFormCreateOpen={setIsFormCreateOpen} />
+          <FormCreate
+            setIsFormCreateOpen={setIsFormCreateOpen}
+            isDarkMode={isDarkMode}
+          />
         ) : isFormEditOpen ? (
           <FormEdit
             setIsFormEditOpen={setIsFormEditOpen}
+            isDarkMode={isDarkMode}
             id={id}
             title={isDetail ? 'Details' : 'Edit Project'}
           />

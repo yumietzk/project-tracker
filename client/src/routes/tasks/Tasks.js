@@ -5,7 +5,7 @@ import TasksByStatus from './TasksByStatus';
 import LoadingIndicator from '../../helpers/LoadingIndicator';
 import styles from './Tasks.module.css';
 
-const Tasks = ({ fetchTasks, tasks, isFetching, isError }) => {
+const Tasks = ({ isDarkMode, fetchTasks, tasks, isFetching, isError }) => {
   useEffect(() => {
     fetchTasks();
   }, []);
@@ -33,8 +33,16 @@ const Tasks = ({ fetchTasks, tasks, isFetching, isError }) => {
 
         return (
           <div className={styles.tasks}>
-            <TasksByStatus type="No Status" data={noStatus} />
-            <TasksByStatus type="In Progress" data={inProgress} />
+            <TasksByStatus
+              isDarkMode={isDarkMode}
+              type="No Status"
+              data={noStatus}
+            />
+            <TasksByStatus
+              isDarkMode={isDarkMode}
+              type="In Progress"
+              data={inProgress}
+            />
           </div>
         );
       }

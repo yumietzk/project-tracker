@@ -32,6 +32,11 @@ body {
   color: #243242;
 }
 
+.main {
+  background-color: #393e3a;
+  color: #b4b5b9;
+}
+
 /* COLORS */
 /* #F6F5F4 */
 /* #D5C6B9 */
@@ -51,6 +56,18 @@ body {
 /* #FF2B1D */
 /* sub */
 /* #E83A30 */
+
+/* Dark Mode */
+/* #0C0D14 */
+/* #334148 */
+/* #242655 */
+/* #393E3A */
+/* #D55222 */
+/* #5B8E86 */
+/* #3A579E */
+/* #B4B5B9 */
+
+/* Dark Mode */
 
 /* 2000px 125em */
 /* 1200px 75em */

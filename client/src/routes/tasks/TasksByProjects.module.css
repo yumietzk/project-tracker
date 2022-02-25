@@ -5,14 +5,11 @@
 .project {
   border-radius: 1rem;
   padding: 0.8rem 1rem;
-}
-
-.nostatus {
   background-color: #d5c6b95b;
 }
 
-.inprogress {
-  background-color: #d5c6b95b;
+.project-dark {
+  background-color: #0c0d144f;
 }
 
 .title {

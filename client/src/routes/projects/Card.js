@@ -7,7 +7,7 @@ import * as IoIcons from 'react-icons/io5';
 import { deleteTask } from '../../actions';
 import styles from './Card.module.css';
 
-const Card = ({ handleFormEdit, item, index, deleteTask }) => {
+const Card = ({ handleFormEdit, isDarkMode, item, index, deleteTask }) => {
   const { _id: id, title, duedate, description } = item;
 
   const handleDelete = () => {
@@ -22,8 +22,10 @@ const Card = ({ handleFormEdit, item, index, deleteTask }) => {
     <Draggable draggableId={id} index={index}>
       {(provided, snapshot) => (
         <div
-          className={`${styles.card} ${
+          className={`${styles.card} ${isDarkMode && styles['card-dark']} ${
             snapshot.isDragging && styles['card-dragged']
+          } ${
+            snapshot.isDragging && isDarkMode && styles['card-dragged-dark']
           }`}
           {...provided.dragHandleProps}
           {...provided.draggableProps}
@@ -40,7 +42,11 @@ const Card = ({ handleFormEdit, item, index, deleteTask }) => {
           </p>
           <div className={styles.datedelete}>
             <p className={styles.date}>
-              <CgIcons.CgCalendarDue className={styles.dateicon} />
+              <CgIcons.CgCalendarDue
+                className={`${styles.dateicon} ${
+                  isDarkMode && styles['dateicon-dark']
+                }`}
+              />
               {duedate || '(no due date)'}
             </p>
             <button className={styles.delete} onClick={handleDelete}>

@@ -26,7 +26,6 @@
 .status,
 .duedate {
   margin-bottom: 1rem;
-  /* border: 1px solid red; */
 }
 
 .date-form,
@@ -80,6 +79,12 @@
   transition: all 0.3s;
 }
 
+.input-dark,
+.select-dark {
+  background-color: #0c0d14;
+  color: inherit;
+}
+
 .input:focus,
 .select:focus {
   outline: none;
@@ -90,8 +95,17 @@
   background-color: #f6f5f4;
 }
 
+.input-dark:hover,
+.select-dark:hover {
+  background-color: #334148;
+}
+
 .input::placeholder {
   color: #d5c6b9;
+}
+
+.input-dark::placeholder {
+  color: #ccc;
 }
 
 .label {
@@ -151,6 +165,12 @@
   width: 100%;
   height: 8rem;
   border-color: #b8b8b8;
+}
+
+.textarea-dark {
+  background-color: #0c0d14;
+  border-color: #b4b5b9;
+  color: inherit;
 }
 
 /* 500px */

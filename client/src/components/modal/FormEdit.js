@@ -11,6 +11,7 @@ const FormEdit = ({
   isFetching,
   isError,
   setIsFormEditOpen,
+  isDarkMode,
   id,
   title,
 }) => {
@@ -64,8 +65,14 @@ const FormEdit = ({
           id={id}
           handleUpdate={handleUpdate}
           setIsFormEditOpen={setIsFormEditOpen}
+          isDarkMode={isDarkMode}
         >
-          <Edit todos={todos} setTodos={setTodos} id={id} />
+          <Edit
+            isDarkMode={isDarkMode}
+            todos={todos}
+            setTodos={setTodos}
+            id={id}
+          />
         </FormTemplate>
       );
     }

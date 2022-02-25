@@ -1,11 +1,9 @@
 .header {
-  /* flex: 0 1 5.5rem;
-  width: 100%;
-  padding-right: 1rem; */
-
   display: flex;
   justify-content: flex-end;
   align-items: center;
+
+  padding-left: 3rem;
 }
 
 /* 500px */
@@ -16,6 +14,10 @@
     right: 1rem;
     padding: 0;
   }
+}
+
+.toggle {
+  margin-right: auto;
 }
 
 .userinfo {
@@ -31,6 +33,10 @@
     top: 5rem;
     left: 1.5rem;
   }
+}
+
+.userinfo-dark {
+  color: #ccc;
 }
 
 .usericon {
@@ -49,7 +55,7 @@
 
 .logout {
   border: none;
-  background-color: #fff;
+  background: none;
   margin-right: 0.7rem;
   font-size: 1.2rem;
   font-weight: 100;
@@ -86,9 +92,17 @@
   color: #101d2c;
 }
 
+.logout-dark:hover > p {
+  color: #ccc;
+}
+
 .logouticon {
-  font-size: 1.9rem;
+  font-size: 2.5rem;
   margin-bottom: 1.5rem;
+}
+
+.logouticon-dark {
+  fill: #ccc;
 }
 
 .create {
@@ -97,11 +111,16 @@
   border-radius: 3px;
   height: 2.5rem;
   width: 2.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
-  transition: all 0.3s;
+}
+
+.create-dark {
+  background-color: #d55222;
 }
 
 .create:hover {

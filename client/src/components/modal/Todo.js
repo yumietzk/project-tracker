@@ -3,7 +3,7 @@ import * as BsIcons from 'react-icons/bs';
 import TodoList from './TodoList';
 import styles from './Todo.module.css';
 
-const Todo = ({ todos, setTodos, edit }) => {
+const Todo = ({ isDarkMode, todos, setTodos, edit }) => {
   const [input, setInput] = useState('');
 
   const addTodo = (input) => {
@@ -33,13 +33,18 @@ const Todo = ({ todos, setTodos, edit }) => {
       <h2>Task</h2>
       <div className={styles.todo}>
         <input
-          className={styles['todo-input']}
+          className={`${styles['todo-input']} ${
+            isDarkMode && styles['todo-input-dark']
+          }`}
           type="text"
           placeholder="task"
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <button className={styles.btn} onClick={handleAdd}>
+        <button
+          className={`${styles.btn} ${isDarkMode && styles['btn-dark']}`}
+          onClick={handleAdd}
+        >
           <BsIcons.BsPlus />
           Add
         </button>

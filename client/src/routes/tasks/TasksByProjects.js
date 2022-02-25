@@ -2,7 +2,7 @@ import React from 'react';
 import TasksTodoList from './TasksTodoList';
 import styles from './TasksByProjects.module.css';
 
-const TasksByProjects = ({ data }) => {
+const TasksByProjects = ({ isDarkMode, data }) => {
   const renderProjects = () => {
     if (data?.length === 0) {
       return <p className={styles.message}>No Tasks.</p>;
@@ -15,7 +15,7 @@ const TasksByProjects = ({ data }) => {
         <div
           key={item._id}
           className={`${styles.project} ${
-            item.status === 'No Status' ? styles.nostatus : styles.inprogress
+            isDarkMode && styles['project-dark']
           }`}
         >
           <h3 className={styles.title}>{item.title}</h3>

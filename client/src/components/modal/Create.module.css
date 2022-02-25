@@ -21,6 +21,14 @@
   }
 }
 
+.btn-dark {
+  background-color: #242655;
+}
+
+.btn-dark:hover {
+  background-color: #2b2b5c;
+}
+
 .error {
   font-size: 1.6rem;
   line-height: 1.8rem;

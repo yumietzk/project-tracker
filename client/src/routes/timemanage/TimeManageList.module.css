@@ -7,9 +7,36 @@
   border-radius: 3px;
   font-size: 1.3rem;
   padding: 0 2.2rem;
+  position: relative;
 
   display: flex;
   align-items: center;
+}
+
+.project-dark {
+  background-color: #0c0d14;
+}
+
+.project-nostatus::before,
+.project-inprogress::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 4px;
+}
+
+.project-nostatus::before {
+  background-color: #e2d8cf;
+}
+
+.project-inprogress::before {
+  background-color: #274c4b;
+}
+
+.project-dark.project-inprogress::before {
+  background-color: #3a579e;
 }
 
 .title {
@@ -42,6 +69,11 @@
   background-color: #bebebe42;
 }
 
+.project:hover .title-btn-dark {
+  color: #ccc;
+  background-color: #bebebe42;
+}
+
 .project:hover .title-btn:hover {
   background-color: #bebebe79;
 }
@@ -50,6 +82,11 @@
   flex: 0 1 26%;
   padding: 1.1rem 0 1.1rem 0.9rem;
   border-right: 0.2rem solid #f6f5f4;
+}
+
+.title-dark,
+.tasks-dark {
+  border-right: 0.2rem solid #999999;
 }
 
 .date {

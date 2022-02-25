@@ -4,7 +4,7 @@ import { createTask } from '../../actions';
 import FormTemplate from './FormTemplate';
 import Create from './Create';
 
-const FormCreate = ({ setIsFormCreateOpen, createTask }) => {
+const FormCreate = ({ setIsFormCreateOpen, isDarkMode, createTask }) => {
   const [todos, setTodos] = useState([]);
 
   const handleSubmit = (formValues) => {
@@ -32,8 +32,12 @@ const FormCreate = ({ setIsFormCreateOpen, createTask }) => {
   };
 
   return (
-    <FormTemplate type="New Project" handleSubmit={handleSubmit}>
-      <Create todos={todos} setTodos={setTodos} />
+    <FormTemplate
+      isDarkMode={isDarkMode}
+      type="New Project"
+      handleSubmit={handleSubmit}
+    >
+      <Create isDarkMode={isDarkMode} todos={todos} setTodos={setTodos} />
     </FormTemplate>
   );
 };

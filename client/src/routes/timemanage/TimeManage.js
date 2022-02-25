@@ -17,6 +17,7 @@ import styles from './TimeManage.module.css';
 const TimeManage = ({
   showDetail,
   setIsDetail,
+  isDarkMode,
   fetchTasks,
   tasks,
   isFetching,
@@ -62,7 +63,7 @@ const TimeManage = ({
             canChangeGroup: false,
             itemProps: {
               style: {
-                background: '#adc8c8',
+                background: `${isDarkMode ? '#D55222' : '#adc8c8'}`,
                 border: 'none',
               },
             },
@@ -124,13 +125,25 @@ const TimeManage = ({
 
           return (
             <div className={styles.timemanage}>
-              <div className={styles.calendar}>
+              <div
+                className={`${styles.calendar} ${
+                  isDarkMode && styles['calendar-dark']
+                }`}
+              >
                 Timeline Calendar
                 <button className={styles.togglebtn} onClick={handleDisplay}>
                   {isDisplayed ? (
-                    <GoIcons.GoTriangleUp className={styles.toggleicon} />
+                    <GoIcons.GoTriangleUp
+                      className={`${styles.toggleicon} ${
+                        isDarkMode && styles['toggleicon-dark']
+                      }`}
+                    />
                   ) : (
-                    <IoIcons.IoCalendarOutline className={styles.toggleicon} />
+                    <IoIcons.IoCalendarOutline
+                      className={`${styles.toggleicon} ${
+                        isDarkMode && styles['toggleicon-dark']
+                      }`}
+                    />
                   )}
                 </button>
               </div>
@@ -161,7 +174,11 @@ const TimeManage = ({
                       {/* innerwidthによってunitをyear, monthとかにする */}
                       <DateHeader
                         unit="month"
-                        style={{ color: '#274c4b', fontWeight: 'bold' }}
+                        style={{
+                          color: '#274c4b',
+                          fontWeight: 'bold',
+                          backgroundColor: '#0C0D14',
+                        }}
                       ></DateHeader>
                       <DateHeader unit="day"></DateHeader>
                     </TimelineHeaders>
@@ -171,21 +188,57 @@ const TimeManage = ({
 
               <div className={styles.reference}>
                 <div className={styles.type}>
-                  <div className={styles.nostatus}>No Status</div>
-                  <div className={styles.inprogress}>In Progress</div>
+                  <div
+                    className={`${styles.nostatus} ${
+                      isDarkMode && styles['nostatus-dark']
+                    }`}
+                  >
+                    No Status
+                  </div>
+                  <div
+                    className={`${styles.inprogress} ${
+                      isDarkMode && styles['inprogress-dark']
+                    }`}
+                  >
+                    In Progress
+                  </div>
                 </div>
                 <button
-                  className={styles.btnsort}
+                  className={`${styles.btnsort} ${
+                    isDarkMode && styles['btnsort-dark']
+                  }`}
                   onClick={() => setSort(!sort)}
                 >
                   {sort ? 'Clear Sort' : 'Sort by Due Date'}
                 </button>
               </div>
 
-              <div className={styles.example}>
-                <div className={styles.title}>Title</div>
-                <div className={styles.tasks}>Tasks</div>
-                <div className={styles.date}>Due Date</div>
+              <div
+                className={`${styles.example} ${
+                  isDarkMode && styles['example-dark']
+                }`}
+              >
+                <div
+                  className={`${styles.title} ${
+                    isDarkMode && styles['title-dark']
+                  }`}
+                >
+                  Title
+                </div>
+                <div
+                  className={`${styles.tasks} ${
+                    isDarkMode && styles['tasks-dark']
+                  }`}
+                >
+                  Tasks
+                </div>
+                <div
+                  className={`${styles.date} ${
+                    isDarkMode && styles['date-dark']
+                  }`}
+                >
+                  Due Date
+                </div>
               </div>
 
               {targettasks.map((task, i) => {
@@ -195,6 +248,7 @@ const TimeManage = ({
                   <TimeManageList
                     showDetail={showDetail}
                     setIsDetail={setIsDetail}
+                    isDarkMode={isDarkMode}
                     task={task}
                     calcDate={calcDate}
                     key={i}

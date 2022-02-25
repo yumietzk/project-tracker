@@ -59,6 +59,10 @@
   z-index: 10;
 }
 
+.modal-dark {
+  background-color: #0c0d14;
+}
+
 .overlay {
   position: absolute;
   top: 0;

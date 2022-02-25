@@ -27,6 +27,7 @@ const formObj = {
 
 const FormTemplate = ({
   children,
+  isDarkMode,
   type,
   data,
   edit,
@@ -84,7 +85,6 @@ const FormTemplate = ({
     });
   };
 
-  // ちゃんと更新、削除が動くか確認
   const formHandler = (e) => {
     e.preventDefault();
 
@@ -149,7 +149,7 @@ const FormTemplate = ({
       <form onSubmit={formHandler} className={styles.form}>
         <div className={styles.title}>
           <input
-            className={styles.input}
+            className={`${styles.input} ${isDarkMode && styles['input-dark']}`}
             type="text"
             name="title"
             placeholder="Title *"
@@ -167,7 +167,9 @@ const FormTemplate = ({
             </label>
             <div className={styles.selectgroup}>
               <select
-                className={styles.select}
+                className={`${styles.select} ${
+                  isDarkMode && styles['select-dark']
+                }`}
                 name="month"
                 value={form.month}
                 onChange={handleInputChange}
@@ -182,7 +184,9 @@ const FormTemplate = ({
                 })}
               </select>
               <select
-                className={styles.select}
+                className={`${styles.select} ${
+                  isDarkMode && styles['select-dark']
+                }`}
                 name="date"
                 value={form.date}
                 onChange={handleInputChange}
@@ -197,7 +201,9 @@ const FormTemplate = ({
                 })}
               </select>
               <select
-                className={styles.select}
+                className={`${styles.select} ${
+                  isDarkMode && styles['select-dark']
+                }`}
                 name="year"
                 value={form.year}
                 onChange={handleInputChange}
@@ -224,7 +230,9 @@ const FormTemplate = ({
             </label>
             <div className={styles.selectgroup}>
               <select
-                className={styles.select}
+                className={`${styles.select} ${
+                  isDarkMode && styles['select-dark']
+                }`}
                 name="status"
                 value={form.status}
                 onChange={handleInputChange}
@@ -247,7 +255,9 @@ const FormTemplate = ({
             </label>
             <div className={styles.selectgroup}>
               <select
-                className={styles.select}
+                className={`${styles.select} ${
+                  isDarkMode && styles['select-dark']
+                }`}
                 name="dueMonth"
                 value={form.dueMonth}
                 onChange={handleInputChange}
@@ -262,7 +272,9 @@ const FormTemplate = ({
                 })}
               </select>
               <select
-                className={styles.select}
+                className={`${styles.select} ${
+                  isDarkMode && styles['select-dark']
+                }`}
                 name="dueDate"
                 value={form.dueDate}
                 onChange={handleInputChange}
@@ -277,7 +289,9 @@ const FormTemplate = ({
                 })}
               </select>
               <select
-                className={styles.select}
+                className={`${styles.select} ${
+                  isDarkMode && styles['select-dark']
+                }`}
                 name="dueYear"
                 value={form.dueYear}
                 onChange={handleInputChange}
@@ -299,7 +313,9 @@ const FormTemplate = ({
         <div className={styles.description}>
           <h2>Description *</h2>
           <textarea
-            className={styles.textarea}
+            className={`${styles.textarea} ${
+              isDarkMode && styles['textarea-dark']
+            }`}
             name="description"
             value={form.description}
             onChange={handleInputChange}
