@@ -6,6 +6,13 @@
   width: 100vw;
 }
 
+/* 600px */
+@media only screen and (max-width: 37.5em) {
+  .landing {
+    flex-direction: column;
+  }
+}
+
 .landing-left {
   flex: 0 1 55%;
   height: 100%;
@@ -13,6 +20,22 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: 90%;
+}
+
+/* 600px */
+@media only screen and (max-width: 37.5em) {
+  .landing-left {
+    flex: 0 1 35%;
+    width: 100%;
+    background-size: contain;
+  }
+}
+
+/* 450px */
+@media only screen and (max-width: 28.125em) {
+  .landing-left {
+    flex: 0 1 45%;
+  }
 }
 
 .landing-right {
@@ -26,7 +49,29 @@
   flex-direction: column;
 }
 
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .landing-right {
+    padding: 15rem;
+  }
+}
+
+/* 600px */
+@media only screen and (max-width: 37.5em) {
+  .landing-right {
+    width: 100%;
+    padding: 5rem 2rem;
+  }
+}
+
 .right-container {
   margin-top: auto;
   margin-bottom: auto;
+}
+
+/* 600px */
+@media only screen and (max-width: 37.5em) {
+  .right-container {
+    margin-top: 0;
+  }
 }

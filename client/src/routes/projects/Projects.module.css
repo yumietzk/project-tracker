@@ -5,32 +5,20 @@
   grid-template-columns: repeat(3, 1fr);
 }
 
+/* 800px */
+@media only screen and (max-width: 50em) {
+  .projects {
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 1fr;
+
+    gap: 0.5rem;
+  }
+}
+
 /* 600px */
 @media only screen and (max-width: 37.5em) {
   .projects {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
-.loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 8rem;
-}
-
-.icon {
-  animation: spin 0.8s infinite linear;
-}
-
-@keyframes spin {
-  from {
-    transform: none;
-  }
-
-  to {
-    transform: rotate(360deg);
+    gap: 1rem;
   }
 }
 
@@ -44,4 +32,11 @@
 
 .message > p {
   font-size: 1.4rem;
+}
+
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .message > p {
+    font-size: 2.5rem;
+  }
 }

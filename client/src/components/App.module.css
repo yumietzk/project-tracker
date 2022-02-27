@@ -11,15 +11,15 @@ html {
   box-sizing: border-box;
 }
 
-/* 850px */
-@media only screen and (max-width: 53.125em) {
+/* 800px */
+@media only screen and (max-width: 50em) {
   html {
     font-size: 55%;
   }
 }
 
-/* 600px */
-@media only screen and (max-width: 37.5em) {
+/* 450px */
+@media only screen and (max-width: 28.125em) {
   html {
     font-size: 40%;
   }
@@ -71,10 +71,11 @@ body {
 
 /* 2000px 125em */
 /* 1200px 75em */
-/* 800px 50em */
-/* 450px 28.125em */
+/* 800px 50em 文字サイズ切り替え */
+/* 600px 37.5em */
+/* 450px 28.125em 文字サイズ切り替え */
 
 /*  */
-/* 600px 37.5em */
+
 /* 700px 43.75em */
 /* 300px 18.75em */

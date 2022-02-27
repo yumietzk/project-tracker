@@ -1,4 +1,13 @@
 .checkbox {
   flex: 0 1 2rem;
+  height: 1.2rem;
   margin-right: 0.4rem;
+}
+
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .checkbox {
+    height: 1.8rem;
+    margin-right: 1.5rem;
+  }
 }

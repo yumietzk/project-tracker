@@ -38,7 +38,7 @@ const Card = ({ handleFormEdit, isDarkMode, item, index, deleteTask }) => {
             </div>
           </h3>
           <p className={styles.description}>
-            {truncate(description, 150) || '(no description)'}
+            {truncate(description, 200) || '(no description)'}
           </p>
           <div className={styles.datedelete}>
             <p className={styles.date}>

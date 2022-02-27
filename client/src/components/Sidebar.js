@@ -18,7 +18,6 @@ const Sidebar = ({ currentPage, isDarkMode }) => {
       <div className={styles.nav}>
         <Link
           to="/"
-          // className={styles.link}
           className={`${isDarkMode ? styles['link-dark'] : styles.link} ${
             currentPage === '' || selectedPage === 'projects'
               ? styles.selected

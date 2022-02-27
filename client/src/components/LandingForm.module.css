@@ -10,9 +10,23 @@
   color: inherit;
 }
 
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .input {
+    margin-bottom: 4rem;
+  }
+}
+
 .label {
   margin-bottom: 1rem;
   font-size: 1.3rem;
+}
+
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .label {
+    font-size: 2.7rem;
+  }
 }
 
 .inputbox {
@@ -20,6 +34,15 @@
   padding: 0.5rem 1rem;
   border: 0.5px solid #5e5e5d;
   border-radius: 4px;
+  font-size: 1.2rem;
+}
+
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .inputbox {
+    height: 5rem;
+    font-size: 2.5rem;
+  }
 }
 
 .inputbox:focus {
@@ -30,13 +53,29 @@
   border: none;
   background-color: #274c4b;
   padding: 1.5rem;
+  font-size: 1.5rem;
   color: #f6f5f4;
   border-radius: 5px;
   margin-top: 3rem;
   cursor: pointer;
 }
 
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .btn {
+    font-size: 2.5rem;
+    padding: 1.7rem;
+  }
+}
+
 .valid-error {
   font-size: 1.2rem;
   color: #ff2b1d;
+}
+
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .valid-error {
+    font-size: 2.5rem;
+  }
 }

@@ -6,13 +6,10 @@
   padding-left: 3rem;
 }
 
-/* 500px */
-@media only screen and (max-width: 31.25em) {
+/* 2000px */
+@media only screen and (min-width: 125em) {
   .header {
-    position: absolute;
-    top: 0;
-    right: 1rem;
-    padding: 0;
+    padding-left: 4rem;
   }
 }
 
@@ -26,12 +23,10 @@
   align-items: center;
 }
 
-/* 500px */
-@media only screen and (max-width: 31.25em) {
+/* 2000px */
+@media only screen and (min-width: 125em) {
   .userinfo {
-    position: absolute;
-    top: 5rem;
-    left: 1.5rem;
+    margin-right: 1.5rem;
   }
 }
 
@@ -44,8 +39,22 @@
   margin-right: 0.5rem;
 }
 
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .usericon {
+    font-size: 3rem;
+  }
+}
+
 .userinfo > p {
   font-size: 1.4rem;
+}
+
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .userinfo > p {
+    font-size: 2.2rem;
+  }
 }
 
 .others {
@@ -67,13 +76,6 @@
   align-items: center;
 }
 
-/* 600px */
-@media only screen and (max-width: 37.5em) {
-  .logout {
-    margin-bottom: 0.8rem;
-  }
-}
-
 .logout > p {
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
@@ -81,10 +83,10 @@
   transition: all 0.3s;
 }
 
-/* 600px */
-@media only screen and (max-width: 37.5em) {
+/* 2000px */
+@media only screen and (min-width: 125em) {
   .logout > p {
-    font-size: 0.4rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -99,6 +101,14 @@
 .logouticon {
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
+}
+
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .logouticon {
+    font-size: 3.3rem;
+    margin-bottom: 2rem;
+  }
 }
 
 .logouticon-dark {
@@ -119,6 +129,14 @@
   align-items: center;
 }
 
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .create {
+    height: 3rem;
+    width: 3rem;
+  }
+}
+
 .create-dark {
   background-color: #d55222;
 }
@@ -131,4 +149,12 @@
   height: 2rem;
   width: 2rem;
   fill: #fff;
+}
+
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .createicon {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
 }

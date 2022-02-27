@@ -4,8 +4,23 @@
   margin-bottom: 3rem;
 }
 
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .logo {
+    font-size: 5.5rem;
+    margin-bottom: 4rem;
+  }
+}
+
 .title {
   margin-bottom: 5rem;
+}
+
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .title {
+    margin-bottom: 6rem;
+  }
 }
 
 .title > h2 {
@@ -13,8 +28,23 @@
   margin-bottom: 0.6rem;
 }
 
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .title > h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1.6rem;
+  }
+}
+
 .title > p {
   font-size: 1.3rem;
+}
+
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .title > p {
+    font-size: 3rem;
+  }
 }
 
 .link {
@@ -26,4 +56,12 @@
   font-size: 1.3rem;
   margin-bottom: 1.5rem;
   color: #ff2b1d;
+}
+
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .error {
+    font-size: 2.7rem;
+    margin-bottom: 2rem;
+  }
 }

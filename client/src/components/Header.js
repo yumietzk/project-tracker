@@ -13,6 +13,7 @@ const Header = ({
   handleFormCreate,
   isDarkMode,
   setIsDarkMode,
+  width,
   signOut,
   user,
 }) => {
@@ -29,7 +30,7 @@ const Header = ({
       <DarkModeToggle
         onChange={setIsDarkMode}
         isDarkMode={isDarkMode}
-        size={'4rem'}
+        size={`${width >= 2000 ? '5.2rem' : '4rem'}`}
         className={styles.toggle}
       />
       <div

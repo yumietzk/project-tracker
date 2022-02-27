@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchTask } from '../actions';
+import MobileHeader from './MobileHeader';
 import Sidebar from './Sidebar';
 import Header from './Header';
 import Projects from '../routes/projects/Projects';
@@ -16,9 +17,19 @@ const Home = ({ isDarkMode, setIsDarkMode, fetchTask }) => {
   const [isFormEditOpen, setIsFormEditOpen] = useState(false);
   const [id, setId] = useState(null);
   const [isDetail, setIsDetail] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
 
   const params = useParams();
   const paramsArr = Object.values(params);
+
+  useEffect(() => {
+    window.addEventListener('resize', updateDimension);
+    return () => window.addEventListener('resize', updateDimension);
+  }, []);
+
+  const updateDimension = () => {
+    setWidth(window.innerWidth);
+  };
 
   const handleFormCreate = () => {
     setIsFormCreateOpen(true);
@@ -32,36 +43,51 @@ const Home = ({ isDarkMode, setIsDarkMode, fetchTask }) => {
 
   return (
     <div className={styles.home}>
-      <Sidebar currentPage={paramsArr[0]} isDarkMode={isDarkMode} />
-      <Header
-        handleFormCreate={handleFormCreate}
-        isDarkMode={isDarkMode}
-        setIsDarkMode={setIsDarkMode}
-      />
+      <div className={styles.container}>
+        {width <= 600 ? (
+          <MobileHeader
+            currentPage={paramsArr[0]}
+            handleFormCreate={handleFormCreate}
+            isDarkMode={isDarkMode}
+            setIsDarkMode={setIsDarkMode}
+            width={width}
+          />
+        ) : (
+          <React.Fragment>
+            <Sidebar currentPage={paramsArr[0]} isDarkMode={isDarkMode} />
+            <Header
+              handleFormCreate={handleFormCreate}
+              isDarkMode={isDarkMode}
+              setIsDarkMode={setIsDarkMode}
+              width={width}
+            />
+          </React.Fragment>
+        )}
 
-      <div className={styles.content}>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Projects
-                handleFormEdit={handleFormEdit}
-                isDarkMode={isDarkMode}
-              />
-            }
-          />
-          <Route path="tasks" element={<Tasks isDarkMode={isDarkMode} />} />
-          <Route
-            path="timemanage"
-            element={
-              <TimeManage
-                showDetail={handleFormEdit}
-                setIsDetail={setIsDetail}
-                isDarkMode={isDarkMode}
-              />
-            }
-          />
-        </Routes>
+        <div className={styles.content}>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Projects
+                  handleFormEdit={handleFormEdit}
+                  isDarkMode={isDarkMode}
+                />
+              }
+            />
+            <Route path="tasks" element={<Tasks isDarkMode={isDarkMode} />} />
+            <Route
+              path="timemanage"
+              element={
+                <TimeManage
+                  showDetail={handleFormEdit}
+                  setIsDetail={setIsDetail}
+                  isDarkMode={isDarkMode}
+                />
+              }
+            />
+          </Routes>
+        </div>
       </div>
 
       {/* modal */}

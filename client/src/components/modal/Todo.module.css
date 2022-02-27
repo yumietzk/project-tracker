@@ -2,10 +2,10 @@
   margin-bottom: 3rem;
 }
 
-/* 800px */
-@media only screen and (max-width: 50em) {
+/* 1200px */
+@media only screen and (max-width: 75em) {
   .form {
-    width: 100%;
+    margin-bottom: 1.8rem;
   }
 }
 
@@ -14,18 +14,41 @@
   margin-bottom: 0.5rem;
 }
 
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .form > h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+}
+
 .todo {
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
 }
 
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .todo {
+    margin-bottom: 1.5rem;
+  }
+}
+
 .todo-input {
   flex: 1;
   margin-right: 0.8rem;
   padding: 0.5rem 0.7rem;
+  font-size: 1.3rem;
   border: none;
   background-color: #f6f5f4;
+}
+
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .todo-input {
+    font-size: 2.1rem;
+  }
 }
 
 .todo-input-dark {
@@ -48,6 +71,7 @@
 .btn {
   flex: 0 1 5rem;
   border: none;
+  font-size: 1.3rem;
   background-color: transparent;
   cursor: pointer;
   color: #cfcfcf;
@@ -58,6 +82,13 @@
 
   display: flex;
   align-items: center;
+}
+
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .btn {
+    font-size: 2.1rem;
+  }
 }
 
 .btn-dark {
@@ -77,4 +108,11 @@
   flex: 1;
   height: 10rem;
   overflow-y: scroll;
+}
+
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .lists {
+    height: 18rem;
+  }
 }
