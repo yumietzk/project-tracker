@@ -1,4 +1,6 @@
 .btn {
+  flex: 0 1 4.5rem;
+
   border: none;
   font-size: 1.4rem;
   padding: 1.5rem 1.5rem;
@@ -13,6 +15,7 @@
 /* 2000px */
 @media only screen and (min-width: 125em) {
   .btn {
+    flex: 0 1 7rem;
     font-size: 2.2rem;
   }
 }

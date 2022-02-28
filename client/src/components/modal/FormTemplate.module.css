@@ -1,6 +1,21 @@
+.form {
+  height: 100%;
+  width: 100%;
+
+  display: grid;
+  grid-template-rows: 5rem 1fr;
+}
+
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .form {
+    grid-template-rows: 9rem 1fr;
+  }
+}
+
 .form-title {
   font-size: 3rem;
-  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
 
   display: flex;
   justify-content: center;
@@ -11,24 +26,60 @@
 @media only screen and (min-width: 125em) {
   .form-title {
     font-size: 4rem;
-    margin-bottom: 3rem;
+    padding-bottom: 2.5rem;
   }
 }
 
-.title,
-.date,
-.status,
-.duedate {
-  margin-bottom: 1rem;
+.form-template {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+  width: 100%;
+}
+
+.title {
+  flex: 0 1 4.5rem;
 }
 
 /* 2000px */
 @media only screen and (min-width: 125em) {
-  .title,
+  .title {
+    flex: 0 1 7rem;
+  }
+}
+
+.date,
+.status,
+.duedate {
+  flex: 0 1 3rem;
+  width: 80%;
+}
+
+/* 2000px */
+@media only screen and (min-width: 125em) {
   .date,
   .status,
   .duedate {
-    margin-bottom: 2rem;
+    flex: 0 1 5rem;
+  }
+}
+
+/* 800px */
+@media only screen and (max-width: 50em) {
+  .date,
+  .status,
+  .duedate {
+    width: 100%;
+  }
+}
+
+/* 600px */
+@media only screen and (max-width: 37.5em) {
+  .date,
+  .status,
+  .duedate {
+    flex: 0 1 6.5rem;
   }
 }
 
@@ -39,18 +90,14 @@
   align-items: center;
 }
 
-.date,
-.status,
-.duedate {
-  width: 80%;
-}
-
-/* 800px */
-@media only screen and (max-width: 50em) {
-  .date,
-  .status,
-  .duedate {
-    width: 100%;
+/* 600px */
+@media only screen and (max-width: 37.5em) {
+  .date-form,
+  .status-form,
+  .duedate-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
@@ -68,6 +115,14 @@
   .input {
     font-size: 2.7rem;
     padding: 1rem 1.1rem;
+  }
+}
+
+/* 600px */
+@media only screen and (max-width: 37.5em) {
+  .input {
+    font-size: 2rem;
+    padding: 0.5rem 0.8rem;
   }
 }
 
@@ -100,14 +155,6 @@
   color: #ccc;
 }
 
-/* 600px */
-@media only screen and (max-width: 37.5em) {
-  .date-form {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
 .label {
   flex: 0 1 12rem;
   font-size: 1.2rem;
@@ -120,6 +167,14 @@
   .label {
     flex: 0 1 18rem;
     font-size: 2rem;
+  }
+}
+
+/* 600px */
+@media only screen and (max-width: 37.5em) {
+  .label {
+    flex: 0 1 3rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -157,18 +212,27 @@
   }
 }
 
+/* 600px */
+@media only screen and (max-width: 37.5em) {
+  .select {
+    font-size: 1.5rem;
+  }
+}
+
 .select:not(:last-child) {
   margin-right: 1rem;
 }
 
 .description {
-  margin-bottom: 1.8rem;
+  flex: 0 1 14rem;
+  padding-top: 1rem;
 }
 
 /* 2000px */
 @media only screen and (min-width: 125em) {
   .description {
-    margin-bottom: 2.5rem;
+    flex: 0 1 22rem;
+    padding-top: 2rem;
   }
 }
 
@@ -195,7 +259,7 @@
 /* 2000px */
 @media only screen and (min-width: 125em) {
   .textarea {
-    height: 12rem;
+    height: 13rem;
     font-size: 1.9rem;
   }
 }

@@ -144,187 +144,191 @@ const FormTemplate = ({
 
   return (
     <React.Fragment>
-      <h1 className={styles['form-title']}>{type}</h1>
+      <div className={styles.form}>
+        <h1 className={styles['form-title']}>{type}</h1>
 
-      <form onSubmit={formHandler} className={styles.form}>
-        <div className={styles.title}>
-          <input
-            className={`${styles.input} ${isDarkMode && styles['input-dark']}`}
-            type="text"
-            name="title"
-            placeholder="Title *"
-            value={form.title}
-            onChange={handleInputChange}
-          />
-          {renderError('title')}
-        </div>
-
-        <div className={styles.date}>
-          <div className={styles['date-form']}>
-            <label className={styles.label}>
-              <IoIcons.IoTimeOutline className={styles.icon} />
-              Date created *
-            </label>
-            <div className={styles.selectgroup}>
-              <select
-                className={`${styles.select} ${
-                  isDarkMode && styles['select-dark']
-                }`}
-                name="month"
-                value={form.month}
-                onChange={handleInputChange}
-              >
-                <option value="-">-</option>
-                {FormData.months.map((month, i) => {
-                  return (
-                    <option key={i} value={month}>
-                      {month}
-                    </option>
-                  );
-                })}
-              </select>
-              <select
-                className={`${styles.select} ${
-                  isDarkMode && styles['select-dark']
-                }`}
-                name="date"
-                value={form.date}
-                onChange={handleInputChange}
-              >
-                <option value="-">-</option>
-                {FormData.dates.map((date, i) => {
-                  return (
-                    <option key={i} value={date}>
-                      {date}
-                    </option>
-                  );
-                })}
-              </select>
-              <select
-                className={`${styles.select} ${
-                  isDarkMode && styles['select-dark']
-                }`}
-                name="year"
-                value={form.year}
-                onChange={handleInputChange}
-              >
-                <option value="-">-</option>
-                {FormData.years.map((year, i) => {
-                  return (
-                    <option key={i} value={year}>
-                      {year}
-                    </option>
-                  );
-                })}
-              </select>
-            </div>
+        <form onSubmit={formHandler} className={styles['form-template']}>
+          <div className={styles.title}>
+            <input
+              className={`${styles.input} ${
+                isDarkMode && styles['input-dark']
+              }`}
+              type="text"
+              name="title"
+              placeholder="Title *"
+              value={form.title}
+              onChange={handleInputChange}
+            />
+            {renderError('title')}
           </div>
-          {renderError('date')}
-        </div>
 
-        <div className={styles.status}>
-          <div className={styles['status-form']}>
-            <label className={styles.label}>
-              <GrIcons.GrStatusPlaceholderSmall className={styles.icon} />
-              Status *
-            </label>
-            <div className={styles.selectgroup}>
-              <select
-                className={`${styles.select} ${
-                  isDarkMode && styles['select-dark']
-                }`}
-                name="status"
-                value={form.status}
-                onChange={handleInputChange}
-              >
-                <option value="-">-</option>
-                <option value="No Status">No Status</option>
-                <option value="In Progress">In Progress</option>
-                <option value="Completed">Completed</option>
-              </select>
+          <div className={styles.date}>
+            <div className={styles['date-form']}>
+              <label className={styles.label}>
+                <IoIcons.IoTimeOutline className={styles.icon} />
+                Date created *
+              </label>
+              <div className={styles.selectgroup}>
+                <select
+                  className={`${styles.select} ${
+                    isDarkMode && styles['select-dark']
+                  }`}
+                  name="month"
+                  value={form.month}
+                  onChange={handleInputChange}
+                >
+                  <option value="-">-</option>
+                  {FormData.months.map((month, i) => {
+                    return (
+                      <option key={i} value={month}>
+                        {month}
+                      </option>
+                    );
+                  })}
+                </select>
+                <select
+                  className={`${styles.select} ${
+                    isDarkMode && styles['select-dark']
+                  }`}
+                  name="date"
+                  value={form.date}
+                  onChange={handleInputChange}
+                >
+                  <option value="-">-</option>
+                  {FormData.dates.map((date, i) => {
+                    return (
+                      <option key={i} value={date}>
+                        {date}
+                      </option>
+                    );
+                  })}
+                </select>
+                <select
+                  className={`${styles.select} ${
+                    isDarkMode && styles['select-dark']
+                  }`}
+                  name="year"
+                  value={form.year}
+                  onChange={handleInputChange}
+                >
+                  <option value="-">-</option>
+                  {FormData.years.map((year, i) => {
+                    return (
+                      <option key={i} value={year}>
+                        {year}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
             </div>
+            {renderError('date')}
           </div>
-          {renderError('status')}
-        </div>
 
-        <div className={styles.duedate}>
-          <div className={styles['duedate-form']}>
-            <label className={styles.label}>
-              <CgIcons.CgCalendarDue className={styles.icon} />
-              Due Date *
-            </label>
-            <div className={styles.selectgroup}>
-              <select
-                className={`${styles.select} ${
-                  isDarkMode && styles['select-dark']
-                }`}
-                name="dueMonth"
-                value={form.dueMonth}
-                onChange={handleInputChange}
-              >
-                <option value="-">-</option>
-                {FormData.months.map((month, i) => {
-                  return (
-                    <option key={i} value={month}>
-                      {month}
-                    </option>
-                  );
-                })}
-              </select>
-              <select
-                className={`${styles.select} ${
-                  isDarkMode && styles['select-dark']
-                }`}
-                name="dueDate"
-                value={form.dueDate}
-                onChange={handleInputChange}
-              >
-                <option value="-">-</option>
-                {FormData.dates.map((date, i) => {
-                  return (
-                    <option key={i} value={date}>
-                      {date}
-                    </option>
-                  );
-                })}
-              </select>
-              <select
-                className={`${styles.select} ${
-                  isDarkMode && styles['select-dark']
-                }`}
-                name="dueYear"
-                value={form.dueYear}
-                onChange={handleInputChange}
-              >
-                <option value="-">-</option>
-                {FormData.years.map((year, i) => {
-                  return (
-                    <option key={i} value={year}>
-                      {year}
-                    </option>
-                  );
-                })}
-              </select>
+          <div className={styles.status}>
+            <div className={styles['status-form']}>
+              <label className={styles.label}>
+                <GrIcons.GrStatusPlaceholderSmall className={styles.icon} />
+                Status *
+              </label>
+              <div className={styles.selectgroup}>
+                <select
+                  className={`${styles.select} ${
+                    isDarkMode && styles['select-dark']
+                  }`}
+                  name="status"
+                  value={form.status}
+                  onChange={handleInputChange}
+                >
+                  <option value="-">-</option>
+                  <option value="No Status">No Status</option>
+                  <option value="In Progress">In Progress</option>
+                  <option value="Completed">Completed</option>
+                </select>
+              </div>
             </div>
+            {renderError('status')}
           </div>
-          {renderError('duedate')}
-        </div>
 
-        <div className={styles.description}>
-          <h2>Description *</h2>
-          <textarea
-            className={`${styles.textarea} ${
-              isDarkMode && styles['textarea-dark']
-            }`}
-            name="description"
-            value={form.description}
-            onChange={handleInputChange}
-          />
-          {renderError('description')}
-        </div>
+          <div className={styles.duedate}>
+            <div className={styles['duedate-form']}>
+              <label className={styles.label}>
+                <CgIcons.CgCalendarDue className={styles.icon} />
+                Due Date *
+              </label>
+              <div className={styles.selectgroup}>
+                <select
+                  className={`${styles.select} ${
+                    isDarkMode && styles['select-dark']
+                  }`}
+                  name="dueMonth"
+                  value={form.dueMonth}
+                  onChange={handleInputChange}
+                >
+                  <option value="-">-</option>
+                  {FormData.months.map((month, i) => {
+                    return (
+                      <option key={i} value={month}>
+                        {month}
+                      </option>
+                    );
+                  })}
+                </select>
+                <select
+                  className={`${styles.select} ${
+                    isDarkMode && styles['select-dark']
+                  }`}
+                  name="dueDate"
+                  value={form.dueDate}
+                  onChange={handleInputChange}
+                >
+                  <option value="-">-</option>
+                  {FormData.dates.map((date, i) => {
+                    return (
+                      <option key={i} value={date}>
+                        {date}
+                      </option>
+                    );
+                  })}
+                </select>
+                <select
+                  className={`${styles.select} ${
+                    isDarkMode && styles['select-dark']
+                  }`}
+                  name="dueYear"
+                  value={form.dueYear}
+                  onChange={handleInputChange}
+                >
+                  <option value="-">-</option>
+                  {FormData.years.map((year, i) => {
+                    return (
+                      <option key={i} value={year}>
+                        {year}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+            </div>
+            {renderError('duedate')}
+          </div>
 
-        {childElement}
-      </form>
+          <div className={styles.description}>
+            <h2>Description *</h2>
+            <textarea
+              className={`${styles.textarea} ${
+                isDarkMode && styles['textarea-dark']
+              }`}
+              name="description"
+              value={form.description}
+              onChange={handleInputChange}
+            />
+            {renderError('description')}
+          </div>
+
+          {childElement}
+        </form>
+      </div>
     </React.Fragment>
   );
 };
