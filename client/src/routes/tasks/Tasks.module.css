@@ -2,27 +2,6 @@
   margin-top: 1rem;
 }
 
-.loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 8rem;
-}
-
-.icon {
-  animation: spin 0.8s infinite linear;
-}
-
-@keyframes spin {
-  from {
-    transform: none;
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .message {
   display: flex;
   flex-direction: column;
@@ -30,4 +9,11 @@
   align-items: center;
   padding-top: 8rem;
   font-size: 1.4rem;
+}
+
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .message {
+    font-size: 2.5rem;
+  }
 }

@@ -4,10 +4,34 @@
   margin-bottom: 0.3rem;
 }
 
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .todo {
+    margin-bottom: 0.7rem;
+  }
+}
+
 .checkbox {
   margin-right: 1rem;
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .checkbox {
+    height: 1.7rem;
+    width: 1.7rem;
+  }
 }
 
 .text {
   font-size: 1.3rem;
+}
+
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .text {
+    font-size: 2rem;
+  }
 }

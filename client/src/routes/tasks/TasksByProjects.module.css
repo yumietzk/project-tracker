@@ -2,10 +2,24 @@
   margin-bottom: 0.7rem;
 }
 
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .project:not(:last-child) {
+    margin-bottom: 1.2rem;
+  }
+}
+
 .project {
   border-radius: 1rem;
   padding: 0.8rem 1rem;
   background-color: #d5c6b95b;
+}
+
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .project {
+    padding: 1.5rem 2rem;
+  }
 }
 
 .project-dark {
@@ -17,7 +31,22 @@
   margin-bottom: 0.7rem;
 }
 
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .title {
+    font-size: 2.3rem;
+    margin-bottom: 1rem;
+  }
+}
+
 .message {
   font-size: 1.2rem;
   margin-left: 1rem;
+}
+
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .message {
+    font-size: 2.3rem;
+  }
 }
