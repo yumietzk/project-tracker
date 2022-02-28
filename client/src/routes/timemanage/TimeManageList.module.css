@@ -1,18 +1,41 @@
 .content {
   margin-bottom: 0.3rem;
+  width: 100%;
+}
+
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .content {
+    margin-bottom: 0.5rem;
+  }
 }
 
 .project {
+  width: 100%;
   background-color: #fff;
   border-radius: 3px;
   font-size: 1.3rem;
-  padding: 0 2.2rem;
+  padding: 0.5rem 2.2rem;
   position: relative;
 
   display: flex;
   align-items: center;
 }
 
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .project {
+    font-size: 2.2rem;
+    padding: 0.7rem 2.2rem;
+  }
+}
+
+/* 600px */
+@media only screen and (max-width: 37.5em) {
+  .project {
+    font-size: 1.5rem;
+  }
+}
 .project-dark {
   background-color: #0c0d14;
 }
@@ -25,6 +48,14 @@
   left: 0;
   height: 100%;
   width: 4px;
+}
+
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .project-nostatus::before,
+  .project-inprogress::before {
+    width: 7px;
+  }
 }
 
 .project-nostatus::before {
@@ -47,10 +78,33 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+}
+
+.title::-webkit-scrollbar {
+  display: none;
+}
+
+/* 600px */
+@media only screen and (max-width: 37.5em) {
+  .title {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
 }
 
 .title-text {
   font-weight: 700;
+}
+
+/* 600px */
+@media only screen and (max-width: 37.5em) {
+  .title-text {
+    margin-bottom: 0.5rem;
+  }
 }
 
 .title-btn {
@@ -62,6 +116,14 @@
   cursor: pointer;
   color: transparent;
   transition: all 0.2s;
+}
+
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .title-btn {
+    font-size: 2rem;
+    padding: 0.5rem 0.7rem;
+  }
 }
 
 .project:hover .title-btn {
@@ -79,7 +141,8 @@
 }
 
 .tasks {
-  flex: 0 1 26%;
+  /* flex: 0 0 26%; */
+  flex-basis: 26%;
   padding: 1.1rem 0 1.1rem 0.9rem;
   border-right: 0.2rem solid #f6f5f4;
 }
@@ -90,7 +153,8 @@
 }
 
 .date {
-  flex: 0 1 26%;
+  /* flex: 0 0 26%; */
+  flex-basis: 26%;
   padding: 1.1rem 0 1.1rem 0.9rem;
 
   display: flex;
@@ -98,7 +162,11 @@
   justify-content: space-between;
 }
 
-.date-text {
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .date {
+    padding-right: 2rem;
+  }
 }
 
 .fire-icon {
@@ -110,6 +178,12 @@
   justify-content: center;
 }
 
+/* 2000px */
+@media only screen and (min-width: 125em) {
+  .fire-icon {
+    font-size: 2.5rem;
+  }
+}
 .visible {
   color: #e83a30;
 }

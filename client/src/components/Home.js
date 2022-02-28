@@ -83,6 +83,7 @@ const Home = ({ isDarkMode, setIsDarkMode, fetchTask }) => {
                   showDetail={handleFormEdit}
                   setIsDetail={setIsDetail}
                   isDarkMode={isDarkMode}
+                  width={width}
                 />
               }
             />

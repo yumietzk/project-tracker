@@ -13,11 +13,13 @@ import { fetchTasks } from '../../actions';
 import TimeManageList from './TimeManageList';
 import LoadingIndicator from '../../helpers/LoadingIndicator';
 import styles from './TimeManage.module.css';
+import ReactCalendarTimeline from 'react-calendar-timeline';
 
 const TimeManage = ({
   showDetail,
   setIsDetail,
   isDarkMode,
+  width,
   fetchTasks,
   tasks,
   isFetching,
@@ -125,65 +127,68 @@ const TimeManage = ({
 
           return (
             <div className={styles.timemanage}>
-              <div
-                className={`${styles.calendar} ${
-                  isDarkMode && styles['calendar-dark']
-                }`}
-              >
-                Timeline Calendar
-                <button className={styles.togglebtn} onClick={handleDisplay}>
-                  {isDisplayed ? (
-                    <GoIcons.GoTriangleUp
-                      className={`${styles.toggleicon} ${
-                        isDarkMode && styles['toggleicon-dark']
-                      }`}
-                    />
-                  ) : (
-                    <IoIcons.IoCalendarOutline
-                      className={`${styles.toggleicon} ${
-                        isDarkMode && styles['toggleicon-dark']
-                      }`}
-                    />
-                  )}
-                </button>
-              </div>
-
-              {isDisplayed && (
-                <div className={styles.timeline}>
-                  <Timeline
-                    groups={groups}
-                    items={items}
-                    // これは多分デフォルトで画面上に表示されている期間の設定
-                    // innerwidthによって変える
-                    defaultTimeStart={moment().add(-1, 'days')}
-                    defaultTimeEnd={moment().add(45, 'days')}
+              {width > 600 && (
+                <React.Fragment>
+                  <div
+                    className={`${styles.calendar} ${
+                      isDarkMode && styles['calendar-dark']
+                    }`}
                   >
-                    <TimelineHeaders style={{ background: 'none' }}>
-                      <SidebarHeader
-                        style={{ display: 'flex', alignItems: 'center' }}
+                    Timeline Calendar
+                    <button
+                      className={styles.togglebtn}
+                      onClick={handleDisplay}
+                    >
+                      {isDisplayed ? (
+                        <GoIcons.GoTriangleUp
+                          className={`${styles.toggleicon} ${
+                            isDarkMode && styles['toggleicon-dark']
+                          }`}
+                        />
+                      ) : (
+                        <IoIcons.IoCalendarOutline
+                          className={`${styles.toggleicon} ${
+                            isDarkMode && styles['toggleicon-dark']
+                          }`}
+                        />
+                      )}
+                    </button>
+                  </div>
+
+                  {/* タブレット以上の画面で表示 */}
+                  {isDisplayed && (
+                    <div className={styles.timeline}>
+                      <Timeline
+                        groups={groups}
+                        items={items}
+                        // これは多分デフォルトで画面上に表示されている期間の設定
+                        // innerwidthによって変える
+                        defaultTimeStart={moment().add(-1, 'days')}
+                        defaultTimeEnd={moment().add(45, 'days')}
                       >
-                        {({ getRootProps }) => {
-                          return (
-                            <div
-                              {...getRootProps()}
-                              className={styles['timeline-title']}
-                            ></div>
-                          );
-                        }}
-                      </SidebarHeader>
-                      {/* innerwidthによってunitをyear, monthとかにする */}
-                      <DateHeader
-                        unit="month"
-                        style={{
-                          color: '#274c4b',
-                          fontWeight: 'bold',
-                          backgroundColor: '#0C0D14',
-                        }}
-                      ></DateHeader>
-                      <DateHeader unit="day"></DateHeader>
-                    </TimelineHeaders>
-                  </Timeline>
-                </div>
+                        <TimelineHeaders style={{ background: 'none' }}>
+                          <SidebarHeader
+                            style={{ display: 'flex', alignItems: 'center' }}
+                          >
+                            {({ getRootProps }) => {
+                              return <div {...getRootProps()}></div>;
+                            }}
+                          </SidebarHeader>
+                          {/* innerwidthによってunitをyear, monthとかにする */}
+                          <DateHeader
+                            unit="month"
+                            style={{
+                              color: '#274c4b',
+                              fontWeight: 'bold',
+                              backgroundColor: '#0C0D14',
+                            }}
+                          ></DateHeader>
+                          <DateHeader unit="day"></DateHeader>
+                        </TimelineHeaders>
+                      </Timeline>
+                    </div>
+                  )}
+                </React.Fragment>
               )}
 
               <div className={styles.reference}>
