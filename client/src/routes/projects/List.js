@@ -3,7 +3,7 @@ import { Droppable } from 'react-beautiful-dnd';
 import Card from './Card';
 import styles from './List.module.css';
 
-const List = ({ handleFormEdit, isDarkMode, label, data }) => {
+const List = ({ handleFormEdit, isDarkMode, width, label, data }) => {
   const renderCard = () => {
     if (data.length === 0) {
       return null;
@@ -13,6 +13,7 @@ const List = ({ handleFormEdit, isDarkMode, label, data }) => {
           <Card
             handleFormEdit={handleFormEdit}
             isDarkMode={isDarkMode}
+            width={width}
             key={item._id}
             item={item}
             index={i}

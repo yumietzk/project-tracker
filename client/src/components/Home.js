@@ -72,6 +72,7 @@ const Home = ({ isDarkMode, setIsDarkMode, fetchTask }) => {
                 <Projects
                   handleFormEdit={handleFormEdit}
                   isDarkMode={isDarkMode}
+                  width={width}
                 />
               }
             />

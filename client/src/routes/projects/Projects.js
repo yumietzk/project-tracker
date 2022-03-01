@@ -9,6 +9,7 @@ import styles from './Projects.module.css';
 const Projects = ({
   handleFormEdit,
   isDarkMode,
+  width,
   fetchTasks,
   updateTask,
   tasks,
@@ -112,18 +113,21 @@ const Projects = ({
               <List
                 handleFormEdit={handleFormEdit}
                 isDarkMode={isDarkMode}
+                width={width}
                 label="No Status"
                 data={dataArr.noStatus}
               />
               <List
                 handleFormEdit={handleFormEdit}
                 isDarkMode={isDarkMode}
+                width={width}
                 label="In Progress"
                 data={dataArr.inProgress}
               />
               <List
                 handleFormEdit={handleFormEdit}
                 isDarkMode={isDarkMode}
+                width={width}
                 label="Completed"
                 data={dataArr.completed}
               />
