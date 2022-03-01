@@ -1,19 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import Timeline, {
-  TimelineHeaders,
-  SidebarHeader,
-  DateHeader,
-} from 'react-calendar-timeline';
-import 'react-calendar-timeline/lib/Timeline.css';
-import moment from 'moment';
-import * as GoIcons from 'react-icons/go';
-import * as IoIcons from 'react-icons/io5';
 import { fetchTasks } from '../../actions';
+import TimelineCalendar from './TimelineCalendar';
 import TimeManageList from './TimeManageList';
 import LoadingIndicator from '../../helpers/LoadingIndicator';
 import styles from './TimeManage.module.css';
-import ReactCalendarTimeline from 'react-calendar-timeline';
 
 const TimeManage = ({
   showDetail,
@@ -26,57 +17,10 @@ const TimeManage = ({
   isError,
 }) => {
   const [sort, setSort] = useState(false);
-  const [groups, setGroups] = useState([]);
-  const [items, setItems] = useState([]);
-  const [isDisplayed, setIsDisplayed] = useState(false);
-
-  const handleDisplay = () => {
-    setIsDisplayed(!isDisplayed);
-  };
 
   useEffect(() => {
     fetchTasks();
   }, []);
-
-  useEffect(() => {
-    if (tasks) {
-      if (
-        tasks.length !== 0 &&
-        !tasks.every((task) => task.status === 'Completed')
-      ) {
-        let groupData = [];
-        let itemData = [];
-
-        tasks.map((task, i) => {
-          if (task.status === 'Completed') return;
-
-          groupData.push({
-            id: i + 1,
-            title: task.title,
-          });
-          itemData.push({
-            id: i + 1,
-            group: i + 1,
-            title: task.title,
-            start_time: moment().add(calcDate(task.date), 'days'),
-            end_time: moment().add(calcDate(task.duedate), 'days'),
-            canMove: false,
-            canResize: false,
-            canChangeGroup: false,
-            itemProps: {
-              style: {
-                background: `${isDarkMode ? '#D55222' : '#adc8c8'}`,
-                border: 'none',
-              },
-            },
-          });
-        });
-
-        setGroups(groupData);
-        setItems(itemData);
-      }
-    }
-  }, [tasks]);
 
   const calcDate = (date) => {
     const targetdate = new Date(date);
@@ -127,69 +71,12 @@ const TimeManage = ({
 
           return (
             <div className={styles.timemanage}>
-              {width > 600 && (
-                <React.Fragment>
-                  <div
-                    className={`${styles.calendar} ${
-                      isDarkMode && styles['calendar-dark']
-                    }`}
-                  >
-                    Timeline Calendar
-                    <button
-                      className={styles.togglebtn}
-                      onClick={handleDisplay}
-                    >
-                      {isDisplayed ? (
-                        <GoIcons.GoTriangleUp
-                          className={`${styles.toggleicon} ${
-                            isDarkMode && styles['toggleicon-dark']
-                          }`}
-                        />
-                      ) : (
-                        <IoIcons.IoCalendarOutline
-                          className={`${styles.toggleicon} ${
-                            isDarkMode && styles['toggleicon-dark']
-                          }`}
-                        />
-                      )}
-                    </button>
-                  </div>
-
-                  {/* タブレット以上の画面で表示 */}
-                  {isDisplayed && (
-                    <div className={styles.timeline}>
-                      <Timeline
-                        groups={groups}
-                        items={items}
-                        // これは多分デフォルトで画面上に表示されている期間の設定
-                        // innerwidthによって変える
-                        defaultTimeStart={moment().add(-1, 'days')}
-                        defaultTimeEnd={moment().add(45, 'days')}
-                      >
-                        <TimelineHeaders style={{ background: 'none' }}>
-                          <SidebarHeader
-                            style={{ display: 'flex', alignItems: 'center' }}
-                          >
-                            {({ getRootProps }) => {
-                              return <div {...getRootProps()}></div>;
-                            }}
-                          </SidebarHeader>
-                          {/* innerwidthによってunitをyear, monthとかにする */}
-                          <DateHeader
-                            unit="month"
-                            style={{
-                              color: '#274c4b',
-                              fontWeight: 'bold',
-                              backgroundColor: '#0C0D14',
-                            }}
-                          ></DateHeader>
-                          <DateHeader unit="day"></DateHeader>
-                        </TimelineHeaders>
-                      </Timeline>
-                    </div>
-                  )}
-                </React.Fragment>
-              )}
+              <TimelineCalendar
+                tasks={tasks}
+                calcDate={calcDate}
+                isDarkMode={isDarkMode}
+                width={width}
+              />
 
               <div className={styles.reference}>
                 <div className={styles.type}>

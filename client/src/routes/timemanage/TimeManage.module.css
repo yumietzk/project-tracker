@@ -13,58 +13,6 @@
   }
 }
 
-.calendar {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #274c4b;
-
-  display: flex;
-  align-items: center;
-}
-
-/* 2000px */
-@media only screen and (min-width: 125em) {
-  .calendar {
-    font-size: 3.2rem;
-  }
-}
-
-.calendar-dark {
-  color: #ccc;
-}
-
-.togglebtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  margin-left: 0.6rem;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
-.toggleicon {
-  font-size: 2rem;
-}
-
-/* 2000px */
-@media only screen and (min-width: 125em) {
-  .toggleicon {
-    font-size: 3rem;
-  }
-}
-
-.toggleicon-dark {
-  color: #ccc;
-}
-
-.timeline {
-  padding-bottom: 5rem;
-  border-bottom: 0.5px solid #949686;
-  margin-top: 2rem;
-}
-
 .reference {
   margin-bottom: 2rem;
   margin-top: 4.5rem;
