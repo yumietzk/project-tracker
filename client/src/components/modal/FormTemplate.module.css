@@ -36,6 +36,7 @@
 
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 .title {
@@ -224,34 +225,39 @@
 }
 
 .description {
-  flex: 0 1 14rem;
-  padding-top: 1rem;
+  flex: 0 1 9.6rem;
+
+  display: flex;
+  flex-direction: column;
 }
 
 /* 2000px */
 @media only screen and (min-width: 125em) {
   .description {
     flex: 0 1 22rem;
-    padding-top: 2rem;
   }
 }
 
 .description > h2 {
+  flex: 0 1 2.6rem;
+
   font-size: 1.7rem;
-  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: flex-end;
 }
 
 /* 2000px */
 @media only screen and (min-width: 125em) {
   .description > h2 {
+    flex: 0 1 4.2rem;
     font-size: 2.5rem;
-    margin-bottom: 1rem;
   }
 }
 
 .textarea {
+  flex: 1;
+
   width: 100%;
-  height: 8rem;
   font-size: 1.3rem;
   border-color: #b8b8b8;
 }
@@ -259,7 +265,6 @@
 /* 2000px */
 @media only screen and (min-width: 125em) {
   .textarea {
-    height: 13rem;
     font-size: 1.9rem;
   }
 }
