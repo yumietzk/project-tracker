@@ -23,6 +23,22 @@ Users can search both movies and TV shows related to a term submitted in a searc
 After users sign in, they can save their favorite movies or TV shows by clicking a favorite heart button in each movie and TV show's detail page, and can see the saved data in a favorite page. Without signing in, the favorite button doesn't show up and they can't save data.  
 ![Sign in](./assets/sigin.gif) -->
 
+## How To Use
+
+### To log in  
+Use below login email and password, or sign in as a new user.  
+Email: test@gmail.com  
+Password: test1234  
+
+## Built With  
+- React JS
+- Redux
+- React Router
+- Mongo DB
+- Express
+- Node.js
+- Firebase  
+
 ## Getting Started
 
 ### Prerequisites
@@ -40,7 +56,7 @@ Install npm.
    ```
    git clone https://github.com/yumietzk/project-tracker.git
    ```
-2. Install all of the packages neede for backend and frontend.
+2. Install all of the packages needed for backend and frontend.
    ```
    npm run bootstrap
    ```
@@ -66,32 +82,12 @@ Install npm.
    npm run start
    ``` -->
 
-### Testing
+<!-- ### Testing
 
 - Run tests.
   ```
   npm run test
-  ```
-
-## Contact
-
-Yumie Tsuzuki - yumie.tsuzuki@gmail.com -->
-
-## How To Use
-
-### To log in  
-Use below login email and password, or sign in as a new user.  
-Email: test@gmail.com  
-Password: test1234  
-
-## Built With  
-- React JS
-- Redux
-- React Router
-- Mongo DB
-- Express
-- Node.js
-- Firebase  
+  ``` -->
 
 ## Contact
 
