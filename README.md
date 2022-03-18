@@ -67,6 +67,8 @@ Install npm.
 
 Yumie Tsuzuki - yumie.tsuzuki@gmail.com -->
 
+## How To Use
+
 ### To log in  
 Use below login email and password, or sign in as a new user.  
 Email: test@gmail.com  
