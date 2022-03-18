@@ -38,7 +38,7 @@ Install npm.
 
 1. Clone the repo.
    ```
-   git clone https://github.com/yumietzk/popcorn-club.git
+   git clone https://github.com/yumietzk/project-tracker.git
    ```
 2. Install all of the packages neede for backend and frontend.
    ```
