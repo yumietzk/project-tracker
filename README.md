@@ -6,27 +6,6 @@ A project tracker app built with MERN stack (Mongo DB, Express, React JS, Node.j
 I used Firebase for user authentication. After users log in, they can create a new project and manage it. This app allows users to show and manage all projects by status and all tasks and due dates of each project for time management.  
 I also used React Final Form for form validation in Login & Signup pages.
 
-## Features
-
-<!-- React dnd -->
-<!-- timeline -->
-
-<!-- ### Search and sort data by categories
-Users can search data by changing genres and sort data by title name, release date and rating. Users can also decide how many data they want to get.
-![Search by category](./assets/searchByCategory.gif)
-
-### See detail
-Users can see the detail of movies and TV shows such as movie trailer, website, casts, reviews and related shows. Users can also jump to a detail page of casts. For TV shows, users can see all seasons and episodes' details. And more to explore!
-![See detail](./assets/seeDetail.gif)
-
-### Search
-Users can search both movies and TV shows related to a term submitted in a search input.
-![Search](./assets/search.gif)
-
-### Sign In & Sign Out
-After users sign in, they can save their favorite movies or TV shows by clicking a favorite heart button in each movie and TV show's detail page, and can see the saved data in a favorite page. Without signing in, the favorite button doesn't show up and they can't save data.
-![Sign in](./assets/sigin.gif) -->
-
 ## How To Use
 
 ### To log in
@@ -60,10 +39,25 @@ Users can edit a project by clicking three dots on top right in each project car
 In a tasks page, users can see and manage tasks in each project except for completed projects. Users can manage tasks by clicking a checkbox besides each task to check or uncheck.
 ![Manage tasks](./assets/manageTasks.gif)
 
+### Drag & Drop a project card
+
+Users can drag and drop a project card to change the project's status.
+![Drag & Drop](./assets/draganddrop.gif)
+
 ### Check time manage
 
-In a time manage page, users can check each project's due date and how many tasks are left with a timeline calendar and a table. Users can sort projects by due date and also can check the detail of projects.
-![Manage tasks](./assets/manageTasks.gif)
+In a time manage page, users can check each project's due date and how many tasks are left with a timeline calendar and a table. Users can sort projects by due date and also can check the detail of projects. And a fire icon notifies users the project either approaches to the due date or already passes the due date.
+![Check time manage](./assets/checkTimemanage.gif)
+
+### **_Bonus - Dark Mode!_**
+
+If you like a dark mode, you can try it by toggling a top left button!
+![Darkmode](./assets/darkmode.gif)
+
+### To log out
+
+Users can log out by clicking a logout button on top right.  
+![Darkmode](./assets/logout.gif)
 
 ## Built With
 
