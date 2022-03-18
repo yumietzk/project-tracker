@@ -26,9 +26,17 @@ After users sign in, they can save their favorite movies or TV shows by clicking
 ## How To Use
 
 ### To log in  
-Use below login email and password, or sign in as a new user.  
+Use below login email and password, or sign up as a new user.  
 Email: test@gmail.com  
 Password: test1234  
+
+#### Log in page
+![Login page](https://user-images.githubusercontent.com/61277579/159061477-538f2bfc-e4b4-407f-abc2-e6341d3ed1a0.jpeg)  
+
+#### Sign up page  
+![Signup page](https://user-images.githubusercontent.com/61277579/159061621-44489a05-14ff-4408-a539-3cb2fdc94fda.jpeg)
+
+
 
 ## Built With  
 - React JS
