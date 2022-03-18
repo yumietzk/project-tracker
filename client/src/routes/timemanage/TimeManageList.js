@@ -39,7 +39,7 @@ const TimeManageList = ({
   const renderDueDate = (date) => {
     const daysLeft = calcDate(date);
 
-    if (daysLeft < -1) return `${Math.abs(daysLeft)} days ago`;
+    if (daysLeft < -1) return `${Math.ceil(Math.abs(daysLeft))} days ago`;
     if (daysLeft === -1) return 'Yesterday';
     if (daysLeft === 0) return 'Today';
     if (daysLeft === 1) return 'Tomorrow';
