@@ -23,7 +23,7 @@ Users can search both movies and TV shows related to a term submitted in a searc
 After users sign in, they can save their favorite movies or TV shows by clicking a favorite heart button in each movie and TV show's detail page, and can see the saved data in a favorite page. Without signing in, the favorite button doesn't show up and they can't save data.  
 ![Sign in](./assets/sigin.gif) -->
 
-<!-- ## Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -36,25 +36,35 @@ Install npm.
 
 ### Installation
 
-1. Get an API key at [The Movie Database API](https://www.themoviedb.org/documentation/api).
-2. Get a client ID at [Google Cloud Platform](https://console.cloud.google.com/).
-3. Clone the repo.
+1. Clone the repo.
    ```
    git clone https://github.com/yumietzk/popcorn-club.git
    ```
-4. Install NPM packages.
+2. Install all of the packages neede for backend and frontend.
    ```
-   npm install
+   npm run bootstrap
    ```
-5. Create your API key and proxy in a .env file.
+3. Set MongoDB Atlas Database at [MongoDB](https://cloud.mongodb.com/account) and connect the application to cluster by setting below in a .env file in a root folder.
    ```
-   REACT_APP_API_KEY=yourapikey
-   REACT_APP_GoogleAuth_ClientID=yourclientID
+   DB_CONNECTION=yourconnectionstring
    ```
-6. Start the server.
+4. Set authentication with [Firebase](https://console.firebase.google.com/u/0/) and connect the application to Firebase by setting below in a .env file in a client folder.
+   ```
+   REACT_APP_FIREBASE_API_KEY=yourapikey
+   REACT_APP_FIREBASE_AUTH_DOMAIN=yourauthdomain
+   REACT_APP_FIREBASE_PROJECT_ID=yourprojectid
+   REACT_APP_FIREBASE_STORAGE_BUCKET=yourstoragebucket
+   REACT_APP_FIREBASE_MESSAGE_SENDER_ID=yourmessagesenderid
+   REACT_APP_FIREBASE_APP_ID=yourappid
+   ```
+5. Start the server.
+   ```
+   npm run dev
+   ```
+<!-- 6. Start the server.
    ```
    npm run start
-   ```
+   ``` -->
 
 ### Testing
 
