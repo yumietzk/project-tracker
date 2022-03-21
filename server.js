@@ -26,14 +26,10 @@ db.once('open', () => console.log('DB connection successful'));
 // Production config
 const path = require('path');
 if (process.env.NODE_ENV === 'production') {
-  // Serve production assets
   app.use(express.static(path.join(__dirname, '/client/build')));
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
   });
-} else {
-  // For development
-  app.use(express.static(path.join(__dirname, '/client/build')));
 }
 
 const PORT = process.env.PORT || 3001;
