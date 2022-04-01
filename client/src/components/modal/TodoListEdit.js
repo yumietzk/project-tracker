@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import styles from './TodoListEdit.module.css';
 
 const TodoListEdit = ({ todo, handleCheck }) => {
-  // const { id, value, todoChecked } = todo;
   const [checked, setChecked] = useState(todo?.todoChecked);
 
   useEffect(() => {

@@ -52,7 +52,6 @@ const Projects = ({
     console.log(result);
 
     if (!destination) return;
-    // sorting among list might be implemented later
     if (destination.droppableId === source.droppableId) return;
     if (
       destination.droppableId === source.droppableId &&
@@ -76,14 +75,6 @@ const Projects = ({
       );
 
       // For now, sorting among list is not implemented.
-      // let targetArr;
-      // if (destination.droppableId === 'No Status') {
-      //   targetArr = dataArr.noStatus;
-      // } else if (destination.droppableId === 'In Progress') {
-      //   targetArr = dataArr.inProgress;
-      // } else if (destination.droppableId === 'Completed') {
-      //   targetArr = dataArr.completed;
-      // }
     }
   };
 

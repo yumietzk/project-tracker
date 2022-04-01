@@ -52,8 +52,6 @@ export const createTask =
 export const fetchTasks = () => async (dispatch, getState) => {
   try {
     dispatch({ type: 'REQUEST_TASKS' });
-    // これ意味あるの？
-    // dispatch({ type: 'ERROR_CLEARED' });
 
     const { userId } = getState().auth;
     const response = await axios.get('/api/tasks');
@@ -76,7 +74,6 @@ export const fetchTasks = () => async (dispatch, getState) => {
 export const fetchTask = (id) => async (dispatch) => {
   try {
     dispatch({ type: 'REQUEST_TASK' });
-    // dispatch({ type: 'ERROR_CLEARED' });
 
     const response = await axios.get(`/api/tasks/${id}`);
     dispatch({ type: 'RECEIVE_TASK', payload: response.data });
@@ -96,7 +93,6 @@ export const updateTask =
   async (dispatch, getState) => {
     try {
       dispatch({ type: 'UPDATE_TASK' });
-      // dispatch({ type: 'ERROR_CLEARED' });
 
       const { userId } = getState().auth;
       const response = await axios.patch(`/api/tasks/${id}`, {
@@ -127,7 +123,6 @@ export const updateTask =
 export const deleteTask = (id) => async (dispatch, getState) => {
   try {
     dispatch({ type: 'DELETE_TASK' });
-    // dispatch({ type: 'ERROR_CLEARED' });
 
     const { userId } = getState().auth;
 
@@ -147,44 +142,3 @@ export const deleteTask = (id) => async (dispatch, getState) => {
     });
   }
 };
-
-// ここからのアクション必要？なに？
-// export const createError = () => {
-//   history.push(`/formcreate`);
-
-//   return {
-//     type: 'ERROR_CREATED',
-//     payload: {
-//       message:
-//         'Something went wrong. Could not create a new project. Please check if you fill in all required fields: "Title", "Date created", "Status", "Due Date", "Description',
-//     },
-//   };
-// };
-
-// export const createEditError = (id) => {
-//   history.push(`/formedit/${id}`);
-
-//   return {
-//     type: 'ERROR_CREATED',
-//     payload: {
-//       message:
-//         'Something went wrong. Could not update the project. Please check if you fill in all required fields: "Title", "Date created", "Status", "Due Date", "Description',
-//     },
-//   };
-// };
-
-// export const clearError = () => {
-//   history.push(`/formcreate`);
-
-//   return {
-//     type: 'ERROR_CLEARED',
-//   };
-// };
-
-// export const clearEditError = (id) => {
-//   history.push(`/formedit/${id}`);
-
-//   return {
-//     type: 'ERROR_CLEARED',
-//   };
-// };

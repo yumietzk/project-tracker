@@ -141,7 +141,6 @@
 }
 
 .tasks {
-  /* flex: 0 0 26%; */
   flex-basis: 26%;
   padding: 1.1rem 0 1.1rem 0.9rem;
   border-right: 0.2rem solid #f6f5f4;
@@ -153,7 +152,6 @@
 }
 
 .date {
-  /* flex: 0 0 26%; */
   flex-basis: 26%;
   padding: 1.1rem 0 1.1rem 0.9rem;
 
