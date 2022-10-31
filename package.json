@@ -6,7 +6,7 @@
   "scripts": {
     "bootstrap": "npm install && npm install --prefix client && npm run build --prefix client",
     "start": "nodemon server.js",
-    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
+    "render-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run start\" \"npm run client\""
   },
