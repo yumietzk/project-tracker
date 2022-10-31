@@ -1,4 +1,4 @@
-export default (state = { isFetching: false }, action) => {
+export default function taskReducer(state = { isFetching: false }, action) {
   switch (action.type) {
     case 'CREATE_TASK':
     case 'REQUEST_TASKS':
@@ -27,4 +27,4 @@ export default (state = { isFetching: false }, action) => {
     default:
       return state;
   }
-};
+}
