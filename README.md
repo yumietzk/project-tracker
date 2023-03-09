@@ -1,6 +1,7 @@
 # Project Tracker
 
-[View Demo here](https://project-tracker-khkm.onrender.com)
+[View Demo here](https://project-tracker-khkm.onrender.com)  
+*Please allow some time for the app to load. 
 
 A project tracker app built with MERN stack (Mongo DB, Express, React JS, Node.js).  
 I used Firebase for user authentication. After users log in, they can create a new project and manage it. This app allows users to show and manage all projects by status and all tasks and due dates of each project for time management.  
